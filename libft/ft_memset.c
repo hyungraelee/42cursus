@@ -1,7 +1,7 @@
 #include "libft.h"
 
 void        *ft_memset(void *ptr, int c, size_t n)
-(
+{
     unsigned char   *newPtr;
     unsigned char   src;
     size_t i;
@@ -12,4 +12,4 @@ void        *ft_memset(void *ptr, int c, size_t n)
     while (i++ < n)
         *newPtr++ = src;
     return (ptr);
-)
+}
