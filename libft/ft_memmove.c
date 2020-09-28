@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/28 16:27:26 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/09/28 16:27:26 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/09/28 16:26:37 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/09/28 16:26:37 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *dest, int c, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*dp;
-	size_t			i;
+	unsigned char *dp;
+	unsigned char *sp;
 
-	dp = dest;
-	i = 0;
-	while (i++ < n)
-		*dp++ = c;
+	if (dest <= src)
+	{
+		dp = dest;
+		sp = (unsigned char *)src;
+		while (n-- > 0)
+		{
+			*dp++ = *sp++;
+		}
+	}
+	else
+	{
+		dp = dest + n;
+		sp = (unsigned char *)src + n;
+		while (n-- > 0)
+		{
+			*--dp = *--sp;
+		}
+	}
 	return (dest);
 }
