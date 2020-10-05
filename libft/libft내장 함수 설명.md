@@ -100,7 +100,7 @@
   size_t ft_strlcat(char *dst, const char *src, size_t size)
   ```
 
-##### : det 뒤에 src를 붙이는 함수. return값은 생성하려고 시도한 문자열의 길이이다. 
+##### : det 뒤에 src를 붙이는 함수. size는 strlen(dst) + strlen(src) + null 길이. return값은 생성하려고 시도한 문자열의 길이이다. 
 
 #####   size == 0 인 경우, src의 길이 return
 
@@ -108,3 +108,26 @@
 
 #####   dest >= size이면, src + size 길이 return
 
+11. ### ft_strchr.c
+
+- ```c
+  char *ft_strchr(const char *s, int c)
+  ```
+
+##### : 문자열에서 특정 문자 c를 찾을 때 사용.
+
+##### c를 찾으면 해당 문자의 포인터를 return함
+
+##### 찾지 못하면 null을 return.
+
+12. ### ft_strrchr.c
+
+- char *ft_strchr(const char *s, int c)
+
+##### : 문자열에서 마지막으로 있는 문자 c의 포인터를 리턴.
+
+##### c를 찾으면 현재 포인터를 last에 저장한 후 계속 확인함.
+
+##### s문자열 끝까지 루프를 다 돌면 마지막으로 찾은 c의 위치(last)를 리턴함.
+
+##### 찾지 못하면 null을 return.
