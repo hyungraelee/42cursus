@@ -86,10 +86,25 @@
 
 ##### :  s포인터가 가리키는 문자열의 길이를 리턴하는 함수.
 
-9. ft_strlcpy.c
+9. ### ft_strlcpy.c
 
 - ```c
   size_t ft_strlcpy(char *dst, const char *src, size_t size)
   ```
 
-: src에서 dst로 size-1개의 문자열을 복사한 뒤, size번째에 null을 붙인다. 이때 return값은 src의 길이이다. (맨 뒤에 null 제외)
+##### : src에서 dst로 size-1개의 문자열을 복사한 뒤, size번째에 null을 붙인다. 이때 return값은 src의 길이이다. (맨 뒤에 null 제외) // src+1 의 길이가 size보다 작은경우 src 카피하고 null 확보해줌. 
+
+10. ### ft_strlcat.c
+
+- ```c
+  size_t ft_strlcat(char *dst, const char *src, size_t size)
+  ```
+
+##### : det 뒤에 src를 붙이는 함수. return값은 생성하려고 시도한 문자열의 길이이다. 
+
+#####   size == 0 인 경우, src의 길이 return
+
+#####   dest < size이면, src + dest 길이 return
+
+#####   dest >= size이면, src + size 길이 return
+
