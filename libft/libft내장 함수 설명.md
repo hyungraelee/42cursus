@@ -122,7 +122,9 @@
 
 12. ### ft_strrchr.c
 
-- char *ft_strchr(const char *s, int c)
+- ```c
+  char *ft_strchr(const char *s, int c)
+  ```
 
 ##### : 문자열에서 마지막으로 있는 문자 c의 포인터를 리턴.
 
@@ -131,3 +133,98 @@
 ##### s문자열 끝까지 루프를 다 돌면 마지막으로 찾은 c의 위치(last)를 리턴함.
 
 ##### 찾지 못하면 null을 return.
+
+13. ### ft_strnstr.c
+
+- ```c
+  char  *ft_strnstr(const char *s1, const char *s2, size_t n)
+  ```
+
+##### : s1 문자열의 n길이중 s2 문자열을 찾는 함수.
+
+리턴값
+1) s2값이 비어있으면 s1을 리턴
+2) s1문자열에서 s2를 찾지 못하면 null 리턴
+3) s2문자열을 찾으면 s1의 s2시작 부분 주소를 리턴.
+
+14. ### ft_strncmp.c
+
+- ```c
+  int ft_strncmp(const char *s1, const char *s2, size_t n)
+  ```
+
+##### : s1과 s2문자열을 n개만큼 비교하는 함수.
+
+리턴값
+1) 두 문자열이 완전히 같으면 0리턴.
+2) s1이 작으면 (각 문자 아스키 코드로 비교) 0보다 작은 수 리턴.
+3) s1이 크면 0보다 큰 수 리턴.
+
+위의 2, 3번의 경우 처음 다른 위치의 *s1 - *s2의 아스키코드 값으로 해결.
+
+15. ### ft_atoi.c
+
+- ```c
+  int   ft_atoi(const char *nptr)
+  ```
+
+##### : 문자열을 받아 정수로 변환해주는 함수.
+
+1) 공백, 부호는 1개(부호 없으면 양수값), char형 숫자 순서.
+2) 숫자 중간에 숫자 외의 문자가 들어있으면 그 전의 숫자까지만 변환함.
+
+16. ### ft_isalpha.c
+
+- ```c
+  int ft_isalpha(int c)
+  ```
+
+##### : c의 아스키값이 대문자이면 1, 소문자이면 2, 영문자가 아니면 0을 리턴하는 함수.
+
+17. ### ft_isdigit.c
+
+- ```c
+  int ft_isdigit(int c)
+  ```
+
+##### : 문자가 숫자 0~9 사이에 속하는지 검사하는 함수.
+
+18. ### ft_isalnum.c
+
+- ```c
+  int ft_isdigit(int c)
+  ```
+
+##### : 문자가 숫자 또는 영문자인지 검사하는 함수.
+
+19. ### ft_isascii.c
+
+- ```c
+  int ft_isascii(int c)
+  ```
+
+##### : 문자가 ASCII문자인지 검사하는 함수.
+
+20. ### ft_isprint.c
+
+- ```c
+  int ft_isprint(int c);
+  ```
+
+##### : 문자가 출력가능문자인지 검사하는 함수. (ASCII 32 ~ 126)
+
+21. ### ft_toupper.c
+
+- ```c
+  int ft_toupper(int c)
+  ```
+
+##### : c가 소문자일때 대문자로 변환하는 함수.
+
+22. ### ft_tolower.c
+
+- ```c
+  int ft_tolower(int c)
+  ```
+
+##### : c가 대문자일때 소문자로 변환하는 함수.
