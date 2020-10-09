@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 17:40:56 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/05 16:14:10 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:03:12 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t dstlen;
 	size_t srclen;
-	size_t res;
 
 	dstlen = ft_strlen(dst);
 	srclen = ft_strlen(src);

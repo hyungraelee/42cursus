@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 15:26:48 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/06 15:26:48 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:03:36 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 		s1++;
 		n--;
 	}
-	return ('\0');
+	return (0);
 }

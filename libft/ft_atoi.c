@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 17:01:03 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/06 17:01:03 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:04:07 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *nptr)
 
 	res = 0;
 	issign = 1;
-	while (*nptr >= 9 && *nptr <= 13 || *nptr == ' ')
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == ' ')
 		nptr++;
 	if (*nptr == '+' || *nptr == '-')
 	{

@@ -1,8 +1,11 @@
-CC = gcc
-CFLAG = -Wall -Wextra -Werror
-TARGET = libft.a
+.SUFFIXES = .c.o
 
-OBJS_PART1 =	\
+INC = libft.h
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+NAME = libft.a
+SRCS_PART1 =	\
 		./ft_memset.c	\
 		./ft_bzero.c	\
 		./ft_memcpy.c	\
@@ -24,13 +27,21 @@ OBJS_PART1 =	\
 		./ft_isascii.c	\
 		./ft_isprint.c	\
 		./ft_toupper.c	\
-		./ft_tolower.c
+		./ft_tolower.c	\
+		./ft_calloc.c	\
+		./ft_strdup.c
 
+OBJS_PART1 = $(SRCS_PART1:.c=.o)
 
-all : &(TARGET)
+all : $(NAME)
 
-.c.o :
-	&(CC) -c -o $@ $<
-
-&(TARGET) : &(OBJS_PART1)
-	&(CC) -o &(TARGET)
+$(NAME) : $(OBJS_PART1)
+	ar rcv $@ $(OBJS_PART1)
+	ranlib $@
+.c.o : $(SRC_PART1) $(INC)
+	$(CC) $(CFLAGS) -c $< -o $@
+clean :
+	rm -f $(OBJS_PART1)
+fclean : clean
+	rm -f $(NAME)
+re : fclean all

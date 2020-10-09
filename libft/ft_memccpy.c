@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 16:20:31 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/09/28 16:20:31 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:22:02 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	unsigned char	*sp;
 	size_t			i;
 
-	dp = dest;
+	if (!dest && !src)
+		return (0);
+	dp = (unsigned char *)dest;
 	sp = (unsigned char *)src;
 	i = 0;
 	while (i++ < n)
@@ -26,9 +28,9 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 		if (*sp == (unsigned char)c)
 		{
 			*dp++ = *sp;
-			break ;
+			return (dp);
 		}
 		*dp++ = *sp++;
 	}
-	return (dp);
+	return (0);
 }

@@ -228,3 +228,18 @@
   ```
 
 ##### : c가 대문자일때 소문자로 변환하는 함수.
+
+23. ### ft_calloc.c
+
+- void    *ft_calloc(size_t nmemb, size_t size)
+
+: size크기의 변수를 nmemb개 저장할 수 있는 공간을 할당한다.
+할당된 공간의 값을 모두 0으로 초기화 한다.
+
+24. ### ft_strdup.c
+
+- char    *ft_strdup(const char *s)
+
+: 문자열 s의 길이 + 1의 크기를 malloc로 할당한 후 문자열 s를 복사하고 return함.
+
+malloc + strcpy와 같음.

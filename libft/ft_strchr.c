@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunlee <hyunlee@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 21:27:55 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/05 22:01:23 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:30:23 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	while (*s)
+	while (*s != c)
 	{
-		if (*s == (char)c)
-			return ((char *)s);
+		if (*s == '\0')
+			return (0);
 		s++;
 	}
-	return (0);
+	return ((char *)s);
 }

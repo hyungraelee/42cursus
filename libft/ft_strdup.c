@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/28 16:26:37 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/09 21:23:51 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/10/09 16:30:40 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/09 18:52:10 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strdup(const char *s)
 {
-	unsigned char *dp;
-	unsigned char *sp;
+	char	*result;
+	char	*temp;
+	size_t	len;
 
-	if (!dest && !src)
+	len = ft_strlen(s);
+	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
-	if (dest <= src)
-	{
-		dp = dest;
-		sp = (unsigned char *)src;
-		while (n-- > 0)
-		{
-			*dp++ = *sp++;
-		}
-	}
-	else
-	{
-		dp = dest + n;
-		sp = (unsigned char *)src + n;
-		while (n-- > 0)
-		{
-			*--dp = *--sp;
-		}
-	}
-	return (dest);
+	temp = result;
+	while (len--)
+		*temp++ = *s++;
+	*temp = '\0';
+	return (result);
 }
