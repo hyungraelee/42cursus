@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 15:56:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/09/28 15:56:18 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/10 01:29:36 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	{
 		if (*sp == (unsigned char)c)
 		{
-			return ((void *)sp);
+			return (sp);
 		}
 		sp++;
 	}

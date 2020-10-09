@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 15:26:48 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/09 21:03:36 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/10 01:25:20 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	if (*s2 == '\0')
 		return ((char *)s1);
 	s2_len = ft_strlen(s2);
-	while (n >= s2_len && *s1)
+	while ((n >= s2_len) && *s1)
 	{
 		if (*s1 == *s2)
 		{
 			s1ptr = s1;
 			s2ptr = s2;
-			while (*s1ptr == *s2ptr)
+			while (*s1ptr == *s2ptr && *s2ptr)
 			{
 				s1ptr++;
 				s2ptr++;

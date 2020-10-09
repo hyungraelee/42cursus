@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 17:31:15 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/09 22:30:56 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/10 00:53:59 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,17 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t srclen;
 
+	if (!dst && !src)
+		return (0);
 	srclen = ft_strlen(src);
 	if (srclen + 1 <= size)
 	{
-		while (srclen-- > 0)
-		{
-			*dst++ = *src++;
-		}
+		ft_memcpy(dst, src, srclen);
 		dst[srclen] = '\0';
 	}
 	else if (size != 0)
 	{
-		while (size-- > 1)
-		{
-			*dst++ = *src++;
-		}
+		ft_memcpy(dst, src, size - 1);
 		dst[size - 1] = '\0';
 	}
 	return (srclen);

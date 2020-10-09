@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 17:01:03 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/09 21:04:07 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/10 01:18:24 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int res;
-	int issign;
+	long long	res;
+	int			issign;
 
 	res = 0;
 	issign = 1;
@@ -33,5 +33,5 @@ int	ft_atoi(const char *nptr)
 		res += (*nptr - '0');
 		nptr++;
 	}
-	return (res * issign);
+	return ((int)(res * issign));
 }
