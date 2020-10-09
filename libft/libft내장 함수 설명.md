@@ -231,15 +231,46 @@
 
 23. ### ft_calloc.c
 
-- void    *ft_calloc(size_t nmemb, size_t size)
+- ```c
+  void *ft_calloc(size_t nmemb, size_t size)
+  ```
 
 : size크기의 변수를 nmemb개 저장할 수 있는 공간을 할당한다.
 할당된 공간의 값을 모두 0으로 초기화 한다.
 
 24. ### ft_strdup.c
 
-- char    *ft_strdup(const char *s)
+- ```c
+  char *ft_strdup(const char *s)
+  ```
 
 : 문자열 s의 길이 + 1의 크기를 malloc로 할당한 후 문자열 s를 복사하고 return함.
 
 malloc + strcpy와 같음.
+
+25. ### ft_substr.c
+
+- ```c
+  char *ft_substr(char const *s, unsigned int start, size_t len)
+  ```
+
+: s문자열의 start index부터 len만큼 복제하여 부분 문자열을 가져오는 함수.
+
+빈 문자열을 리턴하는 경우 확인할 것. 
+
+26. ### ft_strjoin.c
+
+- char    *ft_strjoin(char const *s1, char const *s2)
+
+: s1 문자열 뒤에 s2문자열을 붙여 새로운 문자열을 만든 후 리턴하는 함수.
+
+27. ### ft_strtrim.c
+
+- ```c
+  char *ft_strtrim(char const *s1, char const *set)
+  ```
+
+: s1문자열에서 앞, 뒤에 있는 set을 잘라낸 새로운 문자열을 리턴하는 함수.
+
+보통 white space 를 넣어주어 공백제거에 사용함.
+
