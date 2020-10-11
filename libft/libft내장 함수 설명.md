@@ -270,7 +270,20 @@ malloc + strcpy와 같음.
   char *ft_strtrim(char const *s1, char const *set)
   ```
 
-: s1문자열에서 앞, 뒤에 있는 set을 잘라낸 새로운 문자열을 리턴하는 함수.
+: s1문자열에서 앞, 뒤에 있는 set을 잘라낸 새로운 문자열을 리턴하는 함수. (중간에 있는건 잘라내지 않음)
 
 보통 white space 를 넣어주어 공백제거에 사용함.
 
+28. ### ft_split.c
+
+- char **ft_split(char const *s, char c)
+
+: c 문자를 기준으로 문자열 s를 쪼개서 이차원배열을 리턴하는 함수.
+
+이 이차원 배열의 마지막은 NULL포인터로 끝나야 함.
+
+29. ### ft_itoa.c
+
+- char    *ft_itoa(int n)
+
+: 
