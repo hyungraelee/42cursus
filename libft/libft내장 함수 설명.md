@@ -276,7 +276,9 @@ malloc + strcpy와 같음.
 
 28. ### ft_split.c
 
-- char **ft_split(char const *s, char c)
+- ```c
+  char **ft_split(char const *s, char c)
+  ```
 
 : c 문자를 기준으로 문자열 s를 쪼개서 이차원배열을 리턴하는 함수.
 
@@ -284,6 +286,49 @@ malloc + strcpy와 같음.
 
 29. ### ft_itoa.c
 
-- char    *ft_itoa(int n)
+- ```c
+  char    *ft_itoa(int n)
+  ```
 
-: 
+: 숫자를 문자열로 변환하여 리턴하는 함수.
+
+30. ### ft_strmapi.c
+
+- ```c
+  char  *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+  ```
+
+: s 문자열의 인덱스와 그 인덱스에 해당하는 문자를 f함수에 보내 변환된 문자를 리턴받아 새로운 문자열을 만드는 함수.
+
+31. ### ft_putchar_fd.c
+
+- ```c
+  void  ft_putchar_fd(char c, int fd)
+  ```
+
+: 문자 c를 fd파일 디스크립터에 출력하는 함수.
+
+32. ### ft_putstr_fd.c
+
+- ```c
+  void  ft_putstr_fd(char *s, int fd)
+  ```
+
+: 문자열 s를 fd파일 디스크립터에 출력하는 함수.
+
+33. ### ft_putendl_fd.c
+
+- ```c
+  void  ft_putendl_fd(char *s, int fd)
+  ```
+
+: 문자열 s를 fd파일 디스크립터에 출력한 후 줄바꿈.
+
+34. ### ft_putnbr_fd.c
+
+- ```c
+  void  ft_putnbr_fd(int n, int fd)
+  ```
+
+: 정수 n을 fd파일 디스크립터에 출력.
+
