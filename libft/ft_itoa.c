@@ -44,12 +44,12 @@ int		check_size(int n)
 	int size;
 
 	if (n == 0)
-		return 1;
+		return (1);
 	if (n > 0)
 		size = 0;
 	else if (n < 0)
 		size = 1;
-	while(n)
+	while (n)
 	{
 		n /= 10;
 		size++;
