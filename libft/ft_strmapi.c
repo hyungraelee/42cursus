@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 16:58:36 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/13 16:58:36 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/13 18:14:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*result;
 	size_t	size;
-	int		i;
+	size_t	i;
 
 	if (!s)
 		return(0);
