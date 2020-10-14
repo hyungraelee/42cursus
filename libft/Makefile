@@ -1,10 +1,12 @@
 .SUFFIXES = .c.o
 
-INC = libft.h
+HEADER = libft.h
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
+AR = ar rcv
+RM = rm -f
 
 SRCS =	\
 		./ft_memset.c		\
@@ -42,17 +44,30 @@ SRCS =	\
 		./ft_putendl_fd.c	\
 		./ft_putnbr_fd.c
 
+BONUS_SRCS =				\
+		./ft_lstnew.c		\
+		./ft_lstadd_front.c	\
+		./ft_lstsize.c		\
+		./ft_lstlast.c		\
+		./ft_lstadd_back.c	\
+		./ft_lstdelone.c	\
+		./ft_lstclear.c		\
+		./ft_lstiter.c		\
+		./ft_lstmap.c
+
 OBJS = $(SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	ar rcv $@ $(OBJS)
-	ranlib $@
-.c.o : $(SRC) $(INC)
+	$(AR) $@ $^
+.c.o : $(SRCS) $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
+bonus : $(OBJS) $(BONUS_OBJS)
+	$(AR) $(NAME) $^
 clean :
-	rm -f $(OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 fclean : clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 re : fclean all

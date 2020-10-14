@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 17:32:33 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/13 17:32:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/14 19:08:47 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int num;
+	unsigned int	num;
 
 	num = n;
 	if (n < 0)
@@ -22,7 +22,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd('-', fd);
 		num = -n;
 	}
-	if (n >= 10)
+	if (num >= 10)
 		ft_putnbr_fd(num / 10, fd);
 	ft_putchar_fd(num % 10 + '0', fd);
 }

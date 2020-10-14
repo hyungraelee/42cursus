@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 20:00:08 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/13 20:00:08 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/14 15:03:54 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-
+	new->next = *lst;
+	*lst = new;
 }

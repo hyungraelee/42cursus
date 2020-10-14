@@ -274,6 +274,8 @@ malloc + strcpy와 같음.
 
 보통 white space 를 넣어주어 공백제거에 사용함.
 
+s1문자열이 중간에서 멈추지않고 전부 다 잘리는 경우 null이 아닌 빈 문자열을 리턴.
+
 28. ### ft_split.c
 
 - ```c
@@ -331,4 +333,62 @@ malloc + strcpy와 같음.
   ```
 
 : 정수 n을 fd파일 디스크립터에 출력.
+
+35. ### ft_lstnew.c
+
+- t_list  *ft_lstnew(void *content)
+
+: t_list구조체의 *content멤버에 *content를 매칭하는 함수.
+
+36. ### ft_lstadd_front.c
+
+- void ft_lstadd_front(t_list **lst, t_list *new)
+
+: 기존 list의 맨 앞에 new리스트를 추가하는 함수.
+
+37. ### ft_lstsize.c
+
+- int ft_lstsize(t_list *lst)
+
+: list의 갯수를 구하여 리턴하는 함수.
+
+38. ### ft_lstlast.c
+
+- ```c
+  t_list *ft_lstlast(t_list *lst)
+  ```
+
+: 리스트의 마지막 요소의 주소를 리턴하는 함수.
+
+39. ### ft_lstadd_back.c
+
+- void    ft_lstadd_back(t_list **lst, t_list *new)
+
+: 리스트의 뒤에 새로운 리스트를 추가하는 함수.
+
+40. ### ft_lstdelone.c
+
+- void    ft_lstdelone(t_list *lst, void (*del)(void *))
+
+: lst의 content를 del로 보내 내용을 삭제한 후 lst를 free해주는 함수.
+
+41. ### ft_lstclear.c
+
+- void    ft_lstclear(t_list **lst, void (*del)(void *))
+
+: lst의 content를 전부 del한 후 lst전체를 free해주는 함수.
+
+42. ### ft_lstiter.c
+
+- void    ft_lstiter(t_list *lst, void (*f)(void *))
+
+: lst의 모든 content에 대해 f함수 처리를 해주는 함수.
+
+43. ### ft_lstmap.c
+
+- t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+
+  : lst의 모든 content에 대해 f함수 처리를 해준 후의 결과를 새로운 list에 저장하여 리턴하는 함수.
+
+  필요 시 del함수를 이용해 내용 삭제 후 free
 
