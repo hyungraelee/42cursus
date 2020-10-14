@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 19:20:06 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/14 19:08:27 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/14 22:26:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*change_num(int n, int size, char *dst)
+static char		*change_num(int n, int size, char *dst)
 {
 	char			chr;
 	unsigned int	temp;
@@ -41,7 +41,7 @@ char	*change_num(int n, int size, char *dst)
 	return (dst);
 }
 
-int		check_size(int n)
+static int		check_size(int n)
 {
 	int size;
 
@@ -59,7 +59,7 @@ int		check_size(int n)
 	return (size);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char	*result;
 	int		size;

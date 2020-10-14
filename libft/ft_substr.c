@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 01:52:08 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/10 04:56:08 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/14 22:30:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (!(substr = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
-	memmove(substr, s + start, len);
+	ft_memmove(substr, s + start, len);
 	substr[len] = '\0';
 	return (substr);
 }

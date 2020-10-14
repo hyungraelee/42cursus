@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 15:46:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/14 16:12:28 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/14 23:01:39 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		*lst = temp->next;
 		free(temp);
 	}
+	*lst = 0;
 }
