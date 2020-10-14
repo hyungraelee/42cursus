@@ -256,7 +256,7 @@ malloc + strcpy와 같음.
 
 : s문자열의 start index부터 len만큼 복제하여 부분 문자열을 가져오는 함수.
 
-빈 문자열을 리턴하는 경우 확인할 것. 
+s문자열의 길이가 start보다 작을 경우 빈 문자열을 return 함. 
 
 26. ### ft_strjoin.c
 
