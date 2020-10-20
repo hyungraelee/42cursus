@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:31:33 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/15 00:54:21 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/20 21:45:55 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,16 @@ static int	count_word(char const *s, char c)
 {
 	int		count;
 
-	count = 1;
+	count = 0;
+	while (*s && *s == c)
+		s++;
 	while (*s)
 	{
-		if (*s == c && *(s + 1) != c)
-			count++;
-		s++;
+		count++;
+		while (*s && *s != c)
+			s++;
+		while (*s && *s == c)
+			s++;
 	}
 	return (count);
 }
