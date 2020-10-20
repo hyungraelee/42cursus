@@ -57,11 +57,11 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(AR) $@ $^
+	@$(AR) $@ $^
 .c.o : $(SRCS)
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 clean :
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 re : fclean all

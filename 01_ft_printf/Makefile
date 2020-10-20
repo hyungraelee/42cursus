@@ -18,16 +18,16 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	make -C ./libft
-	cp ./libft/$(LIBFT) ./$(NAME)
-	$(AR) $(NAME) $^
+	@make -C ./libft
+	@cp ./libft/$(LIBFT) ./$(NAME)
+	@$(AR) $(NAME) $^
 
 $(OBJS) : $(SRCS)
-	$(CC) $(CFLAGS) -o $@ -I$(INC_DIR_LIBFT) -I$(INC_DIR) -c $<
+	@$(CC) $(CFLAGS) -o $@ -I$(INC_DIR_LIBFT) -I$(INC_DIR) -c $<
 
 clean :
-	make -C ./libft fclean
-	$(RM) $(OBJS)
+	@make -C ./libft fclean
+	@$(RM) $(OBJS)
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 re : fclean all

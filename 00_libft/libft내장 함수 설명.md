@@ -192,7 +192,7 @@
 18. ### ft_isalnum.c
 
 - ```c
-  int ft_isdigit(int c)
+  int	ft_isalnum(int c)
   ```
 
 ##### : 문자가 숫자 또는 영문자인지 검사하는 함수.
