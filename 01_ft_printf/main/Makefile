@@ -16,7 +16,7 @@ $(NAME) : $(OBJ)
 
 $(OBJ) : $(SRC)
 	@make -C ../
-	@$(CC) $(CFLAGS) -o $@ -c $^ -I ../include_printf -I ../libft/include_libft
+	@$(CC) $(CFLAGS) -o $@ -c $^ -I ../include -I ../libft/include_libft
 
 clean :
 	@make -C ../ fclean
