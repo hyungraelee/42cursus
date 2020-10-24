@@ -12,7 +12,11 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcv
 RM = rm -f
 
-SRCS = ft_printf.c
+SRCS =	ft_printf.c				\
+		ft_set.c				\
+		ft_check_format.c		\
+		ft_platform_by_type.c	\
+		ft_print_int.c
 
 OBJS_DIR = ./objs
 
