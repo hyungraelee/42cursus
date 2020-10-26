@@ -16,7 +16,7 @@ int	main()
 	printf("This is real  printf = %03d\n", -0);
 	printf("This is real  printf = %.3d\n", -0);
 	printf("\n");
-	ft_printf("This is my ft_printf = %10d\n", 123);
+	ft_printf("This is my ft_printf = %d\n", 123);
 	ft_printf("This is my ft_printf = %010d\n", -12345);
 	ft_printf("This is my ft_printf = %05d\n", -1234567890);
 	ft_printf("This is my ft_printf = %05d\n", -123);

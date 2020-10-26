@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 16:33:51 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/26 21:39:09 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/26 23:02:25 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,13 @@ int		ft_printf(const	char *str, ...)
 	t_set	*set;
 
 	set = NULL;
+
 	if (!ft_init_set(str, set))
 		return (0);
 	va_start(set->args, str);
+
+	printf("segfault here\n");
+
 	if ((res = ft_parse_check(set)) == -1)
 		return (-1);
 	va_end(ap);

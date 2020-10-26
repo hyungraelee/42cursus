@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/26 21:37:52 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/26 22:29:13 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	ft_print_integer(t_set *set)
 		return ;
 	}
 	ft_arglen_int(num, set);
-	if (set->arglen > set->width && set->arglen > set->precision)
+	if (set->arglen > set->width && set->arglen > set->precision)	// arg辨捞啊 力老 变 版快
 	{
 		set->print_size += set->arglen;
 		ft_putnbr_fd(num, 1);
 	}
-	else if (set->precision > set->width && set->precision > set->arglen)
+	else if (set->precision > set->width && set->precision > set->arglen)	// precision 辨捞啊 力老 变 版快
 	{
 		set->print_size += set->precision;
 		if (num < 0)
@@ -42,7 +42,7 @@ void	ft_print_integer(t_set *set)
 			ft_putchar_fd('0', 1);
 		ft_putnbr_fd(num, 1);
 	}
-	else if (set->width > set->arglen && set->width > set->precision)
+	else if (set->width > set->arglen && set->width > set->precision)	//	width 辨捞啊 力老 变 版快
 	{
 		set->print_size += set->width;
 		if (set->precision > set->arglen)

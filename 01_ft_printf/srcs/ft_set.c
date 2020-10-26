@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:53:01 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/26 21:33:40 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/26 22:58:40 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ t_set	*ft_init_set(const char *str, t_set *set)
 	if (!(set = (t_set *)malloc(sizeof(t_set) * 1)))
 		return (0);
 	ft_reset_set(set);
+	if (!(set->str = (const char *)malloc(sizeof(char) * (ft_strlen(str) + 1))))
+		return (0);
+
 	set->str = str;
 	return (set);
 }
