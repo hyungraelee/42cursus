@@ -6,31 +6,31 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/24 22:02:00 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/26 21:37:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_integer(va_list args, t_set *set)
+void	ft_print_integer(t_set *set)
 {
 	long long	num;
 
-	num = va_arg(args, int);
-	if (set->f_point == 1 && set->precs == 0 && num == 0)
+	num = va_arg(set->args, int);
+	if (set->f_point == 1 && set->precision == 0 && num == 0)	// %.0d <- 0
 	{
 		ft_putstr_fd("", 1);
 		return ;
 	}
 	ft_arglen_int(num, set);
-	if (set->arglen > set->width && set->arglen > set->precs)
+	if (set->arglen > set->width && set->arglen > set->precision)
 	{
 		set->print_size += set->arglen;
 		ft_putnbr_fd(num, 1);
 	}
-	else if (set->precs > set->width && set->precs > set->arglen)
+	else if (set->precision > set->width && set->precision > set->arglen)
 	{
-		set->print_size += set->precs;
+		set->print_size += set->precision;
 		if (num < 0)
 		{
 			ft_putchar_fd('-', 1);
@@ -38,16 +38,16 @@ void	ft_print_integer(va_list args, t_set *set)
 			num *= (-1);
 			(set->arglen)--;
 		}
-		while (((set->precs)--) - set->arglen)
+		while (((set->precision)--) - set->arglen)
 			ft_putchar_fd('0', 1);
 		ft_putnbr_fd(num, 1);
 	}
-	else if (set->width > set->arglen && set->width > set->precs)
+	else if (set->width > set->arglen && set->width > set->precision)
 	{
 		set->print_size += set->width;
-		if (set->precs > set->arglen)
+		if (set->precision > set->arglen)
 		{
-			while (((set->width)--) - set->precs)
+			while (((set->width)--) - set->precision)
 				ft_putchar_fd(' ', 1);
 			if (num < 0)
 			{
@@ -55,7 +55,7 @@ void	ft_print_integer(va_list args, t_set *set)
 				(set->print_size)++;
 				num *= (-1);
 			}
-			while (((set->precs)--) - set->arglen)
+			while (((set->precision)--) - set->arglen)
 				ft_putchar_fd('0', 1);
 			ft_putnbr_fd(num, 1);
 		}
