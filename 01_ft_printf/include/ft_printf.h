@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/26 21:34:14 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/27 00:58:57 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_set
 	int			print_size;
 	int			arglen;
 	const char	*str;
-	va_list		args;
+	va_list		*args;
 }				t_set;
 
 int		ft_printf(const	char *str, ...);

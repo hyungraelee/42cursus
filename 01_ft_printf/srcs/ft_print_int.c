@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/26 22:29:13 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/27 00:59:27 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_print_integer(t_set *set)
 {
 	long long	num;
 
-	num = va_arg(set->args, int);
+	num = va_arg(*(set->args), int);
 	if (set->f_point == 1 && set->precision == 0 && num == 0)	// %.0d <- 0
 	{
 		ft_putstr_fd("", 1);
