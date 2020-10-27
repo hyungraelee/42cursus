@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/27 17:17:11 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/28 03:54:36 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,23 @@ void	ft_input_precision(t_set *set)
 	set->precision = 0;
 	set->f_point = 1;
 	(set->str)++;
-	while (ft_isdigit(*(set->str)))
+	if (*(set->str) == '*')
 	{
-		set->precision *= 10;
-		set->precision += (*(set->str) - '0');
+		if ((set->precision = va_arg(*(set->args), int)) < 0)
+		{
+			set->precision = 0;
+			set->f_point = 0;
+		}
 		(set->str)++;
+	}
+	else
+	{
+		while (ft_isdigit(*(set->str)))
+		{
+			set->precision *= 10;
+			set->precision += (*(set->str) - '0');
+			(set->str)++;
+		}
 	}
 	return ;
 }
@@ -39,6 +51,15 @@ void	ft_input_precision(t_set *set)
 void	ft_input_width(t_set *set)
 {
 	set->width = 0;
+	if (*(set->str) == '*')
+	{
+		if ((set->width = va_arg(*(set->args), int)) < 0)
+		{
+			set->f_minus = 1;
+			set->width *= (-1);
+		}
+		(set->str)++;
+	}
 	while (ft_isdigit(*(set->str)))
 	{
 		set->width *= 10;
@@ -54,7 +75,7 @@ int		ft_parse(t_set *set)
 	{
 		if (ft_strchr(FLAGS, *(set->str)))
 			ft_input_flag(set);
-		else if (ft_strchr(WIDTH, *(set->str)))
+		else if (ft_strchr(WIDTH, *(set->str)) || ft_strchr(STAR, *(set->str)))
 			ft_input_width(set);
 		else if (ft_strchr(PRECISION, *(set->str)))
 			ft_input_precision(set);
@@ -62,7 +83,6 @@ int		ft_parse(t_set *set)
 			return (-1);
 	}
 	set->specifier = *(set->str)++;
-	ft_func_by_specifier(set);
 	return (1);
 }
 
@@ -77,6 +97,8 @@ int		ft_parse_check(t_set *set)
 		{
 			(set->str)++;
 			if ((ft_parse(set)) == -1)
+				return (-1);
+			if (ft_func_by_specifier(set) == -1)
 				return (-1);
 		}
 		else if (*(set->str) == '%' && *((set->str) + 1) == '%')

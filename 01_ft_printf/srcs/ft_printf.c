@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 16:33:51 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/27 01:11:16 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/28 03:03:14 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int		ft_printf(const	char *str, ...)
 	t_set	*set;
 
 	set = NULL;
-
 	if (!(set = ft_init_set(str, set)))
 		return (0);
 	va_start(ap, str);

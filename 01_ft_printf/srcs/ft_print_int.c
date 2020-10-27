@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/27 17:20:59 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/28 01:19:37 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void	ft_print_int_width_most(t_set *set, long long num)
 	return ;
 }
 
-void	ft_print_integer(t_set *set)
+void	ft_print_int(t_set *set)
 {
 	long long	num;
 
