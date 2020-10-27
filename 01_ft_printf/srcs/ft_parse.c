@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_format.c                                  :+:      :+:    :+:   */
+/*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/27 01:10:30 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/27 17:17:11 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_input_flag(t_set *set)
 void	ft_input_precision(t_set *set)
 {
 	set->precision = 0;
+	set->f_point = 1;
 	(set->str)++;
 	while (ft_isdigit(*(set->str)))
 	{
