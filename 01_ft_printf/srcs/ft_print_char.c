@@ -29,12 +29,11 @@ int		ft_print_char(t_set *set)
 	{
 		temp = (char *)ft_memcpy(temp, &chr, 1);
 		temp++;
-		while (--size > 1)
+		while (size-- > 1)
 		{
 			temp = (char *)ft_memcpy(temp, " ", 1);
 			temp++;
 		}
-		*temp = '\0';
 	}
 	else
 	{
@@ -56,8 +55,9 @@ int		ft_print_char(t_set *set)
 			}
 			temp = (char *)ft_memcpy(temp, &chr, 1);
 		}
+		temp++;
 	}
-	*(++temp) = '\0';
+	*temp = '\0';
 	ft_putstr_fd(print_buf, 1);
 	free(print_buf);
 	return (1);

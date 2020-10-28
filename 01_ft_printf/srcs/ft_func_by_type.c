@@ -20,6 +20,9 @@ int	ft_func_by_specifier(t_set *set)
 	else if (set->specifier == 'c')
 		if (ft_print_char(set) == -1)
 			return (-1);
+	else if (set->specifier == 's')
+		if (ft_print_str(set) == -1)
+			return (-1);
 
 	return (1);
 }
