@@ -7,7 +7,7 @@ int	ft_printf(const	char *str, ...);
 
 int	main()
 {
-
+	ft_printf("hello, %s.", "gavin");
 	// printf("This is real  printf = %5c<-end\n", 'a');
 	// printf("This is real  printf = %.5c<-end\n", 'a');
 	// printf("This is real  printf = %5.3c<-end\n", 'a');
@@ -18,14 +18,14 @@ int	main()
 	// printf("This is real  printf = %-3.5c<-end\n", 'a');
 	// printf("This is real  printf = %-3.3c<-end\n", 'a');
 
-	ft_printf("This is my ft_printf = %5c<-end\n", 'a');
-	ft_printf("This is my ft_printf = %.5c<-end\n", 'a');
-	ft_printf("This is my ft_printf = %5.3c<-end\n", 'a');
-	ft_printf("This is my ft_printf = %3.5c<-end\n", 'a');
-	ft_printf("This is my ft_printf = %-5c<-end\n", 'a');
-	ft_printf("This is my ft_printf = %-.3c<-end\n", 'a');
-	ft_printf("This is my ft_printf = %-3.5c<-end\n", 'a');
-	ft_printf("This is my ft_printf = %-3.3c<-end\n", 'a');
+	// ft_printf("This is my ft_printf = %5c<-end\n", 'a');
+	// ft_printf("This is my ft_printf = %.5c<-end\n", 'a');
+	// ft_printf("This is my ft_printf = %5.3c<-end\n", 'a');
+	// ft_printf("This is my ft_printf = %3.5c<-end\n", 'a');
+	// ft_printf("This is my ft_printf = %-5c<-end\n", 'a');
+	// ft_printf("This is my ft_printf = %-.3c<-end\n", 'a');
+	// ft_printf("This is my ft_printf = %-3.5c<-end\n", 'a');
+	// ft_printf("This is my ft_printf = %-3.3c<-end\n", 'a');
 
 // 	printf("This is real  printf = 1234567890<-end\n");
 // 	printf("This is real  printf = %-5d\n", 1234567890);

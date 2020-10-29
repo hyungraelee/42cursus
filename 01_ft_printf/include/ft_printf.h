@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/28 01:34:45 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/29 17:41:36 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ int		ft_func_by_specifier(t_set *set);
 void	ft_print_int(t_set *set);
 void	ft_arglen_int(int num, t_set *set);
 int		ft_print_char(t_set *set);
+int		ft_print_str(t_set *set);
 
 #endif

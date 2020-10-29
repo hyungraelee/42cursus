@@ -6,11 +6,19 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 01:20:09 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/28 05:39:02 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/10/29 20:30:51 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_putstr_of_char(char *s, int fd, size_t size)
+{
+	if (!s)
+		return ;
+	write(fd, s, size);
+	return ;
+}
 
 int		ft_print_char(t_set *set)
 {
@@ -18,8 +26,10 @@ int		ft_print_char(t_set *set)
 	char			*print_buf;
 	char			*temp;
 	size_t			size;
+	size_t			size_temp;
 
 	size = set->width > 0 ? set->width : 1;
+	size_temp = size;
 	if (!(print_buf = (char *)malloc(sizeof(char) * (size + 1))))
 		return (-1);
 	set->print_size += size;
@@ -58,7 +68,7 @@ int		ft_print_char(t_set *set)
 		temp++;
 	}
 	*temp = '\0';
-	ft_putstr_fd(print_buf, 1);
+	ft_putstr_of_char(print_buf, 1, size_temp);
 	free(print_buf);
 	return (1);
 }
