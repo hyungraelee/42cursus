@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:03:05 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/29 17:42:40 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/01 21:38:41 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,10 @@ int	ft_func_by_specifier(t_set *set)
 			if (ft_print_str(set) == -1)
 				return (-1);
 		}
+	else if (set->specifier == 'u')
+		{
+			if (ft_print_uint(set) == -1)
+				return (-1);
+		}
 	return (1);
 }
-
-
-// conversion 기능의 첫번째 함수.
-// 여기서 flag, width, precision등을 체크 함.
-// void	ft_conversion(t_set *set)
-// {
-// 	ft_func_by_specifier(set);
-// }
