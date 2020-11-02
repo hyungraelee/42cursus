@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 01:20:09 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/29 20:30:51 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/02 21:06:43 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ft_print_char(t_set *set)
 	size = set->width > 0 ? set->width : 1;
 	size_temp = size;
 	if (!(print_buf = (char *)malloc(sizeof(char) * (size + 1))))
-		return (-1);
+		return (0);
 	set->print_size += size;
 	temp = print_buf;
 	chr = va_arg(*(set->args), int);

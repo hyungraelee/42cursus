@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 20:10:23 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/02 17:12:21 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/02 21:19:09 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_print_str_arg(t_set *set)
 	size = set->arglen;
 	temp = 0;
 	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
-		return (-1);
+		return (0);
 	ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
 	set->print_buf[size] = '\0';
 	return (1);
@@ -34,7 +34,7 @@ int		ft_print_str_wid(t_set *set)
 	size = set->width;
 	temp = 0;
 	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
-		return (-1);
+		return (0);
 	if (set->f_minus == 1)
 	{
 		temp = ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
@@ -83,21 +83,22 @@ int		ft_input_data(t_set *set)
 
 int		ft_print_str(t_set *set)
 {
-	if (!ft_input_data(set))
-		return (-1);
+	int	ret;
+
+	ret = ft_input_data(set) ? 1 : 0;
 	ft_apply_precision_to_s(set);
 	if (set->width > set->arglen)
 	{
-		if (ft_print_str_wid(set) == -1)
-			return (-1);
+		if (!(ft_print_str_wid(set)))
+			return (0);
 	}
 	else
 	{
-		if (ft_print_str_arg(set) == -1)
-			return (-1);
+		if (!(ft_print_str_arg(set)))
+			return (0);
 	}
 	ft_putstr_fd(set->print_buf, 1);
 	free(set->input_data);
 	free(set->print_buf);
-	return (1);
+	return (ret);
 }
