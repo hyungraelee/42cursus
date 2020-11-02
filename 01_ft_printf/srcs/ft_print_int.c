@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/28 01:19:37 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/02 14:50:48 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	ft_print_int(t_set *set)
 	long long	num;
 
 	num = va_arg(*(set->args), int);
-	if (set->f_point == 1 && set->precision == 0 && num == 0)	// %.0d <- 0
+	if (set->f_point && set->precision == 0 && num == 0)	// %.0d <- 0
 	{
 		while (set->width--)
 			ft_putchar_fd(' ', 1);

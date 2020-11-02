@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 20:10:23 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/01 20:20:46 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/02 17:12:21 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,13 @@ int		ft_print_str_arg(t_set *set)
 {
 	size_t	size;
 	size_t	temp;
-	char	*print_buf;
 
 	size = set->arglen;
 	temp = 0;
-	if (!(print_buf = (char *)malloc(sizeof(char) * (size + 1))))
+	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
 		return (-1);
-	ft_strlcpy(print_buf, set->input_data, set->arglen + 1);
-	print_buf[size] = '\0';
-	ft_putstr_fd(print_buf, 1);
-	free(print_buf);
+	ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
+	set->print_buf[size] = '\0';
 	return (1);
 }
 
@@ -33,31 +30,28 @@ int		ft_print_str_wid(t_set *set)
 {
 	size_t	size;
 	size_t	temp;
-	char	*print_buf;
 
 	size = set->width;
 	temp = 0;
-	if (!(print_buf = (char *)malloc(sizeof(char) * (size + 1))))
+	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
 		return (-1);
 	if (set->f_minus == 1)
 	{
-		temp = ft_strlcpy(print_buf, set->input_data, set->arglen + 1);
+		temp = ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
 		while ((set->width)-- - set->arglen)
-			ft_memcpy(print_buf + temp++, " ", 1);
+			ft_memcpy(set->print_buf + temp++, " ", 1);
 	}
 	else
 	{
 		while ((set->width)-- - set->arglen)
-			ft_memcpy(print_buf + temp++, " ", 1);
-		ft_strlcpy(print_buf + temp, set->input_data, set->arglen + 1);
+			ft_memcpy(set->print_buf + temp++, " ", 1);
+		ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
 	}
-	print_buf[size] = '\0';
-	ft_putstr_fd(print_buf, 1);
-	free(print_buf);
+	set->print_buf[size] = '\0';
 	return (1);
 }
 
-void	ft_apply_precision(t_set *set)
+void	ft_apply_precision_to_s(t_set *set)
 {
 	if (set->f_point && set->precision < set->arglen)
 	{
@@ -91,7 +85,7 @@ int		ft_print_str(t_set *set)
 {
 	if (!ft_input_data(set))
 		return (-1);
-	ft_apply_precision(set);
+	ft_apply_precision_to_s(set);
 	if (set->width > set->arglen)
 	{
 		if (ft_print_str_wid(set) == -1)
@@ -102,6 +96,8 @@ int		ft_print_str(t_set *set)
 		if (ft_print_str_arg(set) == -1)
 			return (-1);
 	}
+	ft_putstr_fd(set->print_buf, 1);
 	free(set->input_data);
+	free(set->print_buf);
 	return (1);
 }
