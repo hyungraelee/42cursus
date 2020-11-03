@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 15:32:13 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/03 18:57:32 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		ft_parse_check(t_set *set)
 {
 	while (*(set->str))
 	{
-		if (*(set->str) == '%' && *((set->str) + 1) != '%')
+		if (*(set->str) == '%')
 		{
 			(set->str)++;
 			if (!(ft_parse(set)))
@@ -103,12 +103,12 @@ int		ft_parse_check(t_set *set)
 			if (!(ft_func_by_specifier(set)))
 				return (-1);
 		}
-		else if (*(set->str) == '%' && *((set->str) + 1) == '%')
-		{
-			ft_putchar_fd('%', 1);
-			(set->print_size)++;
-			(set->str) += 2;
-		}
+		// else if (*(set->str) == '%' && *((set->str) + 1) == '%')
+		// {
+		// 	ft_putchar_fd('%', 1);
+		// 	(set->print_size)++;
+		// 	(set->str) += 2;
+		// }
 		else
 		{
 			ft_putchar_fd(*(set->str), 1);

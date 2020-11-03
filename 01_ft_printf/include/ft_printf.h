@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 13:22:38 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/03 18:56:31 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define PRECISION "."
 #endif
 #ifndef SPECIFIER
-# define SPECIFIER "cspdiuxX"
+# define SPECIFIER "cspdiuxX%"
 #endif
 
 typedef struct	s_set
@@ -69,6 +69,8 @@ int		ft_print_char(t_set *set);
 int		ft_print_str(t_set *set);
 int		ft_print_uint(t_set *set);
 int		ft_print_hex(t_set *set);
-int		ft_apply_precision_to_ux(t_set *set);
+int		ft_apply_precision_to_uxp(t_set *set);
+int		ft_print_ptr(t_set *set);
+int		ft_print_per(t_set *set);
 
 #endif

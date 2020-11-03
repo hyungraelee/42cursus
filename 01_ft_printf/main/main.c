@@ -7,8 +7,9 @@ int	ft_printf(const	char *str, ...);
 
 int	main()
 {
-
-	printf("%010.6x\n", 5);
+	int	num = 3;
+	printf("main %p\n", &num);
+	ft_printf("%p\n", &num);
 
 	return 0;
 }

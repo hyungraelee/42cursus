@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_util.c                                          :+:      :+:    :+:   */
+/*   ft_apply.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 12:34:38 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 12:35:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/03 18:38:55 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_apply_precision_to_ux(t_set *set)
+int	ft_apply_precision_to_uxp(t_set *set)
 {
 	char	*temp;
 	int		index;

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 20:27:08 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 12:35:38 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/03 18:38:38 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int		ft_print_uint(t_set *set)
 	num = va_arg(*(set->args), unsigned int);
 	if (!(ft_ulltoa(set, num)))
 		return (0);
-	if (!(ft_apply_precision_to_ux(set)))
+	if (!(ft_apply_precision_to_uxp(set)))
 		return (0);
 	if (set->width > set->arglen)
 	{
@@ -144,6 +144,7 @@ int		ft_print_uint(t_set *set)
 			return (0);
 	}
 	ft_putstr_fd(set->print_buf, 1);
+	set->print_size += ft_strlen(set->print_buf);
 	free(set->input_data);
 	free(set->print_buf);
 	return (1);
