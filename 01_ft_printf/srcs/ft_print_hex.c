@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 21:01:00 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 13:42:24 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/03 15:27:13 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		ft_convert_hex(t_set *set, unsigned long long num)
 	if (!(set->input_data = (char *)malloc(sizeof(char) * (size + 1))))
 		return (0);
 	set->input_data[size] = '\0';
-	while (size - 1 >= 0 && num)
+	while (size - 1 >= 0)
 	{
 		if (num % 16 >= 10 && num % 16 <= 15 && set->specifier == 'x')
 			set->input_data[size - 1] = (num % 16) - 10 + 'a';
@@ -51,7 +51,32 @@ int		ft_convert_hex(t_set *set, unsigned long long num)
 	return (1);
 }
 
-int		ft_print_x_wid(t_set *set)
+// int		ft_print_x_wid(t_set *set)
+// {
+// 	size_t	size;
+// 	size_t	temp;
+
+// 	size = set->width;
+// 	temp = 0;
+// 	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
+// 		return (0);
+// 	if (set->f_minus == 1)
+// 	{
+// 		temp = ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
+// 		while ((set->width)-- - set->arglen)
+// 			ft_memcpy(set->print_buf + temp++, " ", 1);
+// 	}
+// 	else
+// 	{
+// 		while ((set->width)-- - set->arglen)
+// 			ft_memcpy(set->print_buf + temp++, " ", 1);
+// 		ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
+// 	}
+// 	set->print_buf[size] = '\0';
+// 	return (1);
+// }
+
+int		ft_print_x_wid(t_set *set, unsigned long long num)
 {
 	size_t	size;
 	size_t	temp;
@@ -65,6 +90,23 @@ int		ft_print_x_wid(t_set *set)
 		temp = ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
 		while ((set->width)-- - set->arglen)
 			ft_memcpy(set->print_buf + temp++, " ", 1);
+	}
+	else if (set->f_zero == 1 && set->f_point == 0)
+	{
+		if (set->f_hash == 1 && num != 0)
+		{
+			set->print_buf[temp++] = '0';
+			set->print_buf[temp++] = set->specifier == 'x' ? 'x' : 'X';
+			while ((set->width)-- - set->arglen)
+				ft_memcpy(set->print_buf + temp++, "0", 1);
+			ft_strlcpy(set->print_buf + temp, set->input_data + 2, set->arglen + 1);
+		}
+		else
+		{
+			while ((set->width)-- - set->arglen)
+				ft_memcpy(set->print_buf + temp++, "0", 1);
+			ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
+		}
 	}
 	else
 	{
@@ -81,7 +123,7 @@ int		ft_print_x_arg(t_set *set)
 	size_t	size;
 	size_t	temp;
 
-	size = set->width;
+	size = set->arglen;
 	temp = 0;
 	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
 		return (0);
@@ -106,12 +148,12 @@ int		ft_print_x_arg(t_set *set)
 // 	}
 // }
 
-int		ft_apply_hash_to_x(t_set *set)
+int		ft_apply_hash_to_x(t_set *set, unsigned long long num)
 {
 	char	*temp;
 	int		size;
 
-	if (set->f_hash == 1)
+	if (set->f_hash == 1 && num != 0)
 	{
 		temp = set->input_data;
 		size = set->arglen + 2;
@@ -136,11 +178,11 @@ int		ft_print_hex(t_set *set)
 		return (0);
 	if (!(ft_apply_precision_to_ux(set)))
 		return (0);
-	if (!(ft_apply_hash_to_x(set)))
+	if (!(ft_apply_hash_to_x(set, num)))
 		return (0);
 	if (set->width > set->arglen)
 	{
-		if (!(ft_print_x_wid(set)))
+		if (!(ft_print_x_wid(set, num)))
 			return (0);
 	}
 	else

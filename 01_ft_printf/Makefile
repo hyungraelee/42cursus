@@ -21,7 +21,7 @@ SRCS =	ft_printf.c			\
 		ft_print_str.c		\
 		ft_print_uint.c		\
 		ft_print_hex.c		\
-		ft_util.c
+		ft_apply.c
 
 OBJS_DIR = ./objs
 
