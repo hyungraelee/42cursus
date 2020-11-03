@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/02 21:38:43 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/03 13:22:38 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "libft.h"
 
 #ifndef FLAGS
-# define FLAGS "-0"
+# define FLAGS "-0#"
 #endif
 #ifndef STAR
 # define STAR "*"
@@ -41,6 +41,7 @@ typedef struct	s_set
 	int			f_minus;
 	int			f_zero;
 	int			f_point;
+	int			f_hash;
 	int			width;
 	int			precision;
 	char		specifier;
@@ -68,5 +69,6 @@ int		ft_print_char(t_set *set);
 int		ft_print_str(t_set *set);
 int		ft_print_uint(t_set *set);
 int		ft_print_hex(t_set *set);
+int		ft_apply_precision_to_ux(t_set *set);
 
 #endif

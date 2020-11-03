@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/10/28 03:54:36 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/03 13:23:20 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_input_flag(t_set *set)
 		set->f_minus = 1;
 	else if (*(set->str) == '0')
 		set->f_zero = 1;
+	else if (*(set->str) == '#')
+		set->f_hash = 1;
 	(set->str)++;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 20:27:08 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/02 21:17:29 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/03 12:35:38 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,31 @@ int		ft_ulltoa(t_set *set, unsigned long long num)
 	return (1);
 }
 
-static int	ft_apply_precision_to_u(t_set *set)
-{
-	char	*temp;
-	int		index;
+// int	ft_apply_precision_to_u(t_set *set)
+// {
+// 	char	*temp;
+// 	int		index;
 
-	if (set->f_point == 1 && set->precision == 0 && *set->input_data == '0')
-	{
-		*set->input_data = '\0';
-		set->arglen = 0;
-	}
-	else if (set->precision > set->arglen)
-	{
-		index = 0;
-		temp = set->input_data;
-		if (!(set->input_data = (char *)malloc(sizeof(char) * (set->precision + 1))))
-			return (0);
-		set->input_data[set->precision] = '\0';
-		while ((set->precision)-- > set->arglen)
-			ft_memcpy(set->input_data + index++, "0", 1);
-		ft_strlcpy(set->input_data + index, temp, set->arglen + 1);
-		set->arglen = ft_strlen(set->input_data);
-		free(temp);
-	}
-	return (1);
-}
+// 	if (set->f_point == 1 && set->precision == 0 && *set->input_data == '0')
+// 	{
+// 		*set->input_data = '\0';
+// 		set->arglen = 0;
+// 	}
+// 	else if (set->precision > set->arglen)
+// 	{
+// 		index = 0;
+// 		temp = set->input_data;
+// 		if (!(set->input_data = (char *)malloc(sizeof(char) * (set->precision + 1))))
+// 			return (0);
+// 		set->input_data[set->precision] = '\0';
+// 		while ((set->precision)-- > set->arglen)
+// 			ft_memcpy(set->input_data + index++, "0", 1);
+// 		ft_strlcpy(set->input_data + index, temp, set->arglen + 1);
+// 		set->arglen = ft_strlen(set->input_data);
+// 		free(temp);
+// 	}
+// 	return (1);
+// }
 
 int		ft_print_u_wid(t_set *set)
 {
@@ -131,7 +131,7 @@ int		ft_print_uint(t_set *set)
 	num = va_arg(*(set->args), unsigned int);
 	if (!(ft_ulltoa(set, num)))
 		return (0);
-	if (!(ft_apply_precision_to_u(set)))
+	if (!(ft_apply_precision_to_ux(set)))
 		return (0);
 	if (set->width > set->arglen)
 	{

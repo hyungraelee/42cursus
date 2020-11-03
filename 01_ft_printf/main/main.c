@@ -8,7 +8,7 @@ int	ft_printf(const	char *str, ...);
 int	main()
 {
 
-	ft_printf("%u\n", 4294967295);
+	printf("%010.6x\n", 5);
 
 	return 0;
 }
