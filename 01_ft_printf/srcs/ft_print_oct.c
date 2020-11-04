@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:21:13 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 16:39:23 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 20:26:43 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,12 @@ int		ft_print_oct(t_set *set)
 {
 	unsigned long long	num;
 
-	num = va_arg(*(set->args), unsigned int);
+	if (set->l_l == 0)
+		num = va_arg(*(set->args), unsigned int);
+	else if (set->l_l == 1 && set->l_h == 0)
+		num = va_arg(*(set->args), unsigned long);
+	else
+		num = va_arg(*(set->args), unsigned long long);
 	if (!(ft_convert_oct(set, num)))
 		return (0);
 	if (!(ft_apply_precision_to_uxpo(set)))

@@ -6,12 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 17:33:24 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 21:03:15 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 int		ft_ll_check_size(long long num)
 {
@@ -113,15 +112,20 @@ int		ft_apply_precision_to_int(t_set *set, long long num)
 int		ft_apply_flag_to_int(t_set *set, long long num)
 {
 	char	*temp;
+	size_t	size;
 
+	size = set->arglen + 1;
+	temp = set->input_data;
+	if (!(set->input_data = (char *)malloc(sizeof(char) * (size + 1))))
+			return (0);
 	if (set->f_plus == 1 && num >= 0)
-	{
-
-	}
-	else if (set->f_plus == 0 && set->f_space == 1 && num >= 0)
-	{
-
-	}
+		set->input_data[0] = '+';
+	else if (set->f_space == 1 && set->f_plus == 0 && num >= 0)
+		set->input_data[0] = ' ';
+	ft_strlcpy(set->input_data + 1, temp, size);
+	set->input_data[size] = '\0';
+	set->arglen = ft_strlen(set->input_data);
+	free(temp);
 	return (1);
 }
 
@@ -142,11 +146,11 @@ int		ft_print_int_wid(t_set *set)
 	}
 	else if (set->f_zero == 1 && set->f_point == 0)
 	{
-		if (*(set->input_data) == '-')
-			set->print_buf[temp++] = '-';
+		if (*(set->input_data) == '-' || *(set->input_data) == '+' || *(set->input_data) == ' ')
+			set->print_buf[temp++] = *(set->input_data);
 		while((set->width)-- - set->arglen)
 			ft_memcpy(set->print_buf + temp++, "0", 1);
-		if (*(set->input_data) == '-')
+		if (*(set->input_data) == '-' || *(set->input_data) == '+' || *(set->input_data) == ' ')
 			ft_strlcpy(set->print_buf + temp, set->input_data + 1, set->arglen);
 		else
 			ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
@@ -177,13 +181,21 @@ int		ft_print_int(t_set *set)
 {
 	long long	num;
 
-	num = va_arg(*(set->args), int);
+	if (set->l_l == 0)
+		num = va_arg(*(set->args), int);
+	else if (set->l_l == 1)
+		num = va_arg(*(set->args), long);
+	else
+		num = va_arg(*(set->args), long long);
 	if (!(ft_lltoa(set, num)))
 		return (0);
 	if (!(ft_apply_precision_to_int(set, num)))
 		return (0);
-	if (!(ft_apply_flag_to_int(set, num)))
-		return (0);
+	if ((set->f_plus == 1 || set->f_space == 1) && num >= 0)
+	{
+		if (!(ft_apply_flag_to_int(set, num)))
+			return (0);
+	}
 	if (set->width > set->arglen)
 	{
 		if (!(ft_print_int_wid(set)))

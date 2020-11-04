@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:03:05 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 16:22:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 20:48:33 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ int	ft_func_by_specifier(t_set *set)
 		ret = ft_print_per(set) ? 1 : 0;
 	else if (set->specifier == 'o')
 		ret = ft_print_oct(set) ? 1 : 0;
+	else if (set->specifier == 'n')
+		ret = ft_print_nbyte(set) ? 1 : 0;
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 17:24:54 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 20:32:10 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,19 @@ void	ft_input_width(t_set *set)
 	return ;
 }
 
+void	ft_input_length(t_set *set)
+{
+	if (*(set->str) == 'l')
+		(set->l_l) += 1;
+	else if (*(set->str) == 'h')
+		(set->l_h) += 1;
+	(set->str)++;
+	return ;
+}
+
 int		ft_parse(t_set *set)
 {
+	ft_reset_set(set);
 	while (!ft_strchr(SPECIFIER, *(set->str)))
 	{
 		if (ft_strchr(FLAGS, *(set->str)))
@@ -85,6 +96,8 @@ int		ft_parse(t_set *set)
 			ft_input_width(set);
 		else if (ft_strchr(PRECISION, *(set->str)))
 			ft_input_precision(set);
+		else if (ft_strchr(LENGTH, *(set->str)))
+			ft_input_length(set);
 		if (!(*(set->str)))
 			return (0);
 	}
@@ -103,16 +116,10 @@ int		ft_parse_check(t_set *set)
 		{
 			(set->str)++;
 			if (!(ft_parse(set)))
-				return (-1);
+				return (0);
 			if (!(ft_func_by_specifier(set)))
-				return (-1);
+				return (0);
 		}
-		// else if (*(set->str) == '%' && *((set->str) + 1) == '%')
-		// {
-		// 	ft_putchar_fd('%', 1);
-		// 	(set->print_size)++;
-		// 	(set->str) += 2;
-		// }
 		else
 		{
 			ft_putchar_fd(*(set->str), 1);

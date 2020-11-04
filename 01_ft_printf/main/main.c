@@ -7,14 +7,14 @@ int	ft_printf(const	char *str, ...);
 
 int	main()
 {
-	printf("%% d =% d'\n", 0);
-	printf("%% 5d =%+d'\n", 0);
-	printf("%% 05d =% 05d'\n", 1);
-	printf("%%+d =%+010d'\n", +123);
-	printf("%%+-5d =%+-5d'\n", 1);
-	printf("%%+-5d =%+-5d'\n", -1);
-	printf("%% -5d =% -5d'\n", 1);
-	printf("%% -5d =% -5d'\n", -1);
-
+	printf("%% d =% u'\n", 12);
+	printf("%% d =% u'\n", -12);
+	printf("%%+d =%+u'\n", 12);
+	printf("%%+d =%+u'\n", -12);
+	printf("\n");
+	ft_printf("%% d =% d'\n", 12);
+	ft_printf("%% d =% d'\n", -12);
+	ft_printf("%%+d =%+d'\n", 12);
+	ft_printf("%%+d =%+d'\n", -12);
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:53:01 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 17:24:53 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 20:04:01 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	ft_reset_set(t_set *set)
 	set->f_hash = 0;
 	set->f_plus = 0;
 	set->f_space = 0;
+	set->l_l = 0;
+	set->l_h = 0;
 	set->width = 0;
 	set->precision = 0;
 	set->specifier = 0;

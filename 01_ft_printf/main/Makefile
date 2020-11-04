@@ -18,9 +18,14 @@ $(OBJ) : $(SRC)
 	@make -C ../
 	@$(CC) $(CFLAGS) -o $@ -c $^ -I ../include -I ../libft/include_libft
 
+test : test.c
+	@gcc -o test test.c
+	@./test
+
 clean :
 	@make -C ../ fclean
 	@$(RM) $(OBJ)
+	@$(RM) test
 
 fclean : clean
 	@$(RM) $(NAME)

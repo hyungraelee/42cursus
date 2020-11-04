@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 20:27:08 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 16:29:26 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 20:26:30 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,12 @@ int		ft_print_uint(t_set *set)
 {
 	unsigned long long	num;
 
-	// if (set->f_length_modifier == "ll")
-	// 	num = va_arg(*(set->args), long long);
-	num = va_arg(*(set->args), unsigned int);
+	if (set->l_l == 0)
+		num = va_arg(*(set->args), unsigned int);
+	else if (set->l_l == 1 && set->l_h == 0)
+		num = va_arg(*(set->args), unsigned long);
+	else
+		num = va_arg(*(set->args), unsigned long long);
 	if (!(ft_ulltoa(set, num)))
 		return (0);
 	if (!(ft_apply_precision_to_uxpo(set)))

@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/19 16:33:51 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 20:39:01 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/11/04 19:46:59 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/11/04 19:48:50 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h>
 
-// ft_printf 본체. 최종적으로 출력되는 문자열의 길이를 res에 담아 retrun.
-int		ft_printf(const	char *str, ...)
+int main()
 {
-	va_list	ap;
-	t_set	*set;
-	int		res;
+	char *str = "%+10u<-";
 
-	set = NULL;
-	if (!(set = ft_init_set(str, set)))
-		return (0);
-	va_start(ap, str);
-	set->args = &ap;
-	if (!(ft_parse_check(set)))
-		return (-1);
-	va_end(ap);
-	res = set->print_size;
-	free(set);
-	return (res);
+	printf(str, 50);
+	return (0);
 }

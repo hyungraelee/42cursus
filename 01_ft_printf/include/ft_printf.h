@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 17:22:56 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 20:51:00 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@
 # define PRECISION "."
 #endif
 #ifndef SPECIFIER
-# define SPECIFIER "ocspdiuxX%"
+# define SPECIFIER "nocspdiuxX%"
+#endif
+#ifndef LENGTH
+# define LENGTH "lh"
 #endif
 
 typedef struct	s_set
@@ -44,6 +47,8 @@ typedef struct	s_set
 	int			f_hash;
 	int			f_plus;
 	int			f_space;
+	int			l_l;
+	int			l_h;
 	int			width;
 	int			precision;
 	char		specifier;
@@ -75,5 +80,6 @@ int		ft_apply_precision_to_uxpo(t_set *set);
 int		ft_print_ptr(t_set *set);
 int		ft_print_per(t_set *set);
 int		ft_print_oct(t_set *set);
+int		ft_print_nbyte(t_set *set);
 
 #endif

@@ -24,6 +24,7 @@ SRCS =	ft_printf.c			\
 		ft_print_ptr.c		\
 		ft_print_per.c		\
 		ft_print_oct.c		\
+		ft_print_nbyte.c	\
 		ft_apply.c
 
 OBJS_DIR = ./objs
