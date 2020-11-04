@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 21:01:00 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 18:38:47 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 16:29:40 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ int		ft_print_hex(t_set *set)
 	num = va_arg(*(set->args), unsigned int);
 	if (!(ft_convert_hex(set, num)))
 		return (0);
-	if (!(ft_apply_precision_to_uxp(set)))
+	if (!(ft_apply_precision_to_uxpo(set)))
 		return (0);
 	if (!(ft_apply_hash_to_x(set, num)))
 		return (0);

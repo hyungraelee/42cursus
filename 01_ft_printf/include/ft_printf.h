@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 18:56:31 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 17:22:56 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "libft.h"
 
 #ifndef FLAGS
-# define FLAGS "-0#"
+# define FLAGS "-0# +"
 #endif
 #ifndef STAR
 # define STAR "*"
@@ -33,7 +33,7 @@
 # define PRECISION "."
 #endif
 #ifndef SPECIFIER
-# define SPECIFIER "cspdiuxX%"
+# define SPECIFIER "ocspdiuxX%"
 #endif
 
 typedef struct	s_set
@@ -42,6 +42,8 @@ typedef struct	s_set
 	int			f_zero;
 	int			f_point;
 	int			f_hash;
+	int			f_plus;
+	int			f_space;
 	int			width;
 	int			precision;
 	char		specifier;
@@ -63,14 +65,15 @@ void	ft_input_flag(t_set *set);
 void	ft_input_width(t_set *set);
 void	ft_input_precision(t_set *set);
 int		ft_func_by_specifier(t_set *set);
-void	ft_print_int(t_set *set);
+int		ft_print_int(t_set *set);
 void	ft_arglen_int(int num, t_set *set);
 int		ft_print_char(t_set *set);
 int		ft_print_str(t_set *set);
 int		ft_print_uint(t_set *set);
 int		ft_print_hex(t_set *set);
-int		ft_apply_precision_to_uxp(t_set *set);
+int		ft_apply_precision_to_uxpo(t_set *set);
 int		ft_print_ptr(t_set *set);
 int		ft_print_per(t_set *set);
+int		ft_print_oct(t_set *set);
 
 #endif

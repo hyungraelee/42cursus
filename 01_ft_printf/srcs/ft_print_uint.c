@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 20:27:08 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 18:38:38 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 16:29:26 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,8 @@ int		ft_print_u_wid(t_set *set)
 int		ft_print_u_arg(t_set *set)
 {
 	size_t	size;
-	size_t	temp;
 
 	size = set->arglen;
-	temp = 0;
 	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
 		return (0);
 	ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
@@ -131,7 +129,7 @@ int		ft_print_uint(t_set *set)
 	num = va_arg(*(set->args), unsigned int);
 	if (!(ft_ulltoa(set, num)))
 		return (0);
-	if (!(ft_apply_precision_to_uxp(set)))
+	if (!(ft_apply_precision_to_uxpo(set)))
 		return (0);
 	if (set->width > set->arglen)
 	{

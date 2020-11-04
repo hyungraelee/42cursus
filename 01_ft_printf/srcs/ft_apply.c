@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 12:34:38 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 21:42:49 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/04 16:29:07 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_apply_precision_to_uxp(t_set *set)
+int	ft_apply_precision_to_uxpo(t_set *set)
 {
 	char	*temp;
 	int		index;
