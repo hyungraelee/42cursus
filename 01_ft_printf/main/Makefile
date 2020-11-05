@@ -20,7 +20,10 @@ $(OBJ) : $(SRC)
 
 test : test.c
 	@gcc -o test test.c
+	@echo "\033[1;5;92m"
 	@./test
+
+t : fclean test
 
 clean :
 	@make -C ../ fclean
