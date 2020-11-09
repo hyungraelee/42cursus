@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 20:32:10 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/09 16:27:00 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,11 @@ int		ft_parse_check(t_set *set)
 		if (*(set->str) == '%')
 		{
 			(set->str)++;
-			if (!(ft_parse(set)))
-				return (0);
-			if (!(ft_func_by_specifier(set)))
-				return (0);
+			if (ft_parse(set))
+			{
+				if (!(ft_func_by_specifier(set)))
+					return (-1);
+			}
 		}
 		else
 		{

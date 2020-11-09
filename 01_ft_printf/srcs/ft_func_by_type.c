@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:03:05 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 20:48:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/09 15:51:47 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,25 @@
 // datatype별로 출력하는 방식이 다르기 때문에 각 다른 함수로 보내주는 길목 기능.
 int	ft_func_by_specifier(t_set *set)
 {
-	int	ret;
-
-	ret = 1;
 	if (set->specifier == 'd' || set->specifier == 'i')
-		ret = ft_print_int(set) ? 1 : 0;
+		return (ft_print_int(set));
 	else if (set->specifier == 'c')
-		ret = ft_print_char(set) ? 1 : 0;
+		return (ft_print_char(set));
 	else if (set->specifier == 's')
-		ret = ft_print_str(set) ? 1 : 0;
+		return (ft_print_str(set));
 	else if (set->specifier == 'u')
-		ret = ft_print_uint(set) ? 1 : 0;
+		return (ft_print_uint(set));
 	else if (set->specifier == 'x' || set->specifier == 'X')
-		ret = ft_print_hex(set) ? 1 : 0;
+		return (ft_print_hex(set));
 	else if (set->specifier == 'p')
-		ret = ft_print_ptr(set) ? 1 : 0;
+		return (ft_print_ptr(set));
 	else if (set->specifier == '%')
-		ret = ft_print_per(set) ? 1 : 0;
+		return (ft_print_per(set));
 	else if (set->specifier == 'o')
-		ret = ft_print_oct(set) ? 1 : 0;
+		return (ft_print_oct(set));
 	else if (set->specifier == 'n')
-		ret = ft_print_nbyte(set) ? 1 : 0;
-	return (ret);
+		return (ft_print_nbyte(set));
+	// else if (set->specifier == 'f')
+	// 	return (ft_print_double(set));
+	return (0);
 }

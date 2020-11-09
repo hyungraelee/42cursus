@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 20:51:00 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/09 15:51:23 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@
 
 typedef struct	s_set
 {
+	// union
+	// {
+	// 	struct
+	// 	{
+	// 		unsigned int	sign : 1;
+	// 		unsigned int	exponent : 11;
+	// 		unsigned int	mantissa : 52;
+	// 	};
+	// 	double	dnum;
+	// };
 	int			f_minus;
 	int			f_zero;
 	int			f_point;
@@ -81,5 +91,6 @@ int		ft_print_ptr(t_set *set);
 int		ft_print_per(t_set *set);
 int		ft_print_oct(t_set *set);
 int		ft_print_nbyte(t_set *set);
+// int		ft_print_double(t_set *set);
 
 #endif

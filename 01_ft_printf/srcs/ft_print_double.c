@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_float.c                                   :+:      :+:    :+:   */
+/*   ft_print_double.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/06 19:37:43 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/09 21:52:45 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_float(t_set *set)
+int		ft_print_double(t_set *set)
 {
 	double num;
-
 
 
 	return (1);
