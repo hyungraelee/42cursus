@@ -4,7 +4,7 @@ SRC = main.c
 OBJ = main.o
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 LIBPRINT = ftprintf
 RM = rm -f
 

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/09 15:51:23 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/10 18:42:51 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,20 @@
 # define LENGTH "lh"
 #endif
 
+#ifndef BIAS
+# define BIAS 1023
+#endif
+
+typedef struct	s_bigint
+{
+	char	num[1074];
+	char	five[1074];
+	char	result[1074];
+	int		len;
+}				t_bigint;
+
 typedef struct	s_set
 {
-	// union
-	// {
-	// 	struct
-	// 	{
-	// 		unsigned int	sign : 1;
-	// 		unsigned int	exponent : 11;
-	// 		unsigned int	mantissa : 52;
-	// 	};
-	// 	double	dnum;
-	// };
 	int			f_minus;
 	int			f_zero;
 	int			f_point;
@@ -67,9 +69,20 @@ typedef struct	s_set
 	const char	*str;
 	char		*input_data;
 	char		*print_buf;
+	t_bigint	bigint;
 	va_list		*args;
 }				t_set;
 
+typedef union	u_double
+{
+	struct		s_bitfield
+	{
+		unsigned long	mantissa : 52;
+		unsigned long	exponent : 11;
+		unsigned long	sign : 1;
+	}			bitfield;
+	double	dnum;
+}				t_double;
 
 int		ft_printf(const	char *str, ...);
 t_set	*ft_init_set(const char *str, t_set *set);
@@ -91,6 +104,6 @@ int		ft_print_ptr(t_set *set);
 int		ft_print_per(t_set *set);
 int		ft_print_oct(t_set *set);
 int		ft_print_nbyte(t_set *set);
-// int		ft_print_double(t_set *set);
+int		ft_print_double(t_set *set, t_double dnumb);
 
 #endif

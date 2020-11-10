@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_bigint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 19:46:59 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/10 16:49:46 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/11/10 14:39:20 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/11/10 15:06:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int main()
-{
-	char	*str = "%.50f'";
-	char	*str_num = "2.234";
-	double	num = 2.234;
+// void	ft_bigint(t_set *set, double num)
+// {
 
-	printf("\n==========================================\n");
-	printf("result of \"%s\" for ", str); printf("\"%s\"\n", str_num);
-	printf(str, num);
-	printf("\n000050000100005000020000500003");
-	printf("\n==========================================\n\n");
-
-	return (0);
-}
+// }
