@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/11 15:41:21 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/11 21:52:10 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define PRECISION "."
 #endif
 #ifndef SPECIFIER
-# define SPECIFIER "nocspdiuxX%"
+# define SPECIFIER "nocspdiuxXf%"
 #endif
 #ifndef LENGTH
 # define LENGTH "lh"
@@ -43,35 +43,44 @@
 # define BIAS 1023
 #endif
 
-typedef struct	s_bigint
+typedef struct	s_bi_decimal
 {
-	char	binary_arr[1074];
-	char	five_arr[1074];
-	char	result_arr[1074];
-	int		len;
-}				t_bigint;
+	char	dec_binary[1074];
+	char	dec_five[1074];
+	char	dec_result[1074];
+}				t_bi_decimal;
 
-typedef struct	s_set
+typedef struct	s_bi_integer
 {
-	int			f_minus;
-	int			f_zero;
-	int			f_point;
-	int			f_hash;
-	int			f_plus;
-	int			f_space;
-	int			l_l;
-	int			l_h;
-	int			width;
-	int			precision;
-	char		specifier;
-	int			print_size;
-	int			arglen;
-	const char	*str;
-	char		*input_data;
-	char		*print_buf;
-	t_bigint	bigint;
-	va_list		*args;
-}				t_set;
+	// char	int_binary;
+	// char	int_five;
+	// char	int_result;
+}				t_bi_integer;
+
+
+typedef struct		s_set
+{
+	int				f_minus;
+	int				f_zero;
+	int				f_point;
+	int				f_hash;
+	int				f_plus;
+	int				f_space;
+	int				l_l;
+	int				l_h;
+	int				width;
+	int				precision;
+	int				exp;
+	char			specifier;
+	int				print_size;
+	int				arglen;
+	const char		*str;
+	char			*input_data;
+	char			*print_buf;
+	t_bi_decimal	bi_dec_arr;
+	t_bi_integer	bi_int_arr;
+	va_list			*args;
+}					t_set;
 
 typedef union	u_double
 {
@@ -81,7 +90,7 @@ typedef union	u_double
 		unsigned long	exponent : 11;
 		unsigned long	sign : 1;
 	}			bitfield;
-	double	dnum;
+	double		dnum;
 }				t_double;
 
 int		ft_printf(const	char *str, ...);
@@ -104,6 +113,6 @@ int		ft_print_ptr(t_set *set);
 int		ft_print_per(t_set *set);
 int		ft_print_oct(t_set *set);
 int		ft_print_nbyte(t_set *set);
-int		ft_print_double(t_set *set, t_double dnumb);
+int		ft_print_double(t_set *set);
 
 #endif

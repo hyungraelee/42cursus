@@ -6,65 +6,131 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/11 17:07:19 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/11 21:55:45 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_init_bigint_arr(t_set *set, t_double dnumb)
+void	ft_bi_decimal_arr_init_arr(t_set *set)
 {
-	ft_memset(set->bigint.binary_arr, 0, 1074);
-	ft_memset(set->bigint.five_arr, 0, 1074);
-	(set->bigint.five_arr)[0] = 5;
-	ft_memset(set->bigint.result_arr, 0, 1074);
-	set->bigint.len = 0;
+	ft_memset(set->bi_dec_arr.dec_binary, 0, 1074);
+	ft_memset(set->bi_dec_arr.dec_five, 0, 1074);
+	(set->bi_dec_arr.dec_five)[0] = 5;
+	ft_memset(set->bi_dec_arr.dec_result, 0, 1074);
 	return ;
 }
 
-void	ft_bigint_decimal(t_set *set,t_double dnumb)
+void	ft_bi_decimal_arr_multiple_five(t_set *set, int i)
 {
-	int	exp;
-	int i;
+	int j;
+	int	round;
+
+	if (i < 1073)
+	{
+		j = i;
+		round = 0;
+		while (j >= 0)
+		{
+			if ((((set->bi_dec_arr.dec_five[j] * 5) % 10) + round) < 10)
+			{
+				(set->bi_dec_arr.dec_five)[j + 1] = ((set->bi_dec_arr.dec_five[j] * 5) % 10) + round;
+				round = 0;
+			}
+			else
+			{
+				(set->bi_dec_arr.dec_five)[j + 1] = (((set->bi_dec_arr.dec_five[j] * 5) % 10) + round) % 10;
+				round = (((set->bi_dec_arr.dec_five[j] * 5) % 10) + round) / 10;
+			}
+			round += (set->bi_dec_arr.dec_five[j] * 5) / 10;
+			set->bi_dec_arr.dec_five[j--] = round;
+		}
+	}
+	return ;
+}
+
+void	ft_bi_decimal_arr_put_result(t_set *set)
+{
+	int	i = 0;
+	int j = 0;
+	int	round = 0;
+
+	while (i < 1074)
+	{
+		j = i + 1;
+		if (set->bi_dec_arr.dec_binary[i] == 1)
+		{
+			while (j >= 0)
+			{
+				if ((set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five[j] + round)< 10)
+				{
+					set->bi_dec_arr.dec_result[j] = set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five[j] + round;
+					round = 0;
+				}
+				else
+				{
+					set->bi_dec_arr.dec_result[j] = (set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five[j] + round) % 10;
+					round = 1;
+				}
+				j--;
+			}
+		}
+		ft_bi_decimal_arr_multiple_five(set, i);
+		i++;
+	}
+	return ;
+}
+
+void	ft_bi_decimal_arr_put_binary(t_set *set, t_double dbl)
+{
+	int				i;
 	unsigned long	one;
 	unsigned long	temp;
 
-	ft_init_bigint_arr(set, dnumb);
 	i = 0;
 	one = 1;
 	one <<= 52;
-	exp = dnumb.bitfield.exponent - (int)BIAS;
-	temp = dnumb.bitfield.mantissa;
-	if (exp >= 0)
+	set->exp = dbl.bitfield.exponent - (int)BIAS;
+	temp = dbl.bitfield.mantissa;
+	if (set->exp >= 0)
 	{
+		temp <<= (set->exp);
 		while (i < 52)
 		{
-			(set->bigint.binary_arr)[i] = ((temp >> (51 - i)) & 1) ? 1 : 0;
+			(set->bi_dec_arr.dec_binary)[i] = ((temp >> (51 - i)) & 1) ? 1 : 0;
 			++i;
 		}
 	}
 	else
 	{
 		temp |= one;
-		exp *= (-1);
+		(set->exp) *= (-1);
 		while (i < 53)
-			(set->bigint.binary_arr)[exp++ - 1] = ((temp >> (52 - i++)) & 1) ? 1 : 0;
+			(set->bi_dec_arr.dec_binary)[(set->exp)++ - 1] = ((temp >> (52 - i++)) & 1) ? 1 : 0;
 	}
-
-	i = 0;
-	while (i < 1074)
-	{
-		printf("%d", (set->bigint.binary_arr)[i++]);
-	}
-
-
 	return ;
 }
 
-int		ft_print_double(t_set *set, t_double dnumb)
+void	ft_bi_decimal_arr(t_set *set,t_double dbl)
 {
-	dnumb.dnum = va_arg(*(set->args), double);
-	ft_bigint_decimal(set, dnumb);
+	ft_bi_decimal_arr_init_arr(set);
+	ft_bi_decimal_arr_put_binary(set, dbl);
+	ft_bi_decimal_arr_put_result(set);
+	return ;
+}
+
+int		ft_print_double(t_set *set)
+{
+	t_double dbl;
+
+	dbl.dnum = va_arg(*(set->args), double);
+	ft_bi_decimal_arr(set, dbl);
+
+	int i = 0;
+	while (i < 1074)
+	{
+		printf("%d", (set->bi_dec_arr.dec_result)[i++]);
+	}
 
 	return (1);
 }
