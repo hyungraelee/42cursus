@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/10 19:05:32 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/11 17:07:19 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_init_bigint_arr(t_set *set, t_double dnumb)
 {
-	ft_memset(set->bigint.num, 0, 1074);
-	ft_memset(set->bigint.five, 0, 1074);
-	(set->bigint.five)[0] = 5;
-	ft_memset(set->bigint.result, 0, 1074);
+	ft_memset(set->bigint.binary_arr, 0, 1074);
+	ft_memset(set->bigint.five_arr, 0, 1074);
+	(set->bigint.five_arr)[0] = 5;
+	ft_memset(set->bigint.result_arr, 0, 1074);
 	set->bigint.len = 0;
 	return ;
 }
@@ -39,7 +39,7 @@ void	ft_bigint_decimal(t_set *set,t_double dnumb)
 	{
 		while (i < 52)
 		{
-			(set->bigint.num)[i] = ((temp >> (51 - i)) & 1) ? 1 : 0;
+			(set->bigint.binary_arr)[i] = ((temp >> (51 - i)) & 1) ? 1 : 0;
 			++i;
 		}
 	}
@@ -48,13 +48,13 @@ void	ft_bigint_decimal(t_set *set,t_double dnumb)
 		temp |= one;
 		exp *= (-1);
 		while (i < 53)
-			(set->bigint.num)[exp++ - 1] = ((temp >> (52 - i++)) & 1) ? 1 : 0;
+			(set->bigint.binary_arr)[exp++ - 1] = ((temp >> (52 - i++)) & 1) ? 1 : 0;
 	}
 
 	i = 0;
 	while (i < 1074)
 	{
-		printf("%d", (set->bigint.num)[i++]);
+		printf("%d", (set->bigint.binary_arr)[i++]);
 	}
 
 

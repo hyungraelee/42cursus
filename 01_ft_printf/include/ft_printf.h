@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/10 18:42:51 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/11 15:41:21 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@
 
 typedef struct	s_bigint
 {
-	char	num[1074];
-	char	five[1074];
-	char	result[1074];
+	char	binary_arr[1074];
+	char	five_arr[1074];
+	char	result_arr[1074];
 	int		len;
 }				t_bigint;
 
