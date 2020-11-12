@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/11 21:55:45 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/12 18:04:11 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_bi_decimal_arr_init_arr(t_set *set)
 {
 	ft_memset(set->bi_dec_arr.dec_binary, 0, 1074);
-	ft_memset(set->bi_dec_arr.dec_five, 0, 1074);
-	(set->bi_dec_arr.dec_five)[0] = 5;
+	ft_memset(set->bi_dec_arr.dec_five_mul, 0, 1074);
+	(set->bi_dec_arr.dec_five_mul)[0] = 5;
 	ft_memset(set->bi_dec_arr.dec_result, 0, 1074);
 	return ;
 }
@@ -32,18 +32,18 @@ void	ft_bi_decimal_arr_multiple_five(t_set *set, int i)
 		round = 0;
 		while (j >= 0)
 		{
-			if ((((set->bi_dec_arr.dec_five[j] * 5) % 10) + round) < 10)
+			if ((((set->bi_dec_arr.dec_five_mul[j] * 5) % 10) + round) < 10)
 			{
-				(set->bi_dec_arr.dec_five)[j + 1] = ((set->bi_dec_arr.dec_five[j] * 5) % 10) + round;
+				(set->bi_dec_arr.dec_five_mul)[j + 1] = ((set->bi_dec_arr.dec_five_mul[j] * 5) % 10) + round;
 				round = 0;
 			}
 			else
 			{
-				(set->bi_dec_arr.dec_five)[j + 1] = (((set->bi_dec_arr.dec_five[j] * 5) % 10) + round) % 10;
-				round = (((set->bi_dec_arr.dec_five[j] * 5) % 10) + round) / 10;
+				(set->bi_dec_arr.dec_five_mul)[j + 1] = (((set->bi_dec_arr.dec_five_mul[j] * 5) % 10) + round) % 10;
+				round = (((set->bi_dec_arr.dec_five_mul[j] * 5) % 10) + round) / 10;
 			}
-			round += (set->bi_dec_arr.dec_five[j] * 5) / 10;
-			set->bi_dec_arr.dec_five[j--] = round;
+			round += (set->bi_dec_arr.dec_five_mul[j] * 5) / 10;
+			set->bi_dec_arr.dec_five_mul[j--] = round;
 		}
 	}
 	return ;
@@ -62,14 +62,14 @@ void	ft_bi_decimal_arr_put_result(t_set *set)
 		{
 			while (j >= 0)
 			{
-				if ((set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five[j] + round)< 10)
+				if ((set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five_mul[j] + round)< 10)
 				{
-					set->bi_dec_arr.dec_result[j] = set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five[j] + round;
+					set->bi_dec_arr.dec_result[j] = set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five_mul[j] + round;
 					round = 0;
 				}
 				else
 				{
-					set->bi_dec_arr.dec_result[j] = (set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five[j] + round) % 10;
+					set->bi_dec_arr.dec_result[j] = (set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five_mul[j] + round) % 10;
 					round = 1;
 				}
 				j--;
@@ -127,6 +127,12 @@ int		ft_print_double(t_set *set)
 	ft_bi_decimal_arr(set, dbl);
 
 	int i = 0;
+	while (i < 1074)
+	{
+		printf("%d", (set->bi_dec_arr.dec_binary)[i++]);
+	}
+	printf("\n");
+	i = 0;
 	while (i < 1074)
 	{
 		printf("%d", (set->bi_dec_arr.dec_result)[i++]);
