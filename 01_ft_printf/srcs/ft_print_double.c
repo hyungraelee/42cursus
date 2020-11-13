@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/12 18:04:11 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/13 19:10:01 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_bi_decimal_arr_put_result(t_set *set)
 		{
 			while (j >= 0)
 			{
-				if ((set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five_mul[j] + round)< 10)
+				if ((set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five_mul[j] + round) < 10)
 				{
 					set->bi_dec_arr.dec_result[j] = set->bi_dec_arr.dec_result[j] + set->bi_dec_arr.dec_five_mul[j] + round;
 					round = 0;
