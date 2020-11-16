@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/12 16:27:38 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/16 21:24:26 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct	s_bi_decimal
 typedef struct	s_bi_integer
 {
 	char	int_binary[1024];
-	char	int_two_mul[1024];
+	char	int_two_mul[309];
 	char	int_result[309];
 	int		res_len;
 }				t_bi_integer;
@@ -115,5 +115,6 @@ int		ft_print_per(t_set *set);
 int		ft_print_oct(t_set *set);
 int		ft_print_nbyte(t_set *set);
 int		ft_print_double(t_set *set);
+void	ft_make_bigint_arr(t_set *set,t_double dbl);
 
 #endif

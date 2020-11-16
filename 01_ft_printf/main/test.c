@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:46:59 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/10 16:49:46 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/16 22:47:20 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int main()
 {
-	char	*str = "%.50f'";
-	char	*str_num = "2.234";
-	double	num = 2.234;
+	char	*str = "%-10.16f'";
+	char	*str_num = "123413252461234.345";
+	double	num = 123413252461234.345;
 
 	printf("\n==========================================\n");
-	printf("result of \"%s\" for ", str); printf("\"%s\"\n", str_num);
+	printf("Result of \"%s\" for ", str); printf("\"%s\"\n", str_num);
 	printf(str, num);
 	printf("\n000050000100005000020000500003");
 	printf("\n==========================================\n\n");

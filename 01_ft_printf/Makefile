@@ -26,7 +26,8 @@ SRCS =	ft_printf.c			\
 		ft_print_oct.c		\
 		ft_print_nbyte.c	\
 		ft_print_double.c	\
-		ft_apply.c
+		ft_apply.c			\
+		ft_bigint.c
 
 OBJS_DIR = ./objs
 
@@ -42,7 +43,7 @@ $(NAME) : $(addprefix $(OBJS_DIR)/, $(OBJS))
 
 $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(CFLAGS) -o $@ -I$(INC_DIR_LIBFT) -I$(INC_DIR) -c $<
+	@$(CC) $(DEBUG) $(CFLAGS) -o $@ -I$(INC_DIR_LIBFT) -I$(INC_DIR) -c $<
 
 clean :
 	@make -C ./libft fclean
