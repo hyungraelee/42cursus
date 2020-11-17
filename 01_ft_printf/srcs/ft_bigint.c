@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 14:39:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/17 14:38:59 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/17 18:40:33 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	ft_bi_integer_arr_multiple_two(t_set *set)
 	int i = 0;
 	int temp;
 
-	while (i < set->integer_len)
+	while (i < set->mul_len)
 	{
 		temp = (set->bi_int_arr.int_two_mul[i] * 2) + round;
 		if (temp >= 10)
@@ -126,7 +126,7 @@ void	ft_bi_integer_arr_multiple_two(t_set *set)
 	if (round == 1)
 	{
 		set->bi_int_arr.int_two_mul[i] = 1;
-		set->integer_len++;
+		set->mul_len++;
 	}
 	return ;
 }
@@ -158,7 +158,8 @@ void	ft_bi_integer_arr_put_result(t_set *set)
 		if (set->bi_int_arr.int_binary[i] == 1)
 		{
 			j = 0;
-			while (j < set->integer_len + 1)
+			set->integer_len = set->mul_len;
+			while (j < set->mul_len + 1)
 			{
 				if ((set->bi_int_arr.int_result[j] + set->bi_int_arr.int_two_mul[j] + round) < 10)
 				{
