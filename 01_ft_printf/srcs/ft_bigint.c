@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 14:39:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/16 22:22:07 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/17 14:38:59 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,13 @@ void	ft_bi_decimal_arr_put_binary(t_set *set, t_double dbl)
 	return ;
 }
 
-int		ft_bi_integer_arr_multiple_two(t_set *set, int mul_len)
+void	ft_bi_integer_arr_multiple_two(t_set *set)
 {
 	int	round = 0;
 	int i = 0;
 	int temp;
 
-	while (i < mul_len)
+	while (i < set->integer_len)
 	{
 		temp = (set->bi_int_arr.int_two_mul[i] * 2) + round;
 		if (temp >= 10)
@@ -126,21 +126,23 @@ int		ft_bi_integer_arr_multiple_two(t_set *set, int mul_len)
 	if (round == 1)
 	{
 		set->bi_int_arr.int_two_mul[i] = 1;
-		mul_len++;
+		set->integer_len++;
 	}
-	return (mul_len);
+	return ;
 }
 
-void	ft_bi_integer_reverse_arr(t_set *set,int mul_len)
+void	ft_bi_integer_reverse_arr(t_set *set)
 {
-	char temp[309];
+	char	temp[309];
+	int		i;
 
+	i = 0;
 	ft_memmove(temp, set->bi_int_arr.int_result, 309);
 	ft_memset(set->bi_int_arr.int_result, 0, 309);
-	while (mul_len)
+	while (i < set->integer_len)
 	{
-		set->bi_int_arr.int_result[309 - mul_len] = temp[mul_len - 1];
-		mul_len--;
+		set->bi_int_arr.int_result[308 - i] = temp[i];
+		i++;
 	}
 	return ;
 }
@@ -150,14 +152,13 @@ void	ft_bi_integer_arr_put_result(t_set *set)
 	int		i = 1024;
 	int		j = 0;
 	int		round = 0;
-	int		mul_len = 1;
 
 	while (i-- > (1023 - set->exp))
 	{
 		if (set->bi_int_arr.int_binary[i] == 1)
 		{
 			j = 0;
-			while (j < mul_len + 1)
+			while (j < set->integer_len + 1)
 			{
 				if ((set->bi_int_arr.int_result[j] + set->bi_int_arr.int_two_mul[j] + round) < 10)
 				{
@@ -172,9 +173,9 @@ void	ft_bi_integer_arr_put_result(t_set *set)
 				j++;
 			}
 		}
-		mul_len = ft_bi_integer_arr_multiple_two(set, mul_len);
+		ft_bi_integer_arr_multiple_two(set);
 	}
-	ft_bi_integer_reverse_arr(set, mul_len);
+	ft_bi_integer_reverse_arr(set);
 	return ;
 }
 

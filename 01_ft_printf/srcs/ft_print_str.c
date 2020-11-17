@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 20:10:23 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/03 17:31:23 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/17 16:46:23 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_apply_precision_to_s(t_set *set)
 	return ;
 }
 
-int		ft_input_data(t_set *set)
+static int		ft_input_data(t_set *set)
 {
 	char	*str;
 
