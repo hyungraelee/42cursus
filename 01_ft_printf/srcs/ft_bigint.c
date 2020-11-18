@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 14:39:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/17 18:40:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/18 20:10:26 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,8 @@ void	ft_bi_integer_arr_put_result(t_set *set)
 		if (set->bi_int_arr.int_binary[i] == 1)
 		{
 			j = 0;
+			if (i == 0)
+				set->mul_len++;
 			set->integer_len = set->mul_len;
 			while (j < set->mul_len + 1)
 			{
@@ -176,6 +178,11 @@ void	ft_bi_integer_arr_put_result(t_set *set)
 		}
 		ft_bi_integer_arr_multiple_two(set);
 	}
+	// if (set->mul_len == 308 && round == 1)
+	// {
+	// 	set->integer_len++;
+	// 	set->bi_int_arr.int_result[308] = 1;
+	// }
 	ft_bi_integer_reverse_arr(set);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:46:59 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/17 18:03:44 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/18 19:30:11 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main()
 {
-	char	*str = "%.f'";
-	char	*str_num = "-0.0";
-	double	num = -0.0;
+	char	*str = "%f'";
+	char	*str_num = "__DBL_MAX__";
+	double	num = __DBL_MAX__;
 
 	printf("\n==========================================\n");
 	printf("Result of \"%s\" for ", str); printf("\"%s\"\n", str_num);

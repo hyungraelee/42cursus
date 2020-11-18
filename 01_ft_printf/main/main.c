@@ -148,7 +148,7 @@ int	main()
 	// {
 	// 	printf("%d", (set.bi_int_arr.int_result)[i++]);
 	// }
-	ft_printf("%f\n", 573.924);
+	ft_printf("%f\n", __DBL_MAX__);
 	// printf("\n%f", __DBL_MAX__);
 	return 0;
 }
