@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/18 22:25:15 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/18 22:35:53 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,28 +202,9 @@ int		ft_print_double(t_set *set)
 	t_double dbl;
 
 	dbl.dnum = va_arg(*(set->args), double);
-	if (dbl.bitfield.exponent == 2047)
-	{
-		set->input_data[0] = 'i';
-		set->input_data[1] = 'n';
-		set->input_data[2] = 'f';
-		set->input_data[3] = '\0';
-	}
-		// set->input_data = "inf";
-	else if (dbl.bitfield.exponent == 0)
-	{
-		set->input_data[0] = 'n';
-		set->input_data[1] = 'a';
-		set->input_data[2] = 'n';
-		set->input_data[3] = '\0';
-	}
-		// set->input_data = "nan";
-	else
-	{
-		ft_make_bigint_arr(set, dbl);
-		if (!(ft_input_fdata(set)))
-			return (0);
-	}
+	ft_make_bigint_arr(set, dbl);
+	if (!(ft_input_fdata(set)))
+		return (0);
 	if (set->f_plus == 1 || set->f_space == 1 || dbl.bitfield.sign == 1)
 	{
 		if (!(ft_apply_flag_to_f(set, dbl)))
