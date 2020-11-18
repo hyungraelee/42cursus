@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/18 22:35:53 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/19 01:28:45 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int		ft_print_f_wid(t_set *set)
 		while ((set->width)-- - set->arglen)
 			ft_memcpy(set->print_buf + temp++, " ", 1);
 	}
-	else if (set->f_zero == 1)
+	else if (set->f_zero == 1 && !set->infnan)
 	{
 		if (*(set->input_data) == '-' || *(set->input_data) == '+' || *(set->input_data) == ' ')
 			set->print_buf[temp++] = *(set->input_data);
@@ -202,10 +202,25 @@ int		ft_print_double(t_set *set)
 	t_double dbl;
 
 	dbl.dnum = va_arg(*(set->args), double);
-	ft_make_bigint_arr(set, dbl);
-	if (!(ft_input_fdata(set)))
-		return (0);
-	if (set->f_plus == 1 || set->f_space == 1 || dbl.bitfield.sign == 1)
+	if (dbl.bitfield.exponent == 2047)
+	{
+		if (dbl.bitfield.mantissa == 0)
+			set->input_data = ft_strdup("inf");
+		else
+		{
+			set->input_data = ft_strdup("nan");
+			set->nan = 1;
+		}
+		set->infnan = 1;
+		set->arglen = ft_strlen(set->input_data);
+	}
+	else
+	{
+		ft_make_bigint_arr(set, dbl);
+		if (!(ft_input_fdata(set)))
+			return (0);
+	}
+	if ((set->f_plus == 1 || set->f_space == 1 || dbl.bitfield.sign == 1) && !set->nan)
 	{
 		if (!(ft_apply_flag_to_f(set, dbl)))
 			return (0);
