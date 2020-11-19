@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/19 22:02:29 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/20 02:19:54 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_check_bankers_rounding(t_set *set)
+int		ft_check_bankers_rounding_for_f(t_set *set)
 {
 	int i;
 
@@ -71,7 +71,7 @@ void	ft_fill_inputdata_dec(t_set *set)
 
 	if (!set->precision && !set->f_hash)
 	{
-		if (ft_check_bankers_rounding(set))
+		if (ft_check_bankers_rounding_for_f(set))
 		{
 			if (set->bi_int_arr.int_result[308] % 2 == 1)
 				set->rounding = 1;
@@ -81,7 +81,7 @@ void	ft_fill_inputdata_dec(t_set *set)
 		return ;
 	}
 	i = set->integer_len + set->precision;
-	if (ft_check_bankers_rounding(set))
+	if (ft_check_bankers_rounding_for_f(set))
 	{
 		if (set->precision == 0)
 		{

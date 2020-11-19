@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/19 22:59:45 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/20 03:09:49 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,60 @@ void	ft_fill_inputdata(t_set *set)
 	return ;
 }
 
+int		ft_check_bankers_rounding_for_e(t_set *set, char *temp)
+{
+	if (*temp != 5)
+		return (0);
+	while (*temp++)
+	{
+		if (*temp != 0)
+			return (0);
+	}
+	return (1);
+}
+
 int		ft_apply_precision_to_e(t_set *set)
 {
 	char	*temp;
+	int		cnt_exp;
+	int		i;
+	int		j;
 
 	temp = set->input_data;
+	cnt_exp = 0;
+	i = 1;
+	j = 0;
+	if (set->f_point == 0)
+		set->precision = 6;
+	if (!(set->input_data = (char *)malloc(sizeof(char) * (set->precision + 3))))
+		return (0);
+	if (temp[0] == 0)
+	{
+		while (!temp[i++])
+			cnt_exp++;
+		if (!set->precision && !set->f_hash)
+		{
+			if (ft_check_bankers_rounding_for_e(set, temp + i))
+			{
+				if (temp[i - 1] % 2 == 1)
+					set->rounding = 1;
+			}
+			else if (temp[i] >= 5)
+				set->rounding = 1;
+***************************************************************************;
+		}
+		if (ft_check_bankers_rounding_for_e(set, temp + i + set->precision))
+		{
+
+		}
+
+
+	}
+	else
+	{
+
+	}
+
 
 	return (1);
 }
