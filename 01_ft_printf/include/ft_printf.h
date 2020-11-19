@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/19 01:27:50 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/19 17:50:32 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int		ft_print_per(t_set *set);
 int		ft_print_oct(t_set *set);
 int		ft_print_nbyte(t_set *set);
 int		ft_print_double(t_set *set);
+int		ft_print_e(t_set *set);
 void	ft_make_bigint_arr(t_set *set,t_double dbl);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:03:05 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/11 21:23:46 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/19 17:48:35 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int	ft_func_by_specifier(t_set *set)
 		return (ft_print_nbyte(set));
 	else if (set->specifier == 'f')
 		return (ft_print_double(set));
+	else if (set->specifier == 'e')
+		return (ft_print_e(set));
 	return (0);
 }

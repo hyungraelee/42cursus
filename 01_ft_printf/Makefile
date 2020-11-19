@@ -16,16 +16,17 @@ SRCS =	ft_printf.c			\
 		ft_set.c			\
 		ft_parse.c			\
 		ft_func_by_type.c	\
-		ft_print_int.c		\
-		ft_print_char.c		\
-		ft_print_str.c		\
-		ft_print_uint.c		\
-		ft_print_hex.c		\
-		ft_print_ptr.c		\
-		ft_print_per.c		\
-		ft_print_oct.c		\
-		ft_print_nbyte.c	\
-		ft_print_double.c	\
+		ft_print_di.c		\
+		ft_print_c.c		\
+		ft_print_s.c		\
+		ft_print_u.c		\
+		ft_print_x.c		\
+		ft_print_p.c		\
+		ft_print_pct.c		\
+		ft_print_o.c		\
+		ft_print_n.c		\
+		ft_print_f.c		\
+		ft_print_e.c		\
 		ft_apply.c			\
 		ft_bigint.c
 
