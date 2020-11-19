@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_double.c                                  :+:      :+:    :+:   */
+/*   ft_print_f.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/19 01:28:45 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/19 22:02:29 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,12 +118,17 @@ static int		ft_input_fdata(t_set *set)
 		set->precision = 6;
 	if (!(set->input_data = (char *)malloc(sizeof(char) * (set->integer_len + set->precision + 2))))
 		return (0);
+// printf("num %d\n", set->integer_len + set->precision);
 	set->input_data[set->integer_len + set->precision + 1] = '\0';
 	set->arglen = set->integer_len + set->precision + 1;
 	ft_fill_inputdata_dec(set);
 	if(!(ft_fill_inputdata_int(set)))
 		return (0);
 	set->arglen = ft_strlen(set->input_data);
+// int k=0;
+// while(k<set->arglen)
+// 	printf("%d", set->input_data[k++]);
+// printf("\n");
 	return (1);
 }
 
