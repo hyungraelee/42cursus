@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 14:39:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/18 22:39:01 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/19 22:26:22 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,9 +158,6 @@ void	ft_bi_integer_arr_put_result(t_set *set)
 		if (set->bi_int_arr.int_binary[i] == 1)
 		{
 			j = 0;
-			if (i == 0)
-				set->mul_len++;
-			set->integer_len = set->mul_len;
 			while (j < set->mul_len + 1)
 			{
 				if ((set->bi_int_arr.int_result[j] + set->bi_int_arr.int_two_mul[j] + round) < 10)
@@ -175,15 +172,23 @@ void	ft_bi_integer_arr_put_result(t_set *set)
 				}
 				j++;
 			}
+			set->integer_len = set->bi_int_arr.int_result[set->mul_len] != 0 ? set->mul_len + 1 : set->mul_len;
 		}
 		ft_bi_integer_arr_multiple_two(set);
 	}
-	// if (set->mul_len == 308 && round == 1)
-	// {
-	// 	set->integer_len++;
-	// 	set->bi_int_arr.int_result[308] = 1;
-	// }
+// int k=0;
+// while(k<309)
+// 	printf("%d", set->bi_int_arr.int_result[k++]);
+// printf("\n");
 	ft_bi_integer_reverse_arr(set);
+// k=0;
+// while(k<309)
+// 	printf("%d", set->bi_int_arr.int_two_mul[k++]);
+// printf("\n");
+// k=0;
+// while(k<309)
+// 	printf("%d", set->bi_int_arr.int_result[k++]);
+// printf("\n");
 	return ;
 }
 
@@ -204,6 +209,10 @@ void	ft_bi_integer_arr_put_binary(t_set *set,t_double dbl)
 			i++;
 		}
 	}
+
+// int k=0;
+// while(k<1024)
+// 	printf("%d", set->bi_int_arr.int_binary[k++]);
 	return ;
 }
 

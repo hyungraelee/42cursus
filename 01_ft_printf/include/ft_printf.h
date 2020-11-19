@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/19 17:50:32 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/19 22:31:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define PRECISION "."
 #endif
 #ifndef SPECIFIER
-# define SPECIFIER "nocspdiuxXf%"
+# define SPECIFIER "nocspdiuxXfe%"
 #endif
 #ifndef LENGTH
 # define LENGTH "lh"
