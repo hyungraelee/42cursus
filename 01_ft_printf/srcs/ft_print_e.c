@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/20 03:09:49 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/23 02:27:31 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_fill_inputdata(t_set *set)
 	return ;
 }
 
-int		ft_check_bankers_rounding_for_e(t_set *set, char *temp)
+int		ft_check_bankers_rounding_for_e(char *temp)
 {
 	if (*temp != 5)
 		return (0);
@@ -46,49 +46,58 @@ int		ft_check_bankers_rounding_for_e(t_set *set, char *temp)
 	return (1);
 }
 
+void	ft_count_exp(t_set *set)
+{
+	int	i;
+
+	i = 0;
+	if (!set->input_data[0])
+	{
+		while (!set->input_data[i++])
+			set->cnt_exp--;
+	}
+	else
+		set->cnt_exp = set->integer_len - 1;
+	return ;
+}
+
 int		ft_apply_precision_to_e(t_set *set)
 {
 	char	*temp;
-	int		cnt_exp;
 	int		i;
 	int		j;
 
+	ft_count_exp(set);
 	temp = set->input_data;
-	cnt_exp = 0;
-	i = 1;
-	j = 0;
 	if (set->f_point == 0)
 		set->precision = 6;
 	if (!(set->input_data = (char *)malloc(sizeof(char) * (set->precision + 3))))
 		return (0);
-	if (temp[0] == 0)
+	set->input_data[set->precision + 2] = '\0';
+	i = !temp[0] ? -set->cnt_exp + set->precision + 1 : set->precision + 1;
+	if (ft_check_bankers_rounding_for_e(temp + i))
 	{
-		while (!temp[i++])
-			cnt_exp++;
-		if (!set->precision && !set->f_hash)
-		{
-			if (ft_check_bankers_rounding_for_e(set, temp + i))
-			{
-				if (temp[i - 1] % 2 == 1)
-					set->rounding = 1;
-			}
-			else if (temp[i] >= 5)
-				set->rounding = 1;
-***************************************************************************;
-		}
-		if (ft_check_bankers_rounding_for_e(set, temp + i + set->precision))
-		{
-
-		}
-
-
+		if (temp[i - 1] % 2 == 1)
+			set->rounding = 1;
 	}
-	else
+	else if (temp[i] >= 5)
+		set->rounding = 1;
+	i--;
+	j = set->precision + 1;
+	while (j >= 0)
 	{
-
+		if ((set->input_data[j] = temp[i] + set->rounding) >= 10)
+		{
+			set->input_data[j] = set->input_data[j] % 10;
+			set->rounding = 1;
+		}
+		else
+			set->rounding = 0;
+		set->input_data[j] += '0';
+		j--;
+		i--;
 	}
-
-
+	free(temp);
 	return (1);
 }
 
@@ -100,12 +109,18 @@ int		ft_input_edata(t_set *set)
 		return (0);
 	set->input_data[set->integer_len + 1074] = '\0';
 	ft_fill_inputdata(set);
+
+// int k = 0;
+// while (k < set->integer_len + 1074)
+// 	{printf("%d", set->input_data[k++]);}
+
 	if (!(ft_apply_precision_to_e(set)))
 		return (0);
-int k = 0;
-while (k < set->integer_len + 1073)
-	{printf("%d", set->input_data[k++]);}
-	return (1);
+
+// k = 0;
+// while (k < set->precision + 2)
+// 	{printf("%c", set->input_data[k++]);}
+// 	return (1);
 }
 
 int		ft_print_e(t_set *set)

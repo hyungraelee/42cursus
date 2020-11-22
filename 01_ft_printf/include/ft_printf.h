@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/19 22:31:58 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/23 00:26:59 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct		s_set
 	int				rounding;
 	int				nan;
 	int				infnan;
+	int				cnt_exp;
 	long long		print_size;
 	int				arglen;
 	const char		*str;
