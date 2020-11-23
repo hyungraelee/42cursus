@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/23 02:27:31 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/23 16:37:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,54 @@ int		ft_apply_precision_to_e(t_set *set)
 	return (1);
 }
 
+int		ft_fill_point(t_set *set)
+{
+	char	*temp;
+	int		size;
+	int		i;
+	int		j;
+
+	size = set->input_data[0] == '0' ? set->arglen : set->arglen + 1;
+	temp = set->input_data;
+	if (!(set->input_data = (char *)malloc(sizeof(char) * (size + 1))))
+		return (0);
+	set->input_data[size] = '\0';
+	i = 1;
+	if (temp[0] == '0')
+	{
+		set->input_data[0] = temp[1];
+		set->input_data[1] = '.';
+		i++;
+	}
+	else
+	{
+		set->cnt_exp++;
+		set->input_data[0] = temp[0];
+		set->input_data[1] = '.';
+	}
+	j = 2;
+	while (temp[i])
+		set->input_data[j++] = temp[i++];
+	set->arglen = ft_strlen(set->input_data);
+	free(temp);
+// int k = 0;
+// while (k < set->arglen)
+// 	printf("%c",set->input_data[k++]);
+	return (1);
+}
+
+int		ft_fill_exponent(t_set *set)
+{
+	int	size;
+
+	// size = (set->cnt_exp > -100 && set->cnt_exp < 100) ? set->arglen
+	// if (set->cnt_exp > -100 && set->cnt_exp < 100)
+	// {
+
+	// }
+	return (1);
+}
+
 int		ft_input_edata(t_set *set)
 {
 	if (set->f_point == 0)
@@ -116,11 +164,16 @@ int		ft_input_edata(t_set *set)
 
 	if (!(ft_apply_precision_to_e(set)))
 		return (0);
-
+	set->arglen = ft_strlen(set->input_data);
+	if (!(ft_fill_point(set)))
+		return (0);
+	if (!(ft_fill_exponent(set)))
+		return (0);
 // k = 0;
+// printf("\n");
 // while (k < set->precision + 2)
 // 	{printf("%c", set->input_data[k++]);}
-// 	return (1);
+	return (1);
 }
 
 int		ft_print_e(t_set *set)
@@ -131,6 +184,14 @@ int		ft_print_e(t_set *set)
 	ft_make_bigint_arr(set, dbl);
 	if (!(ft_input_edata(set)))
 		return (0);
-
+	if (set->f_plus || set->f_minus || dbl.bitfield.sign)
+	{
+		if (!(ft_apply_flag_to_e(set, dbl)))
+			return (0);
+	}
+	ft_putstr_fd(set->print_buf, 1);
+	set->print_size += ft_strlen(set->print_buf);
+	free(set->input_data);
+	free(set->print_buf);
 	return (1);
 }
