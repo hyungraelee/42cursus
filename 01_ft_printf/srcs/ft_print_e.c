@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/23 19:05:59 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/24 01:28:59 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_fill_inputdata(t_set *set)
 	while (i < set->integer_len)
 	{
 		set->input_data[i] = set->bi_int_arr.int_result[309 - j];
+// printf("int=%d", set->bi_int_arr.int_result[309 - j]);
 		i++;
 		j--;
 	}
@@ -28,29 +29,41 @@ void	ft_fill_inputdata(t_set *set)
 	while (i < set->integer_len + 1074)
 	{
 		set->input_data[i] = set->bi_dec_arr.dec_result[j];
+// printf("dec%d=%d", j, set->bi_dec_arr.dec_result[j]);
 		i++;
 		j++;
 	}
+// printf("\n");
+// int k = 0;
+// while (k < set->integer_len + 1074)
+// 	{printf("%d", set->input_data[k++]);}
 	return ;
 }
 
-int		ft_check_bankers_rounding_for_e(char *temp)
+int		ft_check_bankers_rounding_for_e(t_set *set, char *temp, int i)
 {
 	if (*temp != 5)
 		return (0);
-	while (*temp++)
+	temp++;
+	while (i < set->integer_len + 1074)
 	{
-		if (*temp != 0)
+		if (temp[i++] != 0)
 			return (0);
+
 	}
 	return (1);
 }
 
-void	ft_count_exp(t_set *set)
+void	ft_count_exp(t_set *set, t_double dbl)
 {
 	int	i;
 
 	i = 0;
+	if (dbl.bitfield.mantissa == 0)
+	{
+		set->cnt_exp = 0;
+		return ;
+	}
 	if (!set->input_data[0])
 	{
 		while (!set->input_data[i++])
@@ -61,13 +74,14 @@ void	ft_count_exp(t_set *set)
 	return ;
 }
 
-int		ft_apply_precision_to_e(t_set *set)
+int		ft_apply_precision_to_e(t_set *set, t_double dbl)
 {
 	char	*temp;
 	int		i;
 	int		j;
 
-	ft_count_exp(set);
+	ft_count_exp(set, dbl);
+// printf("exp = %d\n", set->cnt_exp);
 	temp = set->input_data;
 	if (set->f_point == 0)
 		set->precision = 6;
@@ -75,9 +89,17 @@ int		ft_apply_precision_to_e(t_set *set)
 		return (0);
 	set->input_data[set->precision + 2] = '\0';
 	i = !temp[0] ? -set->cnt_exp + set->precision + 1 : set->precision + 1;
-	if (ft_check_bankers_rounding_for_e(temp + i))
+// int k=0;
+// while (k < set->integer_len + 1074)
+// printf("%d", temp[k++]);
+	if (ft_check_bankers_rounding_for_e(set, temp + i, i))
 	{
-		if (temp[i - 1] % 2 == 1)
+		if (temp[0] == 0 && i == 1 && set->precision == 0)
+		{
+			i++;
+			set->cnt_exp = -1;
+		}
+		else if (temp[i - 1] % 2 == 1)
 			set->rounding = 1;
 	}
 	else if (temp[i] >= 5)
@@ -97,6 +119,10 @@ int		ft_apply_precision_to_e(t_set *set)
 		j--;
 		i--;
 	}
+
+// int k=0;
+// while (k < 2)
+// printf("%d", temp[k++]);
 	free(temp);
 	return (1);
 }
@@ -108,7 +134,8 @@ int		ft_fill_point(t_set *set)
 	int		i;
 	int		j;
 
-	size = set->input_data[0] == '0' ? set->arglen : set->arglen + 1;
+	// size = set->input_data[0] == '0' ? set->arglen : set->arglen + 1;
+	size = set->arglen;
 	temp = set->input_data;
 	if (!(set->input_data = (char *)malloc(sizeof(char) * (size + 1))))
 		return (0);
@@ -132,7 +159,7 @@ int		ft_fill_point(t_set *set)
 	}
 	set->input_data[1] = '.';
 	j = 2;
-	while (temp[i])
+	while (j < size)
 		set->input_data[j++] = temp[i++];
 	free(temp);
 // int k = 0;
@@ -172,7 +199,7 @@ int		ft_fill_exponent(t_set *set)
 	return (1);
 }
 
-int		ft_input_edata(t_set *set)
+int		ft_input_edata(t_set *set, t_double dbl)
 {
 	if (set->f_point == 0)
 		set->precision = 6;
@@ -184,13 +211,18 @@ int		ft_input_edata(t_set *set)
 // int k = 0;
 // while (k < set->integer_len + 1074)
 // 	{printf("%d", set->input_data[k++]);}
-
-	if (!(ft_apply_precision_to_e(set)))
+	if (!(ft_apply_precision_to_e(set, dbl)))
 		return (0);
 	set->arglen = ft_strlen(set->input_data);
+// int k = 0;
+// while (k < set->arglen)
+// 	printf("%c",set->input_data[k++]);
 	if (!(ft_fill_point(set)))
 		return (0);
 	set->arglen = ft_strlen(set->input_data);
+// int k = 0;
+// while (k < set->arglen)
+// 	printf("%c",set->input_data[k++]);
 	if (!(ft_fill_exponent(set)))
 		return (0);
 // int k = 0;
@@ -279,11 +311,11 @@ int		ft_print_e(t_set *set)
 	dbl.dnum = va_arg(*(set->args), double);
 
 	ft_make_bigint_arr(set, dbl);
-	if (!(ft_input_edata(set)))
+	if (!(ft_input_edata(set, dbl)))
 		return (0);
 
 // ******이하 f 와 동일
-	if (set->f_plus || set->f_minus || dbl.bitfield.sign)
+	if (set->f_plus || set->f_space || dbl.bitfield.sign)
 	{
 		if (!(ft_apply_flag_to_e(set, dbl)))
 			return (0);

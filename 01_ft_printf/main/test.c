@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:46:59 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/23 18:24:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/24 01:11:07 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main()
 {
-	char	*str = "%#.0e'";
+	char	*str = "%.3e'";
 	char	*str_num = "0.0";
-	double	num = 0.0;
+	double	num = -0.5;
 
 	printf("\n==========================================\n");
 	printf("Result of \"%s\" for ", str); printf("\"%s\"\n", str_num);
