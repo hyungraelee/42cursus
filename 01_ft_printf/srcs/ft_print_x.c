@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*   ft_print_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 21:01:00 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 20:26:36 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 17:17:22 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,12 +173,16 @@ int		ft_print_hex(t_set *set)
 {
 	unsigned long long	num;
 
-	if (set->l_l == 0)
-		num = va_arg(*(set->args), unsigned int);
-	else if (set->l_l == 1 && set->l_h == 0)
+	if (set->l_l == 1)
 		num = va_arg(*(set->args), unsigned long);
-	else
+	else if (set->l_l >= 2)
 		num = va_arg(*(set->args), unsigned long long);
+	else if (set->l_h == 1)
+		num = (unsigned short)va_arg(*(set->args), unsigned int);
+	else if (set->l_h >= 2)
+		num = (unsigned char)va_arg(*(set->args), unsigned int);
+	else
+		num = va_arg(*(set->args), unsigned int);
 	if (!(ft_convert_hex(set, num)))
 		return (0);
 	if (!(ft_apply_precision_to_uxpo(set)))

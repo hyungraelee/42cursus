@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_print_di.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 21:03:15 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 17:16:25 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,12 +181,17 @@ int		ft_print_int(t_set *set)
 {
 	long long	num;
 
-	if (set->l_l == 0)
-		num = va_arg(*(set->args), int);
-	else if (set->l_l == 1)
+	if (set->l_l == 1)
 		num = va_arg(*(set->args), long);
-	else
+	else if (set->l_l >= 2)
 		num = va_arg(*(set->args), long long);
+	else if (set->l_h == 1)
+		num = (short)va_arg(*(set->args), int);
+	else if (set->l_h >= 2)
+		num = (char)va_arg(*(set->args), int);
+	else
+		num = va_arg(*(set->args), int);
+
 	if (!(ft_lltoa(set, num)))
 		return (0);
 	if (!(ft_apply_precision_to_int(set, num)))
