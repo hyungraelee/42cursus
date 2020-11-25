@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/19 18:02:10 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 22:00:18 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ int		ft_parse(t_set *set)
 }
 
 
-// Ã¹ ¹®ÀÚ¿­ strÀ» ¹Ş¾Æ Âß ÀĞÀ¸¸é¼­ conversionÀÇ °æ¿ì ft_check_format¿¡¼­ t_conv reset ÇÏ°í input¿¡ ¸ÂÃç ´Ù½Ã ¼¼ÆÃ
-// ±×¸®°í ft_conversionÀ¸·Î ³Ñ¾î°¨, ¾Æ´Ñ °æ¿ì Ãâ·Â.
+// ì²« ë¬¸ìì—´ strì„ ë°›ì•„ ì­‰ ì½ìœ¼ë©´ì„œ conversionì˜ ê²½ìš° ft_check_formatì—ì„œ t_conv reset í•˜ê³  inputì— ë§ì¶° ë‹¤ì‹œ ì„¸íŒ…
+// ê·¸ë¦¬ê³  ft_conversionìœ¼ë¡œ ë„˜ì–´ê°, ì•„ë‹Œ ê²½ìš° ì¶œë ¥.
 int		ft_parse_check(t_set *set)
 {
 	while (*(set->str))
@@ -133,8 +133,8 @@ int		ft_parse_check(t_set *set)
 
 
 
-// %ºÎÅÍ datatype±îÁö flag, width, precision µîÀÇ °¹¼ö¸¦ Ä«¿îÆ®ÇØ¼­ return.
-// ±âÁ¸ str¿¡¼­ ÀÌ ¼ö¸¸Å­ ÁÖ¼Ú°ª ÀÌµ¿ÇÔ.(ft_read_str¿¡¼­)
+// %ë¶€í„° datatypeê¹Œì§€ flag, width, precision ë“±ì˜ ê°¯ìˆ˜ë¥¼ ì¹´ìš´íŠ¸í•´ì„œ return.
+// ê¸°ì¡´ strì—ì„œ ì´ ìˆ˜ë§Œí¼ ì£¼ì†Ÿê°’ ì´ë™í•¨.(ft_read_strì—ì„œ)
 // int		ft_count_format(const char *str)
 // {
 // 	int cnt;

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 16:02:37 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 22:01:12 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ int		ft_fill_exponent(t_set *set)
 	else
 		ft_memmove(set->input_data + i, exptoa, ft_strlen(exptoa));
 	set->arglen = ft_strlen(set->input_data);
+	free(exptoa);
 	return (1);
 }
 
@@ -228,8 +229,7 @@ int		ft_input_edata(t_set *set, t_double dbl)
 // int k = 0;
 // while (k < set->arglen)
 // 	printf("%c",set->input_data[k++]);
-	if (!(ft_fill_exponent(set)))
-		return (0);
+
 // int k = 0;
 // while (k < set->arglen)
 // 	printf("%c",set->input_data[k++]);
@@ -330,8 +330,10 @@ int		ft_print_e(t_set *set)
 	ft_make_bigint_arr(set, dbl);
 	if (!(ft_input_edata(set, dbl)))
 		return (0);
+	if (!(ft_fill_exponent(set)))
+		return (0);
 	}
-// ******ÀÌÇÏ f ¿Í µ¿ÀÏ
+// ******ì´í•˜ f ì™€ ë™ì¼
 	if (set->f_plus || set->f_space || dbl.bitfield.sign)
 	{
 		if (!(ft_apply_flag_to_e(set, dbl)))

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/23 00:26:59 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 21:35:30 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define PRECISION "."
 #endif
 #ifndef SPECIFIER
-# define SPECIFIER "nocspdiuxXfe%"
+# define SPECIFIER "nocspdiuxXfeg%"
 #endif
 #ifndef LENGTH
 # define LENGTH "lh"
@@ -122,6 +122,13 @@ int		ft_print_oct(t_set *set);
 int		ft_print_nbyte(t_set *set);
 int		ft_print_double(t_set *set);
 int		ft_print_e(t_set *set);
+int		ft_print_g(t_set *set);
 void	ft_make_bigint_arr(t_set *set,t_double dbl);
 
+int		ft_input_edata(t_set *set, t_double dbl);
+int		ft_input_fdata(t_set *set);
+int		ft_fill_exponent(t_set *set);
+int		ft_apply_flag_to_e(t_set *set, t_double dbl);
+int		ft_print_e_wid(t_set *set);
+int		ft_print_e_arg(t_set *set);
 #endif

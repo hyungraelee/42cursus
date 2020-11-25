@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:03:05 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/20 00:06:15 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 22:00:22 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// datatypeº°·Î Ãâ·ÂÇÏ´Â ¹æ½ÄÀÌ ´Ù¸£±â ¶§¹®¿¡ °¢ ´Ù¸¥ ÇÔ¼ö·Î º¸³»ÁÖ´Â ±æ¸ñ ±â´É.
+// datatypeë³„ë¡œ ì¶œë ¥í•˜ëŠ” ë°©ì‹ì´ ë‹¤ë¥´ê¸° ë•Œë¬¸ì— ê° ë‹¤ë¥¸ í•¨ìˆ˜ë¡œ ë³´ë‚´ì£¼ëŠ” ê¸¸ëª© ê¸°ëŠ¥.
 int	ft_func_by_specifier(t_set *set)
 {
 	if (set->specifier == 'd' || set->specifier == 'i')
@@ -37,5 +37,7 @@ int	ft_func_by_specifier(t_set *set)
 		return (ft_print_double(set));
 	else if (set->specifier == 'e')
 		return (ft_print_e(set));
+	else if (set->specifier == 'g')
+		return (ft_print_g(set));
 	return (0);
 }

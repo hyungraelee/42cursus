@@ -27,6 +27,7 @@ SRCS =	ft_printf.c			\
 		ft_print_n.c		\
 		ft_print_f.c		\
 		ft_print_e.c		\
+		ft_print_g.c		\
 		ft_apply.c			\
 		ft_bigint.c
 

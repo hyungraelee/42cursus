@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/20 02:19:54 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 22:00:01 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	ft_fill_inputdata_dec(t_set *set)
 	return ;
 }
 
-static int		ft_input_fdata(t_set *set)
+int		ft_input_fdata(t_set *set)
 {
 	if (set->f_point == 0)
 		set->precision = 6;
@@ -231,7 +231,7 @@ int		ft_print_double(t_set *set)
 			return (0);
 	}
 	// ****************************
-	// ¿©±â ¹Ø¿¡ ºÎºÐ int ±¸ÇöÀÌ¶û µ¿ÀÏÇÔ. ³ªÁß¿¡ ÇÕÄ¥°Í.
+	// ì—¬ê¸° ë°‘ì— ë¶€ë¶„ int êµ¬í˜„ì´ëž‘ ë™ì¼í•¨. ë‚˜ì¤‘ì— í•©ì¹ ê²ƒ.
 	if (set->width > set->arglen)
 	{
 		if (!(ft_print_f_wid(set)))
