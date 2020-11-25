@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/24 01:28:59 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 16:02:37 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int		ft_apply_precision_to_e(t_set *set, t_double dbl)
 		set->rounding = 1;
 	i--;
 	j = set->precision + 1;
-	while (j >= 0)
+	while ((j >= 0) && (i >= 0))
 	{
 		if ((set->input_data[j] = temp[i] + set->rounding) >= 10)
 		{
@@ -119,7 +119,12 @@ int		ft_apply_precision_to_e(t_set *set, t_double dbl)
 		j--;
 		i--;
 	}
-
+	if (i == -1 && j == 0)
+		set->input_data[0] = set->rounding == 1 ? '1' : '0';
+	// if (i == -1 && j == 0 && set->rounding == 1)
+	// 	set->input_data[0] = '1';
+	// else if (i == 0 && j > 0 && set->rounding == 0)
+	// 	set->input_data[0] = '0';
 // int k=0;
 // while (k < 2)
 // printf("%d", temp[k++]);
@@ -309,11 +314,23 @@ int		ft_print_e(t_set *set)
 {
 	t_double dbl;
 	dbl.dnum = va_arg(*(set->args), double);
-
+	if (dbl.bitfield.exponent == 2047)
+	{
+		if (dbl.bitfield.mantissa == 0)
+			set->input_data = ft_strdup("inf");
+		else
+		{
+			set->input_data = ft_strdup("nan");
+			set->nan = 1;
+		}
+		set->infnan = 1;
+		set->arglen = ft_strlen(set->input_data);
+	}
+	else{
 	ft_make_bigint_arr(set, dbl);
 	if (!(ft_input_edata(set, dbl)))
 		return (0);
-
+	}
 // ******이하 f 와 동일
 	if (set->f_plus || set->f_space || dbl.bitfield.sign)
 	{

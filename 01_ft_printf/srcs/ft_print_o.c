@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_oct.c                                     :+:      :+:    :+:   */
+/*   ft_print_o.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:21:13 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/04 20:26:43 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 17:16:50 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,16 @@ int		ft_print_oct(t_set *set)
 {
 	unsigned long long	num;
 
-	if (set->l_l == 0)
-		num = va_arg(*(set->args), unsigned int);
-	else if (set->l_l == 1 && set->l_h == 0)
+	if (set->l_l == 1)
 		num = va_arg(*(set->args), unsigned long);
-	else
+	else if (set->l_l >= 2)
 		num = va_arg(*(set->args), unsigned long long);
+	else if (set->l_h == 1)
+		num = (unsigned short)va_arg(*(set->args), unsigned int);
+	else if (set->l_h >= 2)
+		num = (unsigned char)va_arg(*(set->args), unsigned int);
+	else
+		num = va_arg(*(set->args), unsigned int);
 	if (!(ft_convert_oct(set, num)))
 		return (0);
 	if (!(ft_apply_precision_to_uxpo(set)))
