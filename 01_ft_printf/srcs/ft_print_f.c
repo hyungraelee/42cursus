@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:00:01 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 22:14:14 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_check_bankers_rounding_for_f(t_set *set)
 	while (i < 1074)
 	{
 		if (set->bi_dec_arr.dec_result[i] != 0)
-			break;
+			break ;
 		i++;
 	}
 	if (i != 1074)
@@ -231,7 +231,11 @@ int		ft_print_double(t_set *set)
 			return (0);
 	}
 	// ****************************
+<<<<<<< HEAD
 	// 여기 밑에 부분 int 구현이랑 동일함. 나중에 합칠것.
+=======
+	// ���� �ؿ� �κ� int �����̶� ������. ���߿� ��ĥ��.
+>>>>>>> 865759d8d485ec0d467c1767b44773c8cdbd6424
 	if (set->width > set->arglen)
 	{
 		if (!(ft_print_f_wid(set)))
