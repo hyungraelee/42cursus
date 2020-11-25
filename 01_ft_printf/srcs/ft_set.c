@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:53:01 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:15:03 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 22:18:32 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_set	*ft_init_set(const char *str, t_set *set)
 	return (set);
 }
 
-//setêµ¬ì¡°ì²? ë©¤ë²„?“¤?˜ ê°’ì„ reset.
 void	ft_reset_set(t_set *set)
 {
 	set->f_minus = 0;

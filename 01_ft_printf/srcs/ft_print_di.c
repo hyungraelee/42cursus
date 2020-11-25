@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:00:09 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 22:19:02 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,11 +361,11 @@ int		ft_print_int(t_set *set)
 // 		return ;
 // 	}
 // 	ft_arglen_int(num, set);
-// 	if (set->arglen >= set->width && set->arglen >= set->precision) // arg길이가 제일 긴 경우
+// 	if (set->arglen >= set->width && set->arglen >= set->precision) // arg湲몄씠媛� �젣�씪 湲� 寃쎌슦
 // 		ft_print_int_arglen_most(set, num);
-// 	else if (set->precision >= set->width && set->precision > set->arglen) // precision 길이가 제일 긴 경우
+// 	else if (set->precision >= set->width && set->precision > set->arglen) // precision 湲몄씠媛� �젣�씪 湲� 寃쎌슦
 // 		ft_print_int_precision_most(set, num);
-// 	else if (set->width > set->arglen && set->width > set->precision)	// width 길이가 제일 긴 경우
+// 	else if (set->width > set->arglen && set->width > set->precision)	// width 湲몄씠媛� �젣�씪 湲� 寃쎌슦
 // 		ft_print_int_width_most(set, num);
 // 	return ;
 // }
@@ -381,12 +381,12 @@ int		ft_print_int(t_set *set)
 // 		return ;
 // 	}
 // 	ft_arglen_int(num, set);
-// 	if (set->arglen > set->width && set->arglen > set->precision)	// arg길이가 제일 긴 경우
+// 	if (set->arglen > set->width && set->arglen > set->precision)	// arg湲몄씠媛� �젣�씪 湲� 寃쎌슦
 // 	{
 // 		set->print_size += set->arglen;
 // 		ft_putnbr_fd(num, 1);
 // 	}
-// 	else if (set->precision > set->width && set->precision > set->arglen)	// precision 길이가 제일 긴 경우
+// 	else if (set->precision > set->width && set->precision > set->arglen)	// precision 湲몄씠媛� �젣�씪 湲� 寃쎌슦
 // 	{
 // 		set->print_size += set->precision;
 // 		if (num < 0)
@@ -400,7 +400,7 @@ int		ft_print_int(t_set *set)
 // 			ft_putchar_fd('0', 1);
 // 		ft_putnbr_fd(num, 1);
 // 	}
-// 	else if (set->width > set->arglen && set->width > set->precision)	//	width 길이가 제일 긴 경우
+// 	else if (set->width > set->arglen && set->width > set->precision)	//	width 湲몄씠媛� �젣�씪 湲� 寃쎌슦
 // 	{
 // 		set->print_size += set->width;
 // 		if (set->precision > set->arglen)

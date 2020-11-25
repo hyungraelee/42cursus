@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:00:18 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/25 22:18:56 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ int		ft_parse(t_set *set)
 }
 
 
-// 첫 문자열 str을 받아 쭉 읽으면서 conversion의 경우 ft_check_format에서 t_conv reset 하고 input에 맞춰 다시 세팅
-// 그리고 ft_conversion으로 넘어감, 아닌 경우 출력.
+// 泥� 臾몄옄�뿴 str�쓣 諛쏆븘 彛� �씫�쑝硫댁꽌 conversion�쓽 寃쎌슦 ft_check_format�뿉�꽌 t_conv reset �븯怨� input�뿉 留욎떠 �떎�떆 �꽭�똿
+// 洹몃━怨� ft_conversion�쑝濡� �꽆�뼱媛�, �븘�땶 寃쎌슦 異쒕젰.
 int		ft_parse_check(t_set *set)
 {
 	while (*(set->str))
@@ -133,8 +133,8 @@ int		ft_parse_check(t_set *set)
 
 
 
-// %부터 datatype까지 flag, width, precision 등의 갯수를 카운트해서 return.
-// 기존 str에서 이 수만큼 주솟값 이동함.(ft_read_str에서)
+// %遺��꽣 datatype源뚯�� flag, width, precision �벑�쓽 媛��닔瑜� 移댁슫�듃�빐�꽌 return.
+// 湲곗〈 str�뿉�꽌 �씠 �닔留뚰겮 二쇱넖媛� �씠�룞�븿.(ft_read_str�뿉�꽌)
 // int		ft_count_format(const char *str)
 // {
 // 	int cnt;
