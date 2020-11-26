@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:18:56 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/26 15:44:00 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int		ft_parse_check(t_set *set)
 			if (ft_parse(set))
 			{
 				if (!(ft_func_by_specifier(set)))
-					return (-1);
+					return (0);
 			}
 		}
 		else

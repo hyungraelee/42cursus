@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 20:23:45 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:03:34 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/26 18:40:47 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,18 @@ int		ft_delete_zero(t_set *set)
 	// int		size;
 	char	*temp;
 
-	i = set->arglen - 1;
-	while (i >= 0)
+	i = set->arglen;
+	while (--i > 0)
 	{
 		if (set->input_data[i] != '0')
 			break ;
-		i--;
-		// cnt++;
 	}
-	if (set->precision == 0 && set->f_hash == 0)
+	if (i != 0 && set->f_hash == 0 && set->input_data[i] == '.')
 		i--;
 	temp = set->input_data;
-	if (!(set->input_data = (char *)malloc(sizeof(char) * (i + 1))))
+	if (!(set->input_data = (char *)malloc(sizeof(char) * (i + 2))))
 		return (0);
-	set->input_data[i] = '\0';
+	set->input_data[i + 1] = '\0';
 	ft_memmove(set->input_data, temp, i + 1);
 	set->arglen = ft_strlen(set->input_data);
 	free(temp);
@@ -41,6 +39,11 @@ int		ft_delete_zero(t_set *set)
 
 int		ft_print_g_by_f(t_set *set)
 {
+	int	tmp;
+
+	free(set->input_data);
+	tmp = !set->precision ? 1 : set->precision;
+	set->precision = tmp - 1 - set->cnt_exp;
 	if (!(ft_input_fdata(set)))
 		return (0);
 	if (!(ft_delete_zero(set)))
@@ -50,6 +53,10 @@ int		ft_print_g_by_f(t_set *set)
 
 int		ft_print_g_by_e(t_set *set)
 {
+	int	tmp;
+
+	tmp = !set->precision ? 1 : set->precision;
+	set->precision = tmp - 1;
 	if (!(ft_delete_zero(set)))
 		return (0);
 	if (!(ft_fill_exponent(set)))
@@ -64,12 +71,13 @@ int		ft_print_g(t_set *set)
 
 	dbl.dnum = va_arg(*(set->args), double);
 	ft_make_bigint_arr(set, dbl);
+
+	if (!set->f_point)
+		set->precision = 6;
+	// set->precision = !set->precision ? 0 : set->precision - 1;
 	if (!(ft_input_edata(set, dbl)))
 		return (0);
 	tmp = !set->precision ? 1 : set->precision;
-	if (!set->f_point)
-		set->precision = 6;
-	set->precision = tmp - 1 - set->cnt_exp;
 	if (set->cnt_exp < -4 || set->cnt_exp >= tmp)
 	{
 		if (set->cnt_exp == 0 && tmp == 0)

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:01:12 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/26 18:40:01 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,8 @@ int		ft_fill_exponent(t_set *set)
 	i = set->arglen;
 	set->input_data[i++] = 'e';
 	set->input_data[i++] = set->cnt_exp >= 0 ? '+' : '-';
-	exptoa = ft_itoa(set->cnt_exp);
+	if (!(exptoa = ft_itoa(set->cnt_exp)))
+		return (0);
 	// printf("%d\n", set->cnt_exp);
 	if (set->cnt_exp > -100 && set->cnt_exp < 100)
 	{

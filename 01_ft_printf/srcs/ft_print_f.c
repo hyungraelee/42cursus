@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:18:01 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/26 18:37:59 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ void	ft_fill_inputdata_dec(t_set *set)
 
 int		ft_input_fdata(t_set *set)
 {
-	if (set->f_point == 0)
-		set->precision = 6;
+	// if (set->f_point == 0)
+	// 	set->precision = 6;
 	if (!(set->input_data = (char *)malloc(sizeof(char) * (set->integer_len + set->precision + 2))))
 		return (0);
 // printf("num %d\n", set->integer_len + set->precision);
@@ -222,6 +222,8 @@ int		ft_print_double(t_set *set)
 	else
 	{
 		ft_make_bigint_arr(set, dbl);
+		if (set->f_point == 0)
+			set->precision = 6;
 		if (!(ft_input_fdata(set)))
 			return (0);
 	}
