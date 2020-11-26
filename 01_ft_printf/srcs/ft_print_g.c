@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 20:23:45 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/26 18:40:47 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/26 21:30:50 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,16 @@ int		ft_print_g_by_f(t_set *set)
 	return (1);
 }
 
-int		ft_print_g_by_e(t_set *set)
+int		ft_print_g_by_e(t_set *set, t_double dbl)
 {
 	int	tmp;
 
+	free(set->input_data);
+	set->cnt_exp = 0;
 	tmp = !set->precision ? 1 : set->precision;
 	set->precision = tmp - 1;
+	if (!(ft_input_edata(set, dbl)))
+		return (0);
 	if (!(ft_delete_zero(set)))
 		return (0);
 	if (!(ft_fill_exponent(set)))
@@ -87,7 +91,7 @@ int		ft_print_g(t_set *set)
 		}
 		else
 		{
-			if (!(ft_print_g_by_e(set)))
+			if (!(ft_print_g_by_e(set, dbl)))
 				return (0);
 		}
 	}
