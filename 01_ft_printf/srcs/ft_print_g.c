@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 20:23:45 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/26 21:30:50 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/27 21:43:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ int		ft_print_g_by_f(t_set *set)
 	set->precision = tmp - 1 - set->cnt_exp;
 	if (!(ft_input_fdata(set)))
 		return (0);
-	if (!(ft_delete_zero(set)))
-		return (0);
+	if (!set->f_hash)
+	{
+		if (!(ft_delete_zero(set)))
+			return (0);
+	}
 	return (1);
 }
 
@@ -61,8 +64,11 @@ int		ft_print_g_by_e(t_set *set, t_double dbl)
 	set->precision = tmp - 1;
 	if (!(ft_input_edata(set, dbl)))
 		return (0);
-	if (!(ft_delete_zero(set)))
-		return (0);
+	if (!set->f_hash)
+	{
+		if (!(ft_delete_zero(set)))
+			return (0);
+	}
 	if (!(ft_fill_exponent(set)))
 		return (0);
 	return (1);
@@ -72,15 +78,18 @@ int		ft_print_g(t_set *set)
 {
 	t_double dbl;
 	int	tmp;
+	int	temp;
 
 	dbl.dnum = va_arg(*(set->args), double);
 	ft_make_bigint_arr(set, dbl);
 
 	if (!set->f_point)
 		set->precision = 6;
-	// set->precision = !set->precision ? 0 : set->precision - 1;
+	temp = set->precision;
+	set->precision = !set->precision ? 0 : set->precision - 1;
 	if (!(ft_input_edata(set, dbl)))
 		return (0);
+	set->precision = temp;
 	tmp = !set->precision ? 1 : set->precision;
 	if (set->cnt_exp < -4 || set->cnt_exp >= tmp)
 	{

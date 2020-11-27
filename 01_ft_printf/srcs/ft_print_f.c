@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/26 18:37:59 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/27 20:28:30 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,16 @@ int		ft_fill_inputdata_int(t_set *set)
 	return (1);
 }
 
-void	ft_fill_inputdata_dec(t_set *set)
+int		ft_fill_inputdata_dec(t_set *set)
 {
 	int i;
 
 	if (!set->precision && !set->f_hash)
 	{
+		free(set->input_data);
+		if (!(set->input_data = (char *)malloc(sizeof(char) * set->arglen)))
+			return (0);
+		set->input_data[set->arglen - 1] = '\0';
 		if (ft_check_bankers_rounding_for_f(set))
 		{
 			if (set->bi_int_arr.int_result[308] % 2 == 1)
@@ -78,7 +82,7 @@ void	ft_fill_inputdata_dec(t_set *set)
 		}
 		else if (set->bi_dec_arr.dec_result[0] >= 5)
 			set->rounding = 1;
-		return ;
+		return (1);
 	}
 	i = set->integer_len + set->precision;
 	if (ft_check_bankers_rounding_for_f(set))
@@ -109,7 +113,7 @@ void	ft_fill_inputdata_dec(t_set *set)
 		i--;
 	}
 	set->input_data[i] = '.';
-	return ;
+	return (1);
 }
 
 int		ft_input_fdata(t_set *set)
@@ -121,7 +125,8 @@ int		ft_input_fdata(t_set *set)
 // printf("num %d\n", set->integer_len + set->precision);
 	set->input_data[set->integer_len + set->precision + 1] = '\0';
 	set->arglen = set->integer_len + set->precision + 1;
-	ft_fill_inputdata_dec(set);
+	if (!(ft_fill_inputdata_dec(set)))
+		return (0);
 	if(!(ft_fill_inputdata_int(set)))
 		return (0);
 	set->arglen = ft_strlen(set->input_data);

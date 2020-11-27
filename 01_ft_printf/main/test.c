@@ -6,15 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:46:59 by hyunlee           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/11/25 20:27:57 by hyunlee          ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2020/11/25 19:09:54 by hyunlee          ###   ########.fr       */
-=======
-/*   Updated: 2020/11/25 14:34:30 by hyunlee          ###   ########.fr       */
->>>>>>> 18248bb00c7ead749cc33d79b5d41f3f8512d696
->>>>>>> 865759d8d485ec0d467c1767b44773c8cdbd6424
+/*   Updated: 2020/11/27 21:14:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +14,9 @@
 
 int main()
 {
-	char	*str = "%.4g'";
+	char	*str = "%.1g'";
 	char	*str_num = "0.0";
-	double	num = 123456.;
+	double	num = -9.9;
 
 	printf("\n==========================================\n");
 	printf("Result of \"%s\" for ", str); printf("\"%s\"\n", str_num);
