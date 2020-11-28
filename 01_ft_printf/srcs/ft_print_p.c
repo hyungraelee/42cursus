@@ -6,12 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 15:34:36 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:19:51 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 01:41:25 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 int		ft_hex_check_size_p(unsigned long long num)
 {
@@ -112,7 +111,7 @@ int		ft_apply_hash_to_p(t_set *set)
 	return (1);
 }
 
-int		ft_print_ptr(t_set *set)
+int		ft_print_p(t_set *set)
 {
 	unsigned long long	num;
 

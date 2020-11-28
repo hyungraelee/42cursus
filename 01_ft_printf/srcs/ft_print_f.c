@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/27 20:28:30 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 01:30:18 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ int		ft_print_f_arg(t_set *set)
 	return (1);
 }
 
-int		ft_print_double(t_set *set)
+int		ft_print_f(t_set *set)
 {
 	t_double dbl;
 

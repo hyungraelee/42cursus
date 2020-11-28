@@ -6,69 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:19:02 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 01:52:33 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		ft_ll_check_size(long long num)
-{
-	int	size;
-
-	if (num == 0)
-		return (1);
-	if (num > 0)
-		size = 0;
-	else
-		size = 1;
-	while (num)
-	{
-		num /= 10;
-		size++;
-	}
-	return (size);
-}
-
-void	ft_ll_change_num(t_set *set, long long num, int size)
-{
-	unsigned long long temp;
-
-	set->input_data[set->arglen] = '\0';
-	if (num < 0)
-	{
-		temp = -num;
-		while (size - 1 > 0)
-		{
-			set->input_data[size - 1] = (temp % 10) + '0';
-			temp /= 10;
-			size--;
-		}
-		set->input_data[0] = '-';
-	}
-	else
-	{
-		while (size - 1 >= 0)
-		{
-			set->input_data[size - 1] = (num % 10) + '0';
-			num /= 10;
-			size--;
-		}
-	}
-	return ;
-}
-
-int		ft_lltoa(t_set *set, long long num)
-{
-	int	size;
-
-	size = ft_ll_check_size(num);
-	set->arglen = size;
-	if (!(set->input_data = (char *)malloc(sizeof(char) * (size + 1))))
-		return (0);
-	ft_ll_change_num(set, num, size);
-	return (1);
-}
 
 int		ft_apply_precision_to_int(t_set *set, long long num)
 {
@@ -117,7 +59,7 @@ int		ft_apply_flag_to_int(t_set *set, long long num)
 	size = set->arglen + 1;
 	temp = set->input_data;
 	if (!(set->input_data = (char *)malloc(sizeof(char) * (size + 1))))
-			return (0);
+		return (0);
 	if (set->f_plus == 1 && num >= 0)
 		set->input_data[0] = '+';
 	else if (set->f_space == 1 && set->f_plus == 0 && num >= 0)
@@ -177,7 +119,7 @@ int		ft_print_int_arg(t_set *set)
 	return (1);
 }
 
-int		ft_print_int(t_set *set)
+int		ft_print_di(t_set *set)
 {
 	long long	num;
 
@@ -191,7 +133,6 @@ int		ft_print_int(t_set *set)
 		num = (char)va_arg(*(set->args), int);
 	else
 		num = va_arg(*(set->args), int);
-
 	if (!(ft_lltoa(set, num)))
 		return (0);
 	if (!(ft_apply_precision_to_int(set, num)))
@@ -217,226 +158,3 @@ int		ft_print_int(t_set *set)
 	free(set->print_buf);
 	return (1);
 }
-
-// void	ft_arglen_int(int num, t_set *set)
-// {
-// 	unsigned int	temp;
-
-// 	temp = num;
-// 	if (num < 0)
-// 	{
-// 		(set->arglen)++;
-// 		temp = -num;
-// 	}
-// 	if (temp == 0)
-// 		(set->arglen)++;
-// 	while (temp)
-// 	{
-// 		(set->arglen)++;
-// 		temp /= 10;
-// 	}
-// 	return ;
-// }
-
-// void	ft_print_int_arglen_most(t_set *set, long long num)
-// {
-// 	set->print_size += set->arglen;
-// 	ft_putnbr_fd(num, 1);
-// 	return ;
-// }
-
-// void	ft_print_int_precision_most(t_set *set, long long num)
-// {
-// 	set->print_size += set->precision;
-// 	if (num < 0)
-// 	{
-// 		ft_putchar_fd('-', 1);
-// 		(set->print_size)++;
-// 		num *= (-1);
-// 		(set->arglen)--;
-// 	}
-// 	while (((set->precision)--) - set->arglen)
-// 		ft_putchar_fd('0', 1);
-// 	ft_putnbr_fd(num, 1);
-// 	return ;
-// }
-
-// void	ft_print_int_width_minus(t_set *set, long long num)
-// {
-// 	int temp;
-
-// 	temp = set->precision;
-// 	if (set->precision >= set->arglen)
-// 	{
-// 		if (num < 0)
-// 		{
-// 			ft_putchar_fd('-', 1);
-// 			num *= (-1);
-// 			while ((set->precision)-- > (set->arglen - 1))
-// 				ft_putchar_fd('0', 1);
-// 			ft_putnbr_fd(num, 1);
-// 			temp++;
-// 			while ((set->width)-- > temp)
-// 				ft_putchar_fd(' ', 1);
-// 		}
-// 		else
-// 		{
-// 			while ((set->precision)-- > set->arglen)
-// 				ft_putchar_fd('0', 1);
-// 			ft_putnbr_fd(num, 1);
-// 			while ((set->width)-- > temp)
-// 				ft_putchar_fd(' ', 1);
-// 		}
-// 	}
-// 	else
-// 	{
-// 		ft_putnbr_fd(num, 1);
-// 		while ((set->width)-- > set->arglen)
-// 			ft_putchar_fd(' ', 1);
-// 	}
-// 	return ;
-// }
-
-// void	ft_print_int_width(t_set *set, long long num)
-// {
-// 	if (set->precision > set->arglen)
-// 	{
-// 		if (num < 0)
-// 		{
-// 			(set->print_size)++;
-// 			num *= (-1);
-// 			set->precision++;
-// 			while (((set->width)--) - set->precision)
-// 				ft_putchar_fd(' ', 1);
-// 			ft_putchar_fd('-', 1);
-// 		}
-// 		else
-// 			while (((set->width)--) - set->precision)
-// 				ft_putchar_fd(' ', 1);
-// 		while (((set->precision)--) - set->arglen)
-// 			ft_putchar_fd('0', 1);
-// 	}
-// 	else
-// 	{
-// 		if (set->f_zero == 1 && set->f_minus == 0 && set->f_point == 0)
-// 		{
-// 			if (num < 0)
-// 			{
-// 				ft_putchar_fd('-', 1);
-// 				num *= (-1);
-// 			}
-// 			while (((set->width)--) - set->arglen)
-// 				ft_putchar_fd('0', 1);
-// 		}
-// 		else
-// 		{
-// 			while (((set->width)--) - set->arglen)
-// 				ft_putchar_fd(' ', 1);
-// 		}
-// 	}
-// 	ft_putnbr_fd(num, 1);
-// 	return ;
-// }
-
-// void	ft_print_int_width_most(t_set *set, long long num)
-// {
-// 	set->print_size += set->width;
-// 	if (set->f_minus == 1)
-// 		ft_print_int_width_minus(set, num);
-// 	else
-// 		ft_print_int_width(set, num);
-// 	return ;
-// }
-
-// void	ft_print_int(t_set *set)
-// {
-// 	long long	num;
-
-// 	num = va_arg(*(set->args), int);
-// 	if (set->f_point && set->precision == 0 && num == 0)	// %.0d <- 0
-// 	{
-// 		while (set->width--)
-// 			ft_putchar_fd(' ', 1);
-// 		ft_putstr_fd("", 1);
-// 		return ;
-// 	}
-// 	ft_arglen_int(num, set);
-// 	if (set->arglen >= set->width && set->arglen >= set->precision) // arg湲몄씠媛� �젣�씪 湲� 寃쎌슦
-// 		ft_print_int_arglen_most(set, num);
-// 	else if (set->precision >= set->width && set->precision > set->arglen) // precision 湲몄씠媛� �젣�씪 湲� 寃쎌슦
-// 		ft_print_int_precision_most(set, num);
-// 	else if (set->width > set->arglen && set->width > set->precision)	// width 湲몄씠媛� �젣�씪 湲� 寃쎌슦
-// 		ft_print_int_width_most(set, num);
-// 	return ;
-// }
-
-// void	ft_print_integer(t_set *set)
-// {
-// 	long long	num;
-
-// 	num = va_arg(*(set->args), int);
-// 	if (set->f_point == 1 && set->precision == 0 && num == 0)	// %.0d <- 0
-// 	{
-// 		ft_putstr_fd("", 1);
-// 		return ;
-// 	}
-// 	ft_arglen_int(num, set);
-// 	if (set->arglen > set->width && set->arglen > set->precision)	// arg湲몄씠媛� �젣�씪 湲� 寃쎌슦
-// 	{
-// 		set->print_size += set->arglen;
-// 		ft_putnbr_fd(num, 1);
-// 	}
-// 	else if (set->precision > set->width && set->precision > set->arglen)	// precision 湲몄씠媛� �젣�씪 湲� 寃쎌슦
-// 	{
-// 		set->print_size += set->precision;
-// 		if (num < 0)
-// 		{
-// 			ft_putchar_fd('-', 1);
-// 			(set->print_size)++;
-// 			num *= (-1);
-// 			(set->arglen)--;
-// 		}
-// 		while (((set->precision)--) - set->arglen)
-// 			ft_putchar_fd('0', 1);
-// 		ft_putnbr_fd(num, 1);
-// 	}
-// 	else if (set->width > set->arglen && set->width > set->precision)	//	width 湲몄씠媛� �젣�씪 湲� 寃쎌슦
-// 	{
-// 		set->print_size += set->width;
-// 		if (set->precision > set->arglen)
-// 		{
-// 			while (((set->width)--) - set->precision)
-// 				ft_putchar_fd(' ', 1);
-// 			if (num < 0)
-// 			{
-// 				ft_putchar_fd('-', 1);
-// 				(set->print_size)++;
-// 				num *= (-1);
-// 			}
-// 			while (((set->precision)--) - set->arglen)
-// 				ft_putchar_fd('0', 1);
-// 			ft_putnbr_fd(num, 1);
-// 		}
-// 		else
-// 		{
-// 			if (set->f_zero == 1 && set->f_minus == 0 && set->f_point == 0)
-// 			{
-// 				if (num < 0)
-// 				{
-// 					ft_putchar_fd('-', 1);
-// 					num *= (-1);
-// 				}
-// 				while (((set->width)--) - set->arglen)
-// 					ft_putchar_fd('0', 1);
-// 				ft_putnbr_fd(num, 1);
-// 			}
-// 			else
-// 			{
-// 				while (((set->width)--) - set->arglen)
-// 					ft_putchar_fd(' ', 1);
-// 				ft_putnbr_fd(num, 1);
-// 			}
-// 		}
-// 	}
-// 	return ;
-// }

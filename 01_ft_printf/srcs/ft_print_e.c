@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/26 21:25:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/28 21:31:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_count_exp(t_set *set, t_double dbl)
 	int	i;
 
 	i = 0;
-	if (dbl.bitfield.mantissa == 0)
+	if (set->exp == -1023 && dbl.bitfield.mantissa == 0)
 	{
 		set->cnt_exp = 0;
 		return ;

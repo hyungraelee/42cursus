@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 14:39:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:18:46 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 01:18:21 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,13 +229,8 @@ void	ft_bi_init_arr(t_set *set)
 	return ;
 }
 
-void	ft_make_bigint_arr(t_set *set,t_double dbl)
+void	ft_make_bigint_arr(t_set *set, t_double dbl)
 {
-	// if (dbl.bitfield.exponent == 2047)
-	// {
-	// 	if (dbl.bitfield.mantissa == 0)
-	// 		dbl.bitfield.sign == 0 ?
-	// }
 	ft_bi_init_arr(set);
 	ft_bi_decimal_arr_put_binary(set, dbl);
 	ft_bi_decimal_arr_put_result(set);

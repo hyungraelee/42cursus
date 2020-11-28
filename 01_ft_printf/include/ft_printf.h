@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 21:35:30 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 01:46:50 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 #ifndef LENGTH
 # define LENGTH "lh"
 #endif
-
 #ifndef BIAS
 # define BIAS 1023
 #endif
@@ -57,7 +56,6 @@ typedef struct	s_bi_integer
 	char	int_result[309];
 	int		res_len;
 }				t_bi_integer;
-
 
 typedef struct		s_set
 {
@@ -104,26 +102,24 @@ int		ft_printf(const	char *str, ...);
 t_set	*ft_init_set(const char *str, t_set *set);
 void	ft_reset_set(t_set *set);
 int		ft_parse_check(t_set *set);
-int		ft_parse(t_set *set);
-void	ft_input_flag(t_set *set);
-void	ft_input_width(t_set *set);
-void	ft_input_precision(t_set *set);
 int		ft_func_by_specifier(t_set *set);
-int		ft_print_int(t_set *set);
+int		ft_print_di(t_set *set);
 void	ft_arglen_int(int num, t_set *set);
-int		ft_print_char(t_set *set);
-int		ft_print_str(t_set *set);
-int		ft_print_uint(t_set *set);
-int		ft_print_hex(t_set *set);
+int		ft_print_c(t_set *set);
+int		ft_print_s(t_set *set);
+int		ft_print_u(t_set *set);
+int		ft_print_x(t_set *set);
 int		ft_apply_precision_to_uxpo(t_set *set);
-int		ft_print_ptr(t_set *set);
-int		ft_print_per(t_set *set);
-int		ft_print_oct(t_set *set);
-int		ft_print_nbyte(t_set *set);
-int		ft_print_double(t_set *set);
+int		ft_print_p(t_set *set);
+int		ft_print_pct(t_set *set);
+int		ft_print_o(t_set *set);
+int		ft_print_n(t_set *set);
+int		ft_print_f(t_set *set);
 int		ft_print_e(t_set *set);
 int		ft_print_g(t_set *set);
-void	ft_make_bigint_arr(t_set *set,t_double dbl);
+void	ft_make_bigint_arr(t_set *set, t_double dbl);
+
+int		ft_lltoa(t_set *set, long long num);
 
 int		ft_input_edata(t_set *set, t_double dbl);
 int		ft_input_fdata(t_set *set);

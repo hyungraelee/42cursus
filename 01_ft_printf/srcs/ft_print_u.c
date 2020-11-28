@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 20:27:08 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:20:07 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 01:28:54 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int		ft_print_u_arg(t_set *set)
 	return (1);
 }
 
-int		ft_print_uint(t_set *set)
+int		ft_print_u(t_set *set)
 {
 	unsigned long long	num;
 

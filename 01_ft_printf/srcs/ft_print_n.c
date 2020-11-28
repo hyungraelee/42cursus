@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:47:39 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:19:14 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 01:30:27 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_nbyte(t_set *set)
+int	ft_print_n(t_set *set)
 {
 	if (set->l_l == 1)
 		*((long *)va_arg(*(set->args), long *)) = (long)set->print_size;

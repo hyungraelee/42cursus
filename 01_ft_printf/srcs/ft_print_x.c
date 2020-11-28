@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 21:01:00 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/25 22:20:11 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 01:29:03 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ int		ft_apply_hash_to_x(t_set *set, unsigned long long num)
 	return (1);
 }
 
-int		ft_print_hex(t_set *set)
+int		ft_print_x(t_set *set)
 {
 	unsigned long long	num;
 

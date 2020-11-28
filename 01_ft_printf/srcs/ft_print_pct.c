@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 18:54:59 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/26 15:44:21 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 01:32:06 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_per_wid(t_set *set)
+int		ft_print_pct_wid(t_set *set)
 {
 	int	size;
 	int i;
@@ -43,11 +43,11 @@ int		ft_print_per_wid(t_set *set)
 	return (1);
 }
 
-int		ft_print_per(t_set *set)
+int		ft_print_pct(t_set *set)
 {
 	if (set->width > 1)
 	{
-		if (!(ft_print_per_wid(set)))
+		if (!(ft_print_pct_wid(set)))
 			return (0);
 		ft_putstr_fd(set->print_buf, 1);
 		set->print_size += ft_strlen(set->print_buf);
