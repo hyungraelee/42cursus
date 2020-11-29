@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/28 21:31:58 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:07:39 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	ft_fill_inputdata(t_set *set)
 
 int		ft_check_bankers_rounding_for_e(t_set *set, char *temp, int i)
 {
-	if (*temp != 5)
+	if (temp[i] != 5)
 		return (0);
-	temp++;
+	++i;
 	while (i < set->integer_len + 1074)
 	{
 		if (temp[i++] != 0)
@@ -92,7 +92,7 @@ int		ft_apply_precision_to_e(t_set *set, t_double dbl)
 // int k=0;
 // while (k < set->integer_len + 1074)
 // printf("%d", temp[k++]);
-	if (ft_check_bankers_rounding_for_e(set, temp + i, i))
+	if (ft_check_bankers_rounding_for_e(set, temp, i))
 	{
 		if (temp[0] == 0 && i == 1 && set->precision == 0)
 		{

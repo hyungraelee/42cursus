@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/29 01:52:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:17:55 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,48 @@ int		ft_apply_precision_to_int(t_set *set, long long num)
 	return (1);
 }
 
+
+// int		ft_apply_precision_to_int(t_set *set, long long num)
+// {
+// 	char	*temp;
+// 	int		i;
+
+// 	i = 0;
+// 	if (set->f_point == 1 && set->precision == 0 && *set->input_data == '0')
+// 	{
+// 		free(set->input_data);
+
+// 		set->input_data = ft_strdup("\0");
+// 		set->arglen = 0;
+// 	}
+// 	else if (num >= 0 && set->precision > set->arglen)
+// 	{
+// 		if (!(temp = (char *)malloc(sizeof(char) * (set->precision + 1))))
+// 			return (0);
+// 		temp[set->precision] = '\0';
+// 		while ((set->precision)-- > set->arglen)
+// 			ft_memcpy(temp + i++, "0", 1);
+// 		ft_strlcpy(temp + i, set->input_data, set->arglen + 1);
+// 		set->arglen = ft_strlen(temp);
+// 		free(set->input_data);
+// 		set->input_data = temp;
+// 	}
+// 	else if (num < 0 && set->precision > (set->arglen - 1))
+// 	{
+// 		if (!(temp = (char *)malloc(sizeof(char) * (set->precision + 2))))
+// 			return (0);
+// 		temp[set->precision + 1] = '\0';
+// 		temp[i++] = '-';
+// 		while ((set->precision)-- > (set->arglen - 1))
+// 			ft_memcpy(temp + i++, "0", 1);
+// 		ft_strlcpy(temp + i, set->input_data + 1, set->arglen);
+// 		set->arglen = ft_strlen(temp);
+// 		free(set->input_data);
+// 		set->input_data = temp;
+// 	}
+// 	return (1);
+// }
+
 int		ft_apply_flag_to_int(t_set *set, long long num)
 {
 	char	*temp;
@@ -71,6 +113,29 @@ int		ft_apply_flag_to_int(t_set *set, long long num)
 	return (1);
 }
 
+// int		ft_apply_flag_to_int(t_set *set, long long num)
+// {
+// 	char	*temp;
+// 	size_t	size;
+
+// 	size = set->arglen + 1;
+// 	if (!(temp = (char *)malloc(sizeof(char) * (size + 1))))
+// 		return (0);
+// 	// temp = set->input_data;
+// 	// if (!(set->input_data = (char *)malloc(sizeof(char) * (size + 1))))
+// 	// 	return (0);
+// 	if (set->f_plus == 1 && num >= 0)
+// 		temp[0] = '+';
+// 	else if (set->f_space == 1 && set->f_plus == 0 && num >= 0)
+// 		temp[0] = ' ';
+// 	ft_strlcpy(temp + 1, set->input_data, size);
+// 	temp[size] = '\0';
+// 	set->arglen = ft_strlen(temp);
+// 	free(set->input_data);
+// 	set->input_data = temp;
+// 	return (1);
+// }
+
 int		ft_print_int_wid(t_set *set)
 {
 	size_t	size;
@@ -90,7 +155,7 @@ int		ft_print_int_wid(t_set *set)
 	{
 		if (*(set->input_data) == '-' || *(set->input_data) == '+' || *(set->input_data) == ' ')
 			set->print_buf[temp++] = *(set->input_data);
-		while((set->width)-- - set->arglen)
+		while ((set->width)-- - set->arglen)
 			ft_memcpy(set->print_buf + temp++, "0", 1);
 		if (*(set->input_data) == '-' || *(set->input_data) == '+' || *(set->input_data) == ' ')
 			ft_strlcpy(set->print_buf + temp, set->input_data + 1, set->arglen);

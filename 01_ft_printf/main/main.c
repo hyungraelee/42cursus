@@ -9,9 +9,9 @@ int		ft_printf(const	char *str, ...);
 int	main()
 {
 	// ft_printf("%f\n", __DBL_MAX__);
-	printf("%d\n", ft_printf("%d %+2.4", 3));
+	// printf("%d\n", ft_printf("%d %+2.4", 3));
 
-	// ft_printf("%.0e\n", -4.5);
+	ft_printf("%d", (int)(-2147483678));
 	// ft_printf("%.0e\n", -2.5);
 	// ft_printf("%.0e\n", 2.5);
 	// ft_printf("%.0e\n", 4.5);
