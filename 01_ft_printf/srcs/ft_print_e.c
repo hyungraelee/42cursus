@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:17:58 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/29 20:07:39 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:53:42 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ int		ft_fill_exponent(t_set *set)
 	else
 		ft_memmove(set->input_data + i, exptoa, ft_strlen(exptoa));
 	set->arglen = ft_strlen(set->input_data);
+	free(temp);
 	free(exptoa);
 	return (1);
 }
@@ -327,14 +328,15 @@ int		ft_print_e(t_set *set)
 		set->infnan = 1;
 		set->arglen = ft_strlen(set->input_data);
 	}
-	else{
-	ft_make_bigint_arr(set, dbl);
-	if (set->f_point == 0)
-		set->precision = 6;
-	if (!(ft_input_edata(set, dbl)))
-		return (0);
-	if (!(ft_fill_exponent(set)))
-		return (0);
+	else
+	{
+		ft_make_bigint_arr(set, dbl);
+		if (set->f_point == 0)
+			set->precision = 6;
+		if (!(ft_input_edata(set, dbl)))
+			return (0);
+		if (!(ft_fill_exponent(set)))
+			return (0);
 	}
 // ******이하 f 와 동일
 	if (set->f_plus || set->f_space || dbl.bitfield.sign)

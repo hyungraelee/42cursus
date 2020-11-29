@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 16:33:51 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/26 15:44:14 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:47:59 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int		ft_printf(const	char *str, ...)
 	va_start(ap, str);
 	set->args = &ap;
 	if (!(ft_parse_check(set)))
+	{
+		free(set);
+		va_end(ap);
 		return (-1);
+	}
 	va_end(ap);
 	res = (int)set->print_size;
 	free(set);

@@ -1,6 +1,6 @@
 NAME = myprintf
 
-SRC = main.c
+SRC = main_leaks2.c
 OBJ = main.o
 
 CC = gcc
