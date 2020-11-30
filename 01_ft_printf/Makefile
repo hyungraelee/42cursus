@@ -30,7 +30,11 @@ SRCS =	ft_printf.c			\
 		ft_print_g.c		\
 		ft_apply.c			\
 		ft_bigint.c			\
-		ft_lltoa.c
+		ft_lltoa.c			\
+		ft_ulltoa.c			\
+		ft_get_data.c		\
+		ft_util.c			\
+		ft_convert.c
 
 OBJS_DIR = ./objs
 

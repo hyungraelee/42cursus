@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/29 20:17:55 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/30 20:49:54 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,48 +51,6 @@ int		ft_apply_precision_to_int(t_set *set, long long num)
 	return (1);
 }
 
-
-// int		ft_apply_precision_to_int(t_set *set, long long num)
-// {
-// 	char	*temp;
-// 	int		i;
-
-// 	i = 0;
-// 	if (set->f_point == 1 && set->precision == 0 && *set->input_data == '0')
-// 	{
-// 		free(set->input_data);
-
-// 		set->input_data = ft_strdup("\0");
-// 		set->arglen = 0;
-// 	}
-// 	else if (num >= 0 && set->precision > set->arglen)
-// 	{
-// 		if (!(temp = (char *)malloc(sizeof(char) * (set->precision + 1))))
-// 			return (0);
-// 		temp[set->precision] = '\0';
-// 		while ((set->precision)-- > set->arglen)
-// 			ft_memcpy(temp + i++, "0", 1);
-// 		ft_strlcpy(temp + i, set->input_data, set->arglen + 1);
-// 		set->arglen = ft_strlen(temp);
-// 		free(set->input_data);
-// 		set->input_data = temp;
-// 	}
-// 	else if (num < 0 && set->precision > (set->arglen - 1))
-// 	{
-// 		if (!(temp = (char *)malloc(sizeof(char) * (set->precision + 2))))
-// 			return (0);
-// 		temp[set->precision + 1] = '\0';
-// 		temp[i++] = '-';
-// 		while ((set->precision)-- > (set->arglen - 1))
-// 			ft_memcpy(temp + i++, "0", 1);
-// 		ft_strlcpy(temp + i, set->input_data + 1, set->arglen);
-// 		set->arglen = ft_strlen(temp);
-// 		free(set->input_data);
-// 		set->input_data = temp;
-// 	}
-// 	return (1);
-// }
-
 int		ft_apply_flag_to_int(t_set *set, long long num)
 {
 	char	*temp;
@@ -112,29 +70,6 @@ int		ft_apply_flag_to_int(t_set *set, long long num)
 	free(temp);
 	return (1);
 }
-
-// int		ft_apply_flag_to_int(t_set *set, long long num)
-// {
-// 	char	*temp;
-// 	size_t	size;
-
-// 	size = set->arglen + 1;
-// 	if (!(temp = (char *)malloc(sizeof(char) * (size + 1))))
-// 		return (0);
-// 	// temp = set->input_data;
-// 	// if (!(set->input_data = (char *)malloc(sizeof(char) * (size + 1))))
-// 	// 	return (0);
-// 	if (set->f_plus == 1 && num >= 0)
-// 		temp[0] = '+';
-// 	else if (set->f_space == 1 && set->f_plus == 0 && num >= 0)
-// 		temp[0] = ' ';
-// 	ft_strlcpy(temp + 1, set->input_data, size);
-// 	temp[size] = '\0';
-// 	set->arglen = ft_strlen(temp);
-// 	free(set->input_data);
-// 	set->input_data = temp;
-// 	return (1);
-// }
 
 int		ft_print_int_wid(t_set *set)
 {
@@ -172,32 +107,11 @@ int		ft_print_int_wid(t_set *set)
 	return (1);
 }
 
-int		ft_print_int_arg(t_set *set)
-{
-	size_t	size;
-
-	size = set->arglen;
-	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
-		return (0);
-	ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
-	set->print_buf[size] = '\0';
-	return (1);
-}
-
 int		ft_print_di(t_set *set)
 {
 	long long	num;
 
-	if (set->l_l == 1)
-		num = va_arg(*(set->args), long);
-	else if (set->l_l >= 2)
-		num = va_arg(*(set->args), long long);
-	else if (set->l_h == 1)
-		num = (short)va_arg(*(set->args), int);
-	else if (set->l_h >= 2)
-		num = (char)va_arg(*(set->args), int);
-	else
-		num = va_arg(*(set->args), int);
+	ft_get_data_d(set, &num);
 	if (!(ft_lltoa(set, num)))
 		return (0);
 	if (!(ft_apply_precision_to_int(set, num)))
@@ -214,12 +128,9 @@ int		ft_print_di(t_set *set)
 	}
 	else
 	{
-		if (!(ft_print_int_arg(set)))
+		if (!(ft_print_arg(set)))
 			return (0);
 	}
-	ft_putstr_fd(set->print_buf, 1);
-	set->print_size += ft_strlen(set->print_buf);
-	free(set->input_data);
-	free(set->print_buf);
+	ft_put_and_free(set);
 	return (1);
 }

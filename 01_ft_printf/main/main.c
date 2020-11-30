@@ -60,7 +60,7 @@ int	main()
 // ft_printf("%0-3.7d", -2375);
 // ft_printf("%0-3.3d", 6983);
 // ft_printf("%0-3.3d", -8462);
-ft_printf("%e", 10.12);
+ft_printf("%d", 10);
 // ft_printf("%5.0d", 0);
 // ft_printf("%5.d", 0);
 // ft_printf("%-5.0d", 0);

@@ -6,48 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 15:34:36 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/29 01:41:25 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/30 21:52:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_hex_check_size_p(unsigned long long num)
-{
-	int	size;
-
-	if (num == 0)
-		return (1);
-	size = 0;
-	while (num)
-	{
-		num /= 16;
-		size++;
-	}
-	return (size);
-}
-
-int		ft_convert_hex_p(t_set *set, unsigned long long num)
-{
-	int	size;
-
-	size = ft_hex_check_size_p(num);
-	set->arglen = size;
-	if (!(set->input_data = (char *)malloc(sizeof(char) * (size + 1))))
-		return (0);
-	set->input_data[size] = '\0';
-	while (size - 1 >= 0)
-	{
-		if (num % 16 >= 10 && num % 16 <= 15)
-			set->input_data[size - 1] = (num % 16) - 10 + 'a';
-		else if (num % 16 >= 0 && num % 16 < 10)
-			set->input_data[size - 1] = (num % 16) + '0';
-		num /= 16;
-		size--;
-	}
-	return (1);
-}
-
+/* same with u */
 int		ft_print_p_wid(t_set *set)
 {
 	size_t	size;
@@ -79,20 +44,6 @@ int		ft_print_p_wid(t_set *set)
 	return (1);
 }
 
-int		ft_print_p_arg(t_set *set)
-{
-	size_t	size;
-	size_t	temp;
-
-	size = set->arglen;
-	temp = 0;
-	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
-		return (0);
-	ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
-	set->print_buf[size] = '\0';
-	return (1);
-}
-
 int		ft_apply_hash_to_p(t_set *set)
 {
 	char	*temp;
@@ -116,7 +67,7 @@ int		ft_print_p(t_set *set)
 	unsigned long long	num;
 
 	num = (unsigned long long)va_arg(*(set->args), void *);
-	if (!(ft_convert_hex_p(set, num)))
+	if (!(ft_convert_hex(set, num)))
 		return (0);
 	if (!(ft_apply_precision_to_uxpo(set)))
 		return (0);
@@ -129,12 +80,9 @@ int		ft_print_p(t_set *set)
 	}
 	else
 	{
-		if (!(ft_print_p_arg(set)))
+		if (!(ft_print_arg(set)))
 			return (0);
 	}
-	ft_putstr_fd(set->print_buf, 1);
-	set->print_size += ft_strlen(set->print_buf);
-	free(set->input_data);
-	free(set->print_buf);
+	ft_put_and_free(set);
 	return (1);
 }

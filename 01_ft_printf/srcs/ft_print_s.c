@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 20:10:23 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/29 01:28:45 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/11/30 20:31:06 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_str_arg(t_set *set)
+static int	ft_print_str_arg(t_set *set)
 {
 	size_t	size;
 	size_t	temp;
@@ -26,7 +26,7 @@ int		ft_print_str_arg(t_set *set)
 	return (1);
 }
 
-int		ft_print_str_wid(t_set *set)
+static int	ft_print_str_wid(t_set *set)
 {
 	size_t	size;
 	size_t	temp;
@@ -51,18 +51,19 @@ int		ft_print_str_wid(t_set *set)
 	return (1);
 }
 
-void	ft_apply_precision_to_s(t_set *set)
+static void	ft_apply_precision_to_s(t_set *set)
 {
 	if (set->f_point && set->precision < set->arglen)
 	{
-		set->input_data = (char *)ft_memmove(set->input_data, set->input_data, set->precision);
+		set->input_data = (char *)ft_memmove(set->input_data,\
+		set->input_data, set->precision);
 		set->input_data[set->precision] = '\0';
 		set->arglen = ft_strlen(set->input_data);
 	}
 	return ;
 }
 
-static int		ft_input_data(t_set *set)
+static int	ft_input_data_s(t_set *set)
 {
 	char	*str;
 
@@ -81,11 +82,10 @@ static int		ft_input_data(t_set *set)
 	return (1);
 }
 
-int		ft_print_s(t_set *set)
+int			ft_print_s(t_set *set)
 {
-	int	ret;
-
-	ret = ft_input_data(set) ? 1 : 0;
+	if (!(ft_input_data_s(set)))
+		return (0);
 	ft_apply_precision_to_s(set);
 	if (set->width > set->arglen)
 	{
@@ -97,9 +97,6 @@ int		ft_print_s(t_set *set)
 		if (!(ft_print_str_arg(set)))
 			return (0);
 	}
-	ft_putstr_fd(set->print_buf, 1);
-	set->print_size += ft_strlen(set->print_buf);
-	free(set->input_data);
-	free(set->print_buf);
-	return (ret);
+	ft_put_and_free(set);
+	return (1);
 }
