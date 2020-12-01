@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 20:23:45 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/27 21:43:58 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 02:31:40 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int		ft_delete_zero(t_set *set)
 {
 	int		i;
-	// int		cnt;
-	// int		size;
 	char	*temp;
 
 	i = set->arglen;
@@ -74,22 +72,10 @@ int		ft_print_g_by_e(t_set *set, t_double dbl)
 	return (1);
 }
 
-int		ft_print_g(t_set *set)
+int		ft_branch_g(t_set *set, t_double dbl)
 {
-	t_double dbl;
-	int	tmp;
-	int	temp;
+	int tmp;
 
-	dbl.dnum = va_arg(*(set->args), double);
-	ft_make_bigint_arr(set, dbl);
-
-	if (!set->f_point)
-		set->precision = 6;
-	temp = set->precision;
-	set->precision = !set->precision ? 0 : set->precision - 1;
-	if (!(ft_input_edata(set, dbl)))
-		return (0);
-	set->precision = temp;
 	tmp = !set->precision ? 1 : set->precision;
 	if (set->cnt_exp < -4 || set->cnt_exp >= tmp)
 	{
@@ -109,25 +95,27 @@ int		ft_print_g(t_set *set)
 		if (!(ft_print_g_by_f(set)))
 			return (0);
 	}
-// **************************** e,f 와 동일
-	if (set->f_plus || set->f_space || dbl.bitfield.sign)
-	{
-		if (!(ft_apply_flag_to_e(set, dbl)))
-			return (0);
-	}
-	if (set->width > set->arglen)
-	{
-		if (!(ft_print_e_wid(set)))
-			return (0);
-	}
-	else
-	{
-		if (!(ft_print_e_arg(set)))
-			return (0);
-	}
-	ft_putstr_fd(set->print_buf, 1);
-	set->print_size += ft_strlen(set->print_buf);
-	free(set->input_data);
-	free(set->print_buf);
+	return (1);
+}
+
+int		ft_print_g(t_set *set)
+{
+	t_double	dbl;
+	int			temp;
+
+	dbl.dnum = va_arg(*(set->args), double);
+	ft_make_bigint_arr(set, dbl);
+	if (!set->f_point)
+		set->precision = 6;
+	temp = set->precision;
+	set->precision = !set->precision ? 0 : set->precision - 1;
+	if (!(ft_input_edata(set, dbl)))
+		return (0);
+	set->precision = temp;
+	if (!(ft_branch_g(set, dbl)))
+		return (0);
+	if (!(ft_apply_flag_and_print(set, dbl)))
+		return (0);
+	ft_put_and_free(set);
 	return (1);
 }

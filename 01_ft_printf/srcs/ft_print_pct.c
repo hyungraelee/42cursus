@@ -6,21 +6,17 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 18:54:59 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/30 21:54:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 02:27:02 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print_pct_wid(t_set *set)
+static void	ft_fill_printbuf(t_set *set)
 {
-	int	size;
 	int i;
 
-	size = set->width;
 	i = 0;
-	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
-		return (0);
 	if (set->f_minus == 1)
 	{
 		set->print_buf[i++] = '%';
@@ -39,6 +35,17 @@ static int	ft_print_pct_wid(t_set *set)
 			ft_memcpy(set->print_buf + i++, " ", 1);
 		set->print_buf[i] = '%';
 	}
+	return ;
+}
+
+static int	ft_print_pct_wid(t_set *set)
+{
+	int	size;
+
+	size = set->width;
+	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
+		return (0);
+	ft_fill_printbuf(set);
 	set->print_buf[size] = '\0';
 	return (1);
 }

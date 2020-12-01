@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/01 18:48:17 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 02:51:35 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@
 
 typedef struct	s_bi_decimal
 {
-	char	dec_binary[1074];
-	char	dec_five_mul[1074];
-	char	dec_result[1074];
+	char	dece_bin[1074];
+	char	five_mul[1074];
+	char	dece_res[1074];
 }				t_bi_decimal;
 
 typedef struct	s_bi_integer
 {
-	char	int_binary[1024];
-	char	int_two_mul[309];
-	char	int_result[309];
+	char	inte_bin[1024];
+	char	two_mul[309];
+	char	inte_res[309];
 	int		res_len;
 }				t_bi_integer;
 
@@ -82,8 +82,8 @@ typedef struct		s_set
 	const char		*str;
 	char			*input_data;
 	char			*print_buf;
-	t_bi_decimal	bi_dec_arr;
-	t_bi_integer	bi_int_arr;
+	t_bi_decimal	bi_dece;
+	t_bi_integer	bi_inte;
 	va_list			*args;
 }					t_set;
 
@@ -109,20 +109,39 @@ int		ft_print_c(t_set *set);
 int		ft_print_s(t_set *set);
 int		ft_print_u(t_set *set);
 int		ft_print_x(t_set *set);
-int		ft_apply_precision_to_uxpo(t_set *set);
 int		ft_print_p(t_set *set);
 int		ft_print_pct(t_set *set);
 int		ft_print_o(t_set *set);
 int		ft_print_n(t_set *set);
+
 int		ft_print_f(t_set *set);
+int		ft_check_bankers_rounding_for_f(t_set *set);
+int		ft_rounding_in_int(t_set *set);
+int		ft_fill_dec_without_point(t_set *set);
+void	ft_bankers_rounding_for_f(t_set *set);
+
 int		ft_print_e(t_set *set);
 int		ft_print_g(t_set *set);
+
+int		ft_apply_flag_and_print(t_set *set, t_double dbl);
+int		ft_apply_precision_to_uxpo(t_set *set);
+int		ft_apply_prec_d_pos(t_set *set);
+int		ft_apply_prec_d_neg(t_set *set);
+
 void	ft_make_bigint_arr(t_set *set, t_double dbl);
+void	ft_bi_decimal_arr_put_binary(t_set *set, t_double dbl);
+void	ft_bi_decimal_arr_put_result(t_set *set);
+void	ft_bi_integer_arr_put_binary(t_set *set, t_double dbl);
+void	ft_bi_integer_arr_put_result(t_set *set);
 
 int		ft_lltoa(t_set *set, long long num);
 int		ft_ulltoa(t_set *set, unsigned long long num);
+
 void	ft_get_data_d(t_set *set, long long *num);
 void	ft_get_data_u(t_set *set, unsigned long long *num);
+
+void	ft_input_infnan(t_set *set, t_double dbl);
+int		ft_print_wid_double(t_set *set);
 int		ft_print_arg(t_set *set);
 void	ft_put_and_free(t_set *set);
 
@@ -132,7 +151,4 @@ int		ft_convert_oct(t_set *set, unsigned long long num);
 int		ft_input_edata(t_set *set, t_double dbl);
 int		ft_input_fdata(t_set *set);
 int		ft_fill_exponent(t_set *set);
-int		ft_apply_flag_to_e(t_set *set, t_double dbl);
-int		ft_print_e_wid(t_set *set);
-int		ft_print_e_arg(t_set *set);
 #endif

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 21:01:00 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/01 18:51:49 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 02:20:49 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,28 @@ int		ft_apply_hash_to_x(t_set *set, unsigned long long num)
 	return (1);
 }
 
+void	ft_print_x_zero(t_set *set, unsigned long long num)
+{
+	size_t	temp;
+
+	temp = 0;
+	if (set->f_hash == 1 && num != 0)
+	{
+		set->print_buf[temp++] = '0';
+		set->print_buf[temp++] = set->specifier == 'x' ? 'x' : 'X';
+		while ((set->width)-- - set->arglen)
+			ft_memcpy(set->print_buf + temp++, "0", 1);
+		ft_strlcpy(set->print_buf + temp, set->input_data + 2, set->arglen + 1);
+	}
+	else
+	{
+		while ((set->width)-- - set->arglen)
+			ft_memcpy(set->print_buf + temp++, "0", 1);
+		ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
+	}
+	return ;
+}
+
 int		ft_print_x_wid(t_set *set, unsigned long long num)
 {
 	size_t	size;
@@ -49,22 +71,7 @@ int		ft_print_x_wid(t_set *set, unsigned long long num)
 			ft_memcpy(set->print_buf + temp++, " ", 1);
 	}
 	else if (set->f_zero == 1 && set->f_point == 0)
-	{
-		if (set->f_hash == 1 && num != 0)
-		{
-			set->print_buf[temp++] = '0';
-			set->print_buf[temp++] = set->specifier == 'x' ? 'x' : 'X';
-			while ((set->width)-- - set->arglen)
-				ft_memcpy(set->print_buf + temp++, "0", 1);
-			ft_strlcpy(set->print_buf + temp, set->input_data + 2, set->arglen + 1);
-		}
-		else
-		{
-			while ((set->width)-- - set->arglen)
-				ft_memcpy(set->print_buf + temp++, "0", 1);
-			ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
-		}
-	}
+		ft_print_x_zero(set, num);
 	else
 	{
 		while ((set->width)-- - set->arglen)
