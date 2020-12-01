@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 14:39:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/29 01:18:21 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/01 19:31:07 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,19 +176,7 @@ void	ft_bi_integer_arr_put_result(t_set *set)
 		}
 		ft_bi_integer_arr_multiple_two(set);
 	}
-// int k=0;
-// while(k<309)
-// 	printf("%d", set->bi_int_arr.int_result[k++]);
-// printf("\n");
 	ft_bi_integer_reverse_arr(set);
-// k=0;
-// while(k<309)
-// 	printf("%d", set->bi_int_arr.int_two_mul[k++]);
-// printf("\n");
-// k=0;
-// while(k<309)
-// 	printf("%d", set->bi_int_arr.int_result[k++]);
-// printf("\n");
 	return ;
 }
 
@@ -209,11 +197,6 @@ void	ft_bi_integer_arr_put_binary(t_set *set,t_double dbl)
 			i++;
 		}
 	}
-
-// int k=0;
-// while(k<1024)
-// 	printf("%d", set->bi_int_arr.int_binary[k++]);
-	return ;
 }
 
 void	ft_bi_init_arr(t_set *set)

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/30 21:34:14 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/01 18:48:17 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int		ft_print_arg(t_set *set);
 void	ft_put_and_free(t_set *set);
 
 int		ft_convert_hex(t_set *set, unsigned long long num);
+int		ft_convert_oct(t_set *set, unsigned long long num);
 
 int		ft_input_edata(t_set *set, t_double dbl);
 int		ft_input_fdata(t_set *set);

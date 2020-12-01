@@ -6,17 +6,17 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:46:59 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/30 21:09:18 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/01 18:54:32 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int main()
+int	main()
 {
-	char	*str = "%+4.4d'";
-	char	*str_num = "1";
-	int		num = 1;
+	char	*str = "%#.o'";
+	char	*str_num = "123";
+	int		num = 123;
 
 	printf("\n==========================================\n");
 	printf("Result of \"%s\" for ", str); printf("\"%s\"\n", str_num);
