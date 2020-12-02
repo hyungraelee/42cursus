@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 21:01:00 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 02:20:49 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 16:47:44 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_apply_hash_to_x(t_set *set, unsigned long long num)
+static int	ft_apply_hash_to_x(t_set *set, unsigned long long num)
 {
 	char	*temp;
 	int		size;
@@ -33,7 +33,7 @@ int		ft_apply_hash_to_x(t_set *set, unsigned long long num)
 	return (1);
 }
 
-void	ft_print_x_zero(t_set *set, unsigned long long num)
+static void	ft_print_x_zero(t_set *set, unsigned long long num)
 {
 	size_t	temp;
 
@@ -55,7 +55,7 @@ void	ft_print_x_zero(t_set *set, unsigned long long num)
 	return ;
 }
 
-int		ft_print_x_wid(t_set *set, unsigned long long num)
+static int	ft_print_x_wid(t_set *set, unsigned long long num)
 {
 	size_t	size;
 	size_t	temp;
@@ -82,7 +82,7 @@ int		ft_print_x_wid(t_set *set, unsigned long long num)
 	return (1);
 }
 
-int		ft_print_x(t_set *set)
+int			ft_print_x(t_set *set)
 {
 	unsigned long long	num;
 

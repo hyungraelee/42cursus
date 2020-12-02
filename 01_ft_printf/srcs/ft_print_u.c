@@ -6,14 +6,24 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 20:27:08 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/11/30 21:51:47 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 16:22:20 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// same with p
-int		ft_print_u_wid(t_set *set)
+static void	ft_print_u_zero(t_set *set)
+{
+	size_t temp;
+
+	temp = 0;
+	while ((set->width)-- - set->arglen)
+		ft_memcpy(set->print_buf + temp++, "0", 1);
+	ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
+	return ;
+}
+
+int			ft_print_u_wid(t_set *set)
 {
 	size_t	size;
 	size_t	temp;
@@ -29,11 +39,7 @@ int		ft_print_u_wid(t_set *set)
 			ft_memcpy(set->print_buf + temp++, " ", 1);
 	}
 	else if (set->f_zero == 1 && set->f_point == 0)
-	{
-		while ((set->width)-- - set->arglen)
-			ft_memcpy(set->print_buf + temp++, "0", 1);
-		ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
-	}
+		ft_print_u_zero(set);
 	else
 	{
 		while ((set->width)-- - set->arglen)
@@ -44,7 +50,7 @@ int		ft_print_u_wid(t_set *set)
 	return (1);
 }
 
-int		ft_print_u(t_set *set)
+int			ft_print_u(t_set *set)
 {
 	unsigned long long	num;
 

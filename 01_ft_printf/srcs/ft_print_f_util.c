@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 02:08:16 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 02:09:18 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:41:31 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int		ft_check_bankers_rounding_for_f(t_set *set)
 	int i;
 
 	i = set->precision + 1;
-	if (set->bi_dece.dece_res[set->precision] != 5)
+	if (set->bi_deci.deci_res[set->precision] != 5)
 		return (0);
 	while (i < 1074)
 	{
-		if (set->bi_dece.dece_res[i] != 0)
+		if (set->bi_deci.deci_res[i] != 0)
 			break ;
 		i++;
 	}
@@ -53,7 +53,7 @@ int		ft_fill_dec_without_point(t_set *set)
 	set->input_data[set->arglen - 1] = '\0';
 	if (ft_check_bankers_rounding_for_f(set))
 		set->rounding = (set->bi_inte.inte_res[308] % 2) == 1 ? 1 : 0;
-	else if (set->bi_dece.dece_res[0] >= 5)
+	else if (set->bi_deci.deci_res[0] >= 5)
 		set->rounding = 1;
 	return (1);
 }
@@ -64,6 +64,6 @@ void	ft_bankers_rounding_for_f(t_set *set)
 		set->rounding = (set->bi_inte.inte_res[308] % 2) == 1 ? 1 : 0;
 	else
 		set->rounding = \
-		(set->bi_dece.dece_res[set->precision-- - 1] % 2) == 1 ? 1 : 0;
+		(set->bi_deci.deci_res[set->precision-- - 1] % 2) == 1 ? 1 : 0;
 	return ;
 }

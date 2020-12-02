@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:21:13 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/01 19:10:20 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 16:17:55 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,6 @@ int		ft_apply_hash_to_o(t_set *set, unsigned long long num)
 	return (1);
 }
 
-// same with u
-int		ft_print_o_wid(t_set *set)
-{
-	size_t	size;
-	size_t	temp;
-
-	size = set->width;
-	temp = 0;
-	if (!(set->print_buf = (char *)malloc(sizeof(char) * (size + 1))))
-		return (0);
-	if (set->f_minus == 1)
-	{
-		temp = ft_strlcpy(set->print_buf, set->input_data, set->arglen + 1);
-		while ((set->width)-- - set->arglen)
-			ft_memcpy(set->print_buf + temp++, " ", 1);
-	}
-	else if (set->f_zero == 1 && set->f_point == 0)
-	{
-		while ((set->width)-- - set->arglen)
-			ft_memcpy(set->print_buf + temp++, "0", 1);
-		ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
-	}
-	else
-	{
-		while ((set->width)-- - set->arglen)
-			ft_memcpy(set->print_buf + temp++, " ", 1);
-		ft_strlcpy(set->print_buf + temp, set->input_data, set->arglen + 1);
-	}
-	set->print_buf[size] = '\0';
-	return (1);
-}
-
 int		ft_print_o(t_set *set)
 {
 	unsigned long long	num;
@@ -77,7 +45,7 @@ int		ft_print_o(t_set *set)
 		return (0);
 	if (set->width > set->arglen)
 	{
-		if (!(ft_print_o_wid(set)))
+		if (!(ft_print_u_wid(set)))
 			return (0);
 	}
 	else

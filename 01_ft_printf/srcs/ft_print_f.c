@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 02:11:07 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:41:22 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int		ft_fill_inputdata_dec(t_set *set)
 	i = set->integer_len + set->precision;
 	if (ft_check_bankers_rounding_for_f(set))
 		ft_bankers_rounding_for_f(set);
-	else if (set->bi_dece.dece_res[set->precision--] >= 5)
+	else if (set->bi_deci.deci_res[set->precision--] >= 5)
 		set->rounding = 1;
 	while (set->precision >= 0)
 	{
 		if ((set->input_data[i] = \
-		set->bi_dece.dece_res[set->precision--] + set->rounding) >= 10)
+		set->bi_deci.deci_res[set->precision--] + set->rounding) >= 10)
 		{
 			set->input_data[i] = set->input_data[i] % 10;
 			set->rounding = 1;

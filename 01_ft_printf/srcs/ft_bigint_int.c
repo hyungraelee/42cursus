@@ -6,13 +6,20 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 00:04:32 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 00:05:02 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:11:22 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_bi_integer_arr_multiple_two(t_set *set)
+static void	ft_round_one(t_set *set, int i)
+{
+	set->bi_inte.two_mul[i] = 1;
+	set->mul_len++;
+	return ;
+}
+
+static void	ft_bi_integer_arr_multiple_two(t_set *set)
 {
 	int	round;
 	int i;
@@ -36,14 +43,11 @@ void	ft_bi_integer_arr_multiple_two(t_set *set)
 		i++;
 	}
 	if (round == 1)
-	{
-		set->bi_inte.two_mul[i] = 1;
-		set->mul_len++;
-	}
+		ft_round_one(set, i);
 	return ;
 }
 
-void	ft_bi_integer_reverse_arr(t_set *set)
+static void	ft_bi_integer_reverse_arr(t_set *set)
 {
 	char	temp[309];
 	int		i;
@@ -59,7 +63,7 @@ void	ft_bi_integer_reverse_arr(t_set *set)
 	return ;
 }
 
-void	ft_bi_addition_inte_res(t_set *set)
+static void	ft_bi_addition_inte_res(t_set *set)
 {
 	int	j;
 	int	round;
@@ -87,7 +91,7 @@ void	ft_bi_addition_inte_res(t_set *set)
 	return ;
 }
 
-void	ft_bi_integer_arr_put_result(t_set *set)
+void		ft_bi_integer_arr_put_result(t_set *set)
 {
 	int		i;
 
@@ -99,25 +103,5 @@ void	ft_bi_integer_arr_put_result(t_set *set)
 		ft_bi_integer_arr_multiple_two(set);
 	}
 	ft_bi_integer_reverse_arr(set);
-	return ;
-}
-
-void	ft_bi_integer_arr_put_binary(t_set *set, t_double dbl)
-{
-	int				i;
-	unsigned long	temp;
-
-	i = 0;
-	temp = dbl.bitfield.mantissa;
-	if (set->exp >= 0)
-	{
-		set->bi_inte.inte_bin[1024 - set->exp - 1] = 1;
-		while (i < set->exp && i < 52)
-		{
-			set->bi_inte.inte_bin[1024 - set->exp + i] = \
-			((temp >> (51 - i)) & 1) ? 1 : 0;
-			i++;
-		}
-	}
 	return ;
 }
