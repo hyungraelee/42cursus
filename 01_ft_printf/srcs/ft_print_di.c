@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 16:00:19 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 02:50:59 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 20:23:15 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_apply_precision_to_int(t_set *set, long long num)
+static int	ft_apply_precision_to_int(t_set *set, long long num)
 {
 	if (set->f_point == 1 && set->precision == 0 && *set->input_data == '0')
 	{
@@ -26,7 +26,7 @@ int		ft_apply_precision_to_int(t_set *set, long long num)
 	return (1);
 }
 
-int		ft_apply_flag_to_int(t_set *set, long long num)
+static int	ft_apply_flag_to_int(t_set *set, long long num)
 {
 	char	*temp;
 	size_t	size;
@@ -46,7 +46,7 @@ int		ft_apply_flag_to_int(t_set *set, long long num)
 	return (1);
 }
 
-void	ft_print_int_zero(t_set *set)
+static void	ft_print_int_zero(t_set *set)
 {
 	size_t	temp;
 
@@ -64,7 +64,7 @@ void	ft_print_int_zero(t_set *set)
 	return ;
 }
 
-int		ft_print_int_wid(t_set *set)
+static int	ft_print_int_wid(t_set *set)
 {
 	size_t	size;
 	size_t	temp;
@@ -91,7 +91,7 @@ int		ft_print_int_wid(t_set *set)
 	return (1);
 }
 
-int		ft_print_di(t_set *set)
+int			ft_print_di(t_set *set)
 {
 	long long	num;
 

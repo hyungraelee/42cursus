@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 20:23:45 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 02:31:40 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 20:28:56 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_delete_zero(t_set *set)
+static int	ft_delete_zero(t_set *set)
 {
 	int		i;
 	char	*temp;
@@ -35,7 +35,7 @@ int		ft_delete_zero(t_set *set)
 	return (1);
 }
 
-int		ft_print_g_by_f(t_set *set)
+static int	ft_print_g_by_f(t_set *set)
 {
 	int	tmp;
 
@@ -52,7 +52,7 @@ int		ft_print_g_by_f(t_set *set)
 	return (1);
 }
 
-int		ft_print_g_by_e(t_set *set, t_double dbl)
+static int	ft_print_g_by_e(t_set *set, t_double dbl)
 {
 	int	tmp;
 
@@ -72,7 +72,7 @@ int		ft_print_g_by_e(t_set *set, t_double dbl)
 	return (1);
 }
 
-int		ft_branch_g(t_set *set, t_double dbl)
+static int	ft_branch_g(t_set *set, t_double dbl)
 {
 	int tmp;
 
@@ -98,7 +98,7 @@ int		ft_branch_g(t_set *set, t_double dbl)
 	return (1);
 }
 
-int		ft_print_g(t_set *set)
+int			ft_print_g(t_set *set)
 {
 	t_double	dbl;
 	int			temp;

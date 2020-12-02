@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 17:41:22 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 20:29:46 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_fill_inputdata_int(t_set *set)
+static int	ft_fill_inputdata_int(t_set *set)
 {
 	int		i;
 	int		j;
@@ -38,7 +38,7 @@ int		ft_fill_inputdata_int(t_set *set)
 	return (1);
 }
 
-int		ft_fill_inputdata_dec(t_set *set)
+static int	ft_fill_inputdata_dec(t_set *set)
 {
 	int i;
 

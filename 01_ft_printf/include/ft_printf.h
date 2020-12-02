@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:45:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 18:04:51 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 20:32:14 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_set				*ft_init_set(const char *str, t_set *set);
 void				ft_reset_set(t_set *set);
 int					ft_parse_check(t_set *set);
 int					ft_func_by_specifier(t_set *set);
+
 int					ft_print_di(t_set *set);
 void				ft_arglen_int(int num, t_set *set);
 int					ft_print_c(t_set *set);
@@ -122,13 +123,13 @@ int					ft_fill_dec_without_point(t_set *set);
 void				ft_bankers_rounding_for_f(t_set *set);
 
 int					ft_print_e(t_set *set);
-int					ft_check_bankers_rounding_for_e\
-					(t_set *set, char *temp, int i);
-void				ft_count_exp(t_set *set, t_double dbl);
 int					ft_apply_precision_to_e(t_set *set, t_double dbl);
 void				ft_fill_inputdata(t_set *set);
+int					ft_fill_exponent(t_set *set);
 int					ft_fill_point(t_set *set);
 void				ft_exponent_two_figures(t_set *set, int i);
+int					ft_input_edata(t_set *set, t_double dbl);
+int					ft_input_fdata(t_set *set);
 
 int					ft_print_g(t_set *set);
 
@@ -155,7 +156,4 @@ void				ft_put_and_free(t_set *set);
 int					ft_convert_hex(t_set *set, unsigned long long num);
 int					ft_convert_oct(t_set *set, unsigned long long num);
 
-int					ft_input_edata(t_set *set, t_double dbl);
-int					ft_input_fdata(t_set *set);
-int					ft_fill_exponent(t_set *set);
 #endif

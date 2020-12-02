@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 15:34:36 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 16:18:05 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 20:30:20 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_apply_hash_to_p(t_set *set)
+static int	ft_apply_hash_to_p(t_set *set)
 {
 	char	*temp;
 	int		size;
@@ -30,7 +30,7 @@ int		ft_apply_hash_to_p(t_set *set)
 	return (1);
 }
 
-int		ft_print_p(t_set *set)
+int			ft_print_p(t_set *set)
 {
 	unsigned long long	num;
 

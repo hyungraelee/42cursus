@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 16:29:23 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 17:10:40 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 20:24:17 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_check_bankers_rounding_for_e(t_set *set, char *temp, int i)
+static int	ft_check_bankers_rounding_for_e(t_set *set, char *temp, int i)
 {
 	if (temp[i] != 5)
 		return (0);
@@ -25,7 +25,7 @@ int			ft_check_bankers_rounding_for_e(t_set *set, char *temp, int i)
 	return (1);
 }
 
-void		ft_count_exp(t_set *set, t_double dbl)
+static void	ft_count_exp(t_set *set, t_double dbl)
 {
 	int	i;
 
