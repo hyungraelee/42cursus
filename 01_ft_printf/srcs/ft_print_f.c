@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 20:16:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 20:29:46 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/02 20:42:56 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	ft_fill_inputdata_dec(t_set *set)
 	return (1);
 }
 
-int		ft_input_fdata(t_set *set)
+int			ft_input_fdata(t_set *set)
 {
 	if (!(set->input_data = \
 	(char *)malloc(sizeof(char) * (set->integer_len + set->precision + 2))))
@@ -81,7 +81,7 @@ int		ft_input_fdata(t_set *set)
 	return (1);
 }
 
-int		ft_print_f(t_set *set)
+int			ft_print_f(t_set *set)
 {
 	t_double dbl;
 

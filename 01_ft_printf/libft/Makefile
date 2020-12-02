@@ -59,7 +59,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	@$(AR) $@ $^
 .c.o : $(SRCS)
-	@$(CC) $(DEBUG) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 clean :
 	@$(RM) $(OBJS)
 fclean : clean

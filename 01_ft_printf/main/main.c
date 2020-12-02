@@ -60,15 +60,10 @@ int	main()
 // ft_printf("%0-3.7d", -2375);
 // ft_printf("%0-3.3d", 6983);
 // ft_printf("%0-3.3d", -8462);
-ft_printf("%#.o", 123);
-// ft_printf("%5.0d", 0);
-// ft_printf("%5.d", 0);
-// ft_printf("%-5.0d", 0);
-// ft_printf("%-5.d", 0);
-	// ft_printf("%.0e\n", -2.5);
-	// ft_printf("%.0e\n", 2.5);
-	// ft_printf("%.0e\n", 4.5);
-
-	// printf("\n%f", __DBL_MAX__);
+// ft_printf("%lx", (__LONG_MAX__ * -1) - 2);
+ft_printf("%llu", -1);
+printf("\n");
+// printf("%lx", (__LONG_MAX__ * -1) - 2);
+printf("%llu", -1);
 	return 0;
 }

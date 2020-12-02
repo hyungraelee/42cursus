@@ -55,7 +55,9 @@ $(NAME) : $(addprefix $(OBJS_DIR)/, $(OBJS))
 
 $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(DEBUG) $(CFLAGS) -o $@ -I$(INC_DIR_LIBFT) -I$(INC_DIR) -c $<
+	@$(CC) $(CFLAGS) -o $@ -I$(INC_DIR_LIBFT) -I$(INC_DIR) -c $<
+
+bonus : all
 
 clean :
 	@make -C ./libft fclean
