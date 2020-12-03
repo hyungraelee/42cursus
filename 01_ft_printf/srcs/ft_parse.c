@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 15:56:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/02 20:57:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/03 17:28:38 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static int	ft_parse(t_set *set)
 			ft_input_width(set);
 		else if (ft_strchr(PRECISION, *(set->str)))
 			ft_input_precision(set);
-		if (!(*(set->str)))
+		else
 			return (0);
 	}
 	set->specifier = *(set->str)++;
