@@ -1,25 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/19 17:50:52 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/07 18:33:31 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/12/07 16:44:54 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/12/07 16:45:07 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-
-#  ifndef BUFFER_SIZE
-#   define BUFFER_SIZE 3
-#  endif
-
-int	get_next_line(int fd, char **line);
-
-#endif
