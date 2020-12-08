@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:17:17 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/08 23:33:04 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/09 00:22:24 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,6 @@ int	get_next_line(int fd, char **line)
 		save[fd] = ft_strdup("");
 	if (!(ft_check_linefeed(save[fd])))
 	{
-	// !(ft_check_linefeed(save)) &&
 		while (((read_size = read(fd, temp, BUFFER_SIZE)) > 0))
 		{
 
@@ -181,10 +180,6 @@ int	get_next_line(int fd, char **line)
 		}
 		if (read_size == -1)
 			return (-1);
-			// write(1, save, 6);
-		// if ((read_size = read(fd, temp, BUFFER_SIZE)) == -1)
-		// 	return (-1);
 	}
-
 	return (ft_put_line(&save[fd], line));
 }

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:50:52 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/08 23:31:41 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/09 00:33:43 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <stdlib.h>
 # include <string.h>
 
-#  ifndef BUFFER_SIZE
-#   define BUFFER_SIZE 3
-#  endif
+// #  ifndef BUFFER_SIZE
+// #   define BUFFER_SIZE 3
+// #  endif
 
 int	get_next_line(int fd, char **line);
 
