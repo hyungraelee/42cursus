@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:17:17 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/09 00:22:24 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/11 16:18:06 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 	unsigned char	*sp;
 	size_t			i;
 
-	// if (!dest && !src)
-	// 	return (0);
 	dp = (unsigned char *)dest;
 	sp = (unsigned char *)src;
 	i = 0;
@@ -65,8 +63,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	s2_len;
 	char	*str;
 
-	// if (!s1)
-	// 	return (0);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	if (!(str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
@@ -88,6 +84,8 @@ int	ft_check_linefeed(char *sv)
 	while (sv[i])
 	{
 		if (sv[i] == '\n')
+			return (1);
+		else if (sv[i] == '\0' && i < BUFFER_SIZE)
 			return (1);
 		i++;
 	}
@@ -124,12 +122,8 @@ char	*ft_strdup(const char *s)
 void	ft_trim_save(char **sv)
 {
 	char *tmp;
-	// int i;
-	// int j;
-
 
 	tmp = ft_strdup(ft_strchr(*sv, '\n') + 1);
-	// j = 0;
 	free(*sv);
 	*sv = tmp;
 	return ;
@@ -140,14 +134,10 @@ int	ft_put_line(char **sv, char **line)
 	int i;
 
 	i = 0;
-	// write(1, save[1], 1);
-	// write(1, save[2], 1);
 	if (!(*line = (char *)malloc(sizeof(char) * ft_linelen(*sv))))
 		return (-1);
-	// printf("%d\n", (int)ft_linelen(*sv));
 	while ((*sv)[i] != '\0' && (*sv)[i] != '\n')
 	{
-		// write(1, *line, 1);
 		(*line)[i] = (*sv)[i];
 		i++;
 	}
@@ -170,11 +160,8 @@ int	get_next_line(int fd, char **line)
 	{
 		while (((read_size = read(fd, temp, BUFFER_SIZE)) > 0))
 		{
-
-
 			temp[read_size] = '\0';
 			save[fd] = ft_strjoin(save[fd], temp);
-
 			if (ft_check_linefeed(temp))
 				break ;
 		}
