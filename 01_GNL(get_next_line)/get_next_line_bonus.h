@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:50:52 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/13 17:25:01 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/13 20:26:49 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <stdlib.h>
 # include <string.h>
 
-#  ifndef OPEN_MAX
-#   define OPEN_MAX 10240
-#  endif
+# ifndef OPEN_MAX
+#  define OPEN_MAX 10240
+# endif
 
 int		get_next_line(int fd, char **line);
 char	*ft_strchr(const char *s, int c);
