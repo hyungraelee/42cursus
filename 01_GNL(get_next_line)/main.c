@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 17:22:45 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/08 23:21:42 by hyunlee          ###   ########.fr       */
+/*   Updated: 2020/12/13 16:40:02 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int main(void)
     char *line = 0;
     int ret;
     int fd;
-    fd = open("myfile.txt", O_RDONLY);
+    fd = open("41_char", O_RDONLY);
     while ((ret = get_next_line(fd, &line)) > 0)
     {
-		printf("1");
         printf("%s\n", line);
         free(line);
     }
