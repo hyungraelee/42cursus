@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:23:14 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 17:26:17 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/02 17:43:42 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	issign(char c)
+int	ft_issign(char c)
 {
 	return (c == '+' || c == '-');
 }
