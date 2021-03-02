@@ -43,7 +43,8 @@ SRCS =	\
 		./ft_putstr_fd.c	\
 		./ft_putendl_fd.c	\
 		./ft_putnbr_fd.c	\
-		./ft_atod.c
+		./ft_atod.c			\
+		./ft_issign.c
 
 BONUS_SRCS =				\
 		./ft_lstnew.c		\
