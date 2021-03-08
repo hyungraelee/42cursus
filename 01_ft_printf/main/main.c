@@ -8,6 +8,11 @@ int		ft_printf(const	char *str, ...);
 
 int	main()
 {
-	ft_printf("%010", 123);
+	int d;
+
+	// d = ft_printf("\"this %d number\"", -267);
+	d = printf("\"this %d number\"", -267);
+	printf("\n");
+	printf("%d\n", d);
 	return 0;
 }
